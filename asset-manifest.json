@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Micheille/carsharing/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/Micheille/carsharing/static/js/main.975abaee.chunk.js",
+    "main.js.map": "/Micheille/carsharing/static/js/main.975abaee.chunk.js.map",
+    "runtime-main.js": "/Micheille/carsharing/static/js/runtime-main.eac0cd76.js",
+    "runtime-main.js.map": "/Micheille/carsharing/static/js/runtime-main.eac0cd76.js.map",
+    "static/js/2.9080c2b1.chunk.js": "/Micheille/carsharing/static/js/2.9080c2b1.chunk.js",
+    "static/js/2.9080c2b1.chunk.js.map": "/Micheille/carsharing/static/js/2.9080c2b1.chunk.js.map",
+    "static/js/3.bc659f8c.chunk.js": "/Micheille/carsharing/static/js/3.bc659f8c.chunk.js",
+    "static/js/3.bc659f8c.chunk.js.map": "/Micheille/carsharing/static/js/3.bc659f8c.chunk.js.map",
+    "index.html": "/Micheille/carsharing/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/Micheille/carsharing/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.9080c2b1.chunk.js.LICENSE.txt": "/Micheille/carsharing/static/js/2.9080c2b1.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/Micheille/carsharing/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.eac0cd76.js",
+    "static/js/2.9080c2b1.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.975abaee.chunk.js"
+  ]
+}
