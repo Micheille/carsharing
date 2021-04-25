@@ -7,8 +7,8 @@ import './style.css'
 export default function Sidebar({menuActive, setMenuActive}) {
     return (
     <div className="sidebar">
-        <Menu isActive={menuActive} setActive={setMenuActive} />
         <BurgerMenu menuActive={menuActive} setMenuActive={setMenuActive} />
+        <Menu isActive={menuActive} setActive={setMenuActive} />
         <LangButton />
     </div>)
 }

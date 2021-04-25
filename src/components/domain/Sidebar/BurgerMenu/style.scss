@@ -1,31 +1,71 @@
+@import '../../../App/сolors';
+
 %line {
     box-sizing: border-box;
     content: '';
     width: 24px;
-    border: 1.5px solid white;
     border-radius: 3px;
-    background-color: white;
     position: absolute;
     left: 4px;
+
+    transform-origin: 1px;
+    transition: all 0.3s ease-out;
+}
+@mixin line($color) {
+    border: 1.5px solid $color;
+    background-color: $color;
 }
 
 .sidebar__burger {
     display: block;
+    z-index: 1;
     position: relative;
+    cursor: pointer;
     width: 32px;
     height: 32px;
-    background-color:darkslategrey;
 
     &:before {
+        @include line(white);
         @extend %line;
-        top: 20%;
+        top: 20%;        
+        transform: rotate(0);
     }
     span {
+        @include line(white);
         @extend %line;
         top: 45%;
+        opacity: 1;
+        transition: none;
     }
     &:after {
-        @extend %line;
+        @include line(white);
+        @extend %line;      
         top: 70%;
+        transform: rotate(0);
+    }
+}
+.sidebar__burger_black {
+    &:before {
+        @include line($black);
+    }
+    span {
+        @include line($black);
+    }
+    &:after {
+        @include line($black);
+    }
+}
+.sidebar__burger_active {
+    &:before {
+        @include line(white);
+        transform: rotate(45deg);
+    }
+    span {
+        @include line(white);
+        opacity: 0;
+    }
+    &:after {
+        @include line(white);
+        transform: rotate(-45deg);
     }
 }

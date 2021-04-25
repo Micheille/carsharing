@@ -3,29 +3,80 @@
           box-sizing: border-box;
   content: '';
   width: 24px;
-  border: 1.5px solid white;
   border-radius: 3px;
-  background-color: white;
   position: absolute;
   left: 4px;
+  -webkit-transform-origin: 1px;
+          transform-origin: 1px;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .sidebar__burger {
   display: block;
+  z-index: 1;
   position: relative;
+  cursor: pointer;
   width: 32px;
   height: 32px;
-  background-color: darkslategrey;
 }
 
 .sidebar__burger:before {
+  border: 1.5px solid white;
+  background-color: white;
   top: 20%;
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
 }
 
 .sidebar__burger span {
+  border: 1.5px solid white;
+  background-color: white;
   top: 45%;
+  opacity: 1;
+  -webkit-transition: none;
+  transition: none;
 }
 
 .sidebar__burger:after {
+  border: 1.5px solid white;
+  background-color: white;
   top: 70%;
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+
+.sidebar__burger_black:before {
+  border: 1.5px solid #121212;
+  background-color: #121212;
+}
+
+.sidebar__burger_black span {
+  border: 1.5px solid #121212;
+  background-color: #121212;
+}
+
+.sidebar__burger_black:after {
+  border: 1.5px solid #121212;
+  background-color: #121212;
+}
+
+.sidebar__burger_active:before {
+  border: 1.5px solid white;
+  background-color: white;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.sidebar__burger_active span {
+  border: 1.5px solid white;
+  background-color: white;
+  opacity: 0;
+}
+
+.sidebar__burger_active:after {
+  border: 1.5px solid white;
+  background-color: white;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
