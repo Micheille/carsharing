@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from '../domain/Sidebar'
-import "./style.css"
+import './style.css'
 
 export default function Main({menuActive, setMenuActive}) {
     return ( 
