@@ -4,6 +4,8 @@ import BurgerMenu from "./BurgerMenu"
 import LangButton from "./LangButton"
 import './style.css'
 
+
+
 export default function Sidebar({menuActive, setMenuActive}) {
     return (
     <div className="sidebar">

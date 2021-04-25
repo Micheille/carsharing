@@ -1,11 +1,4 @@
 import React from 'react';
-import telegram from "./img/social-telegram.svg";
-import facebook from "./img/social-facebook.svg";
-import instagram from "./img/social-instagram.svg";
-//import img from "./img/social-facebook.svg";
-//import facebook from "./img/social-facebook.svg";
-//import facebook from "./img/social-facebook.svg"
-//import instagram from "./img/social-instagram.svg"
 
 export default function Menu({isActive, setActive}) {
     return (

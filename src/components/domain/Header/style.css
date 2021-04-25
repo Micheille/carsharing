@@ -1,0 +1,31 @@
+.header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .header__title {
+  font: 700 30px "Roboto", "Arial", sans-serif;
+  color: #0ec261;
+}
+
+.header .header__city {
+  font: 14px "Roboto", "Arial", sans-serif;
+  color: #999999;
+  position: relative;
+  z-index: -1;
+}
+
+.header .header__city::before {
+  content: url(./img/map.svg);
+  position: absolute;
+  left: -24px;
+  top: -2px;
+}
