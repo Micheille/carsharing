@@ -1,3 +1,18 @@
+@import "../../App/сolors";
+@import "../../Main/mixins";
+
+%no-list-style {
+    list-style: none;
+    margin: 0;
+    padding:0;
+}
+
+%flex-props {
+    display: flex;
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -9,4 +24,66 @@
     min-width: 64px;
     height: 100vh;
     background-color: #151b1f;
+
+    .sidebar__menu {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(21, 27, 31, 0.8);
+        font: 500 32px "Roboto", "Arial", sans-serif;
+    
+        transform: translateX(-100%);
+        transition: all 0.3s ease-out;
+    
+        .sidebar__sidebar {
+            min-width: 64px;
+            background-color: #111518;
+        }    
+        .sidebar__opaque {
+            @extend %flex-props;
+            flex-direction: column;
+            min-width: 550px;
+            background-color: #111518;
+        
+            .sidebar__links {
+                @extend %no-list-style;
+                margin-top: calc(50vh - 100px);
+
+                li {
+                    margin-bottom: 15px;
+                }
+                .sidebar__link {
+                    text-transform: uppercase;
+                }
+                .sidebar__link_white {
+                    @include link(white, $accent, $accent);
+                }
+            }
+            .sidebar__social {
+                @extend %no-list-style;
+                margin-top: 40px;
+                display: flex;
+                
+                li {                 
+                    margin-right: 24px;
+
+                    svg {
+                        display: block;
+                        &:hover path {
+                            fill: $accent;
+                        }
+                    }
+                }
+            }
+        }
+        .sidebar__transparent {
+            @extend %flex-props;
+        }    
+    }    
+    .sidebar__menu_active {
+        transform: translateX(0);
+    }
 }

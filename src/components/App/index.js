@@ -1,4 +1,6 @@
 import './App.css';
+import '@fontsource/roboto';
+import '@fontsource/roboto/500.css';
 import Main from '../Main';
 import { useState } from 'react';
 

@@ -32,19 +32,19 @@
   color: black;
 }
 
-.main-page .main-page__link_white {
+.main-page .main-page__link_gray-light {
   color: #eeeeee;
 }
 
-.main-page .main-page__link_white:hover {
+.main-page .main-page__link_gray-light:hover {
   color: #0ec261;
 }
 
-.main-page .main-page__link_white:active {
+.main-page .main-page__link_gray-light:active {
   color: #0ec261;
 }
 
-.main-page .main-page__link_white:disabled {
+.main-page .main-page__link_gray-light:disabled {
   color: #999999;
 }
 
