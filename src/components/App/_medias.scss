@@ -1,0 +1,12 @@
+@media screen and (max-device-width: 700px), screen and (max-width: 700px) {
+    .App-header {
+      background-color:indigo;
+    }
+  }
+  
+  
+  @media screen and (max-device-width: 500px), screen and (max-width: 500px) {
+    .App-header {
+      background-color: darkcyan;
+    }
+  }

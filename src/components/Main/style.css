@@ -1,0 +1,81 @@
+.main-page .info, .main-page .slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+}
+
+.main-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  height: 100vh;
+}
+
+.main-page .info {
+  min-width: 550px;
+}
+
+.main-page .slider {
+  background-color: darkolivegreen;
+}
+
+.main-page .main-page__link {
+  text-decoration: none;
+  color: black;
+}
+
+.main-page .main-page__link_white {
+  color: #eeeeee;
+}
+
+.main-page .main-page__link_white:hover {
+  color: #0ec261;
+}
+
+.main-page .main-page__link_white:active {
+  color: #0ec261;
+}
+
+.main-page .main-page__link_white:disabled {
+  color: #999999;
+}
+
+.main-page .main-page__link_black {
+  color: #121212;
+}
+
+.main-page .main-page__link_black:hover {
+  color: #0ec261;
+}
+
+.main-page .main-page__link_black:active {
+  color: #0ec261;
+}
+
+.main-page .main-page__link_black:disabled {
+  color: #999999;
+}
+
+.main-page .main-page__link_accent {
+  color: #0ec261;
+}
+
+.main-page .main-page__link_accent:hover {
+  color: #eeeeee;
+}
+
+.main-page .main-page__link_accent:active {
+  color: white;
+}
+
+.main-page .main-page__link_accent:disabled {
+  color: #999999;
+}

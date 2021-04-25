@@ -1,0 +1,31 @@
+.sidebar__burger:before, .sidebar__burger span, .sidebar__burger:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  content: '';
+  width: 24px;
+  border: 1.5px solid white;
+  border-radius: 3px;
+  background-color: white;
+  position: absolute;
+  left: 4px;
+}
+
+.sidebar__burger {
+  display: block;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  background-color: darkslategrey;
+}
+
+.sidebar__burger:before {
+  top: 20%;
+}
+
+.sidebar__burger span {
+  top: 45%;
+}
+
+.sidebar__burger:after {
+  top: 70%;
+}

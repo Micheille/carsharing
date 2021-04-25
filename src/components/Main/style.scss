@@ -1,0 +1,49 @@
+@import "../App/сolors";
+
+%flex-props {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+@mixin link($color, $hover-color, $active-color) {
+    color: $color;
+    &:hover {
+        color: $hover-color;
+    }
+    &:active {
+        color: $active-color;
+    }
+    &:disabled {
+        color: $gray;
+    }
+}
+
+.main-page {
+    display: flex;
+    align-items: stretch;
+    height: 100vh;
+
+    .info {
+        @extend %flex-props;
+        min-width: 550px;
+    }      
+    .slider {
+        @extend %flex-props;
+        background-color: darkolivegreen;
+    }
+
+    .main-page__link {
+        text-decoration: none;
+        color: black;
+    }    
+    .main-page__link_white {
+        @include link($gray-light, $accent, $accent);
+    }
+    .main-page__link_black {
+        @include link($black, $accent, $accent);
+    }
+    .main-page__link_accent {
+        @include link($accent, $gray-light, white);
+    }
+}

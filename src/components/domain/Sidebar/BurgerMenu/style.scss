@@ -1,0 +1,31 @@
+%line {
+    box-sizing: border-box;
+    content: '';
+    width: 24px;
+    border: 1.5px solid white;
+    border-radius: 3px;
+    background-color: white;
+    position: absolute;
+    left: 4px;
+}
+
+.sidebar__burger {
+    display: block;
+    position: relative;
+    width: 32px;
+    height: 32px;
+    background-color:darkslategrey;
+
+    &:before {
+        @extend %line;
+        top: 20%;
+    }
+    span {
+        @extend %line;
+        top: 45%;
+    }
+    &:after {
+        @extend %line;
+        top: 70%;
+    }
+}

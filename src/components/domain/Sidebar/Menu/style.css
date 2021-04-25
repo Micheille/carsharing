@@ -1,0 +1,51 @@
+.sidebar__menu .sidebar__opaque .sidebar__list, .sidebar__menu .sidebar__opaque .sidebar__list .sidebar__social {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar__menu .sidebar__opaque, .sidebar__menu .sidebar__transparent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.sidebar__menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(21, 27, 31, 0.8);
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.sidebar__menu .sidebar__sidebar {
+  min-width: 64px;
+  background-color: #111518;
+}
+
+.sidebar__menu .sidebar__opaque {
+  min-width: 550px;
+  background-color: #111518;
+}
+
+.sidebar__menu .sidebar__opaque .sidebar__list .sidebar__link {
+  text-transform: uppercase;
+}
+
+.sidebar__menu_active {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}

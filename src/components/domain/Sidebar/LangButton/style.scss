@@ -1,0 +1,10 @@
+@import "../../../App/сolors";
+
+.sidebar__lang-button {
+    color: $accent;
+    background-color: transparent;
+    width: 48px;
+    height: 48px;
+    border: 1px solid $accent;
+    border-radius: 50%;
+}

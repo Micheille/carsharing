@@ -1,0 +1,8 @@
+.sidebar__lang-button {
+  color: #0ec261;
+  background-color: transparent;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #0ec261;
+  border-radius: 50%;
+}
