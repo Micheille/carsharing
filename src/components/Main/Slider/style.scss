@@ -1,0 +1,107 @@
+@import '../../App/сolors';
+
+$png1: url('img/png-slider-1.png');
+$png2: url('img/png-slider-2.png');
+$png3: url('img/png-slider-3.png');
+$png4: url('img/png-slider-4.png');
+
+%arrow-props {
+    content: "";
+    display: block;
+    width: 12px;
+    border: 1px solid $gray-light;
+    border-radius: 1px;
+    background-color: $gray-light;
+    position: absolute;
+    top: calc(50% - 9px);
+    transform-origin: left;
+    left: 28px;
+}
+
+.slider {
+    background-color:black;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+
+    .slider__slide {
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .slider__slide_1 {
+        background-image: $png1;
+    }
+    .slider__slide_2 {
+        background-image: $png2;
+    }
+    .slider__slide_3 {
+        background-image: $png3;
+    }
+    .slider__slide_4 {
+        background-image: $png4;
+    }
+
+    .slider__arrow {
+        //border: 3px solid red;
+
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 64px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(14, 194, 97, 0.2);
+        }
+        &:before {
+            @extend %arrow-props;            
+            transform: rotate(-45deg);
+        }
+        &:after {
+            @extend %arrow-props;
+            transform: translateY(-1px) rotate(45deg);
+        }
+    }
+    .slider__arrow_right {
+        right: 0;
+
+        &:before {
+            transform-origin: right;
+            transform: rotate(45deg);
+        }
+        &:after {
+            transform-origin: right;
+            transform: translateY(-1px) rotate(-45deg);
+        }
+    }
+    .slider__arrow_disabled {
+        &:hover {
+            background-color: transparent;
+        }
+    }
+
+    .slider__dot {
+        padding: 4px;
+        margin-right: 8px;
+        border-radius: 50%;
+        background: $gray-light;
+    }
+    .slider__dot_active {
+        background: $accent;
+    }
+    
+    .slider__dots {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        justify-content: center;
+        bottom: 32px;
+    }
+}
+

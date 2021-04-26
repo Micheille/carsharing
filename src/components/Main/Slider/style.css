@@ -1,0 +1,116 @@
+.slider .slider__arrow:before, .slider .slider__arrow:after {
+  content: "";
+  display: block;
+  width: 12px;
+  border: 1px solid #eeeeee;
+  border-radius: 1px;
+  background-color: #eeeeee;
+  position: absolute;
+  top: calc(50% - 9px);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  left: 28px;
+}
+
+.slider {
+  background-color: black;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider .slider__slide {
+  height: 100%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.slider .slider__slide_1 {
+  background-image: url("img/png-slider-1.png");
+}
+
+.slider .slider__slide_2 {
+  background-image: url("img/png-slider-2.png");
+}
+
+.slider .slider__slide_3 {
+  background-image: url("img/png-slider-3.png");
+}
+
+.slider .slider__slide_4 {
+  background-image: url("img/png-slider-4.png");
+}
+
+.slider .slider__arrow {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 64px;
+  cursor: pointer;
+}
+
+.slider .slider__arrow:hover {
+  background-color: rgba(14, 194, 97, 0.2);
+}
+
+.slider .slider__arrow:before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.slider .slider__arrow:after {
+  -webkit-transform: translateY(-1px) rotate(45deg);
+          transform: translateY(-1px) rotate(45deg);
+}
+
+.slider .slider__arrow_right {
+  right: 0;
+}
+
+.slider .slider__arrow_right:before {
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.slider .slider__arrow_right:after {
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  -webkit-transform: translateY(-1px) rotate(-45deg);
+          transform: translateY(-1px) rotate(-45deg);
+}
+
+.slider .slider__arrow_disabled:hover {
+  background-color: transparent;
+}
+
+.slider .slider__dot {
+  padding: 4px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #eeeeee;
+}
+
+.slider .slider__dot_active {
+  background: #0ec261;
+}
+
+.slider .slider__dots {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  bottom: 32px;
+}

@@ -25,6 +25,7 @@
     background-color: #151b1f;
 
     .sidebar__menu {
+        z-index: 1;
         display: flex;
         position: fixed;
         top: 0;

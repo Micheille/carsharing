@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from '../domain/Sidebar'
 import Info from './Info'
+import Slider from './Slider'
 import './style.css'
 
 export default function Main({menuActive, setMenuActive}) {
@@ -8,6 +9,6 @@ export default function Main({menuActive, setMenuActive}) {
     <div className="main-page">
         <Sidebar menuActive={menuActive} setMenuActive={setMenuActive} />        
         <Info />
-        <div className="slider"></div>        
+        <Slider />
     </div>);
 }

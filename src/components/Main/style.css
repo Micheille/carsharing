@@ -1,7 +1,4 @@
 .main-page .info, .main-page .slider {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -20,13 +17,9 @@
 }
 
 .main-page .info {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  min-width: 550px;
-}
-
-.main-page .slider {
-  background-color: darkolivegreen;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .main-page .main-page__link {
