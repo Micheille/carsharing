@@ -1,20 +1,24 @@
 {
   "files": {
-    "main.css": "/carsharing/static/css/main.13b72530.chunk.css",
-    "main.js": "/carsharing/static/js/main.6417a247.chunk.js",
-    "main.js.map": "/carsharing/static/js/main.6417a247.chunk.js.map",
+    "main.css": "/carsharing/static/css/main.28763331.chunk.css",
+    "main.js": "/carsharing/static/js/main.9a543408.chunk.js",
+    "main.js.map": "/carsharing/static/js/main.9a543408.chunk.js.map",
     "runtime-main.js": "/carsharing/static/js/runtime-main.8c014722.js",
     "runtime-main.js.map": "/carsharing/static/js/runtime-main.8c014722.js.map",
     "static/css/2.ce6c545a.chunk.css": "/carsharing/static/css/2.ce6c545a.chunk.css",
-    "static/js/2.75142215.chunk.js": "/carsharing/static/js/2.75142215.chunk.js",
-    "static/js/2.75142215.chunk.js.map": "/carsharing/static/js/2.75142215.chunk.js.map",
+    "static/js/2.28ac835f.chunk.js": "/carsharing/static/js/2.28ac835f.chunk.js",
+    "static/js/2.28ac835f.chunk.js.map": "/carsharing/static/js/2.28ac835f.chunk.js.map",
     "static/js/3.cd66b130.chunk.js": "/carsharing/static/js/3.cd66b130.chunk.js",
     "static/js/3.cd66b130.chunk.js.map": "/carsharing/static/js/3.cd66b130.chunk.js.map",
     "index.html": "/carsharing/index.html",
     "static/css/2.ce6c545a.chunk.css.map": "/carsharing/static/css/2.ce6c545a.chunk.css.map",
-    "static/css/main.13b72530.chunk.css.map": "/carsharing/static/css/main.13b72530.chunk.css.map",
-    "static/js/2.75142215.chunk.js.LICENSE.txt": "/carsharing/static/js/2.75142215.chunk.js.LICENSE.txt",
-    "static/media/style.css": "/carsharing/static/media/png-slider-4.1f56695e.png",
+    "static/css/main.28763331.chunk.css.map": "/carsharing/static/css/main.28763331.chunk.css.map",
+    "static/js/2.28ac835f.chunk.js.LICENSE.txt": "/carsharing/static/js/2.28ac835f.chunk.js.LICENSE.txt",
+    "static/media/style.css": "/carsharing/static/media/map.9d09636f.svg",
+    "static/media/png-slider-1.ec07347c.png": "/carsharing/static/media/png-slider-1.ec07347c.png",
+    "static/media/png-slider-2.a0f49a58.png": "/carsharing/static/media/png-slider-2.a0f49a58.png",
+    "static/media/png-slider-3.79da9bbe.png": "/carsharing/static/media/png-slider-3.79da9bbe.png",
+    "static/media/png-slider-4.1f56695e.png": "/carsharing/static/media/png-slider-4.1f56695e.png",
     "static/media/300.css": "/carsharing/static/media/roboto-vietnamese-300-normal.af9afdc1.woff2",
     "static/media/index.css": "/carsharing/static/media/roboto-vietnamese-400-normal.c0bec65d.woff2",
     "static/media/500.css": "/carsharing/static/media/roboto-vietnamese-500-normal.b8e494da.woff2",
@@ -23,8 +27,8 @@
   "entrypoints": [
     "static/js/runtime-main.8c014722.js",
     "static/css/2.ce6c545a.chunk.css",
-    "static/js/2.75142215.chunk.js",
-    "static/css/main.13b72530.chunk.css",
-    "static/js/main.6417a247.chunk.js"
+    "static/js/2.28ac835f.chunk.js",
+    "static/css/main.28763331.chunk.css",
+    "static/js/main.9a543408.chunk.js"
   ]
 }
