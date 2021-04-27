@@ -1,7 +1,86 @@
 import React, { useState } from 'react'
 import { withSize } from 'react-sizeme'
 import styled from 'styled-components'
+
 import './style.css'
+
+import png1 from "./img/png-slider-1.png"
+import png2 from "./img/png-slider-2.png"
+import png3 from "./img/png-slider-3.png"
+import png4 from "./img/png-slider-4.png"
+
+const sliderInfo = [
+    {
+        title: "Бесплатная парковка",
+        desc: "Оставляйте машину на платных городских парковках и разрешенных местах, не нарушая ПДД, а также в аэропортах",
+        button: {
+            colorFrom: '#13493F',
+            colorTo: '#0C7B1B'
+        },
+        background: png1
+    },
+    {
+        title: "Страховка",
+        desc: "Полная страховка автомобиля",
+        button: {
+            colorFrom: "#132949",
+            colorTo: "#0C7B67"
+        },
+        background: png2
+    },
+    {
+        title: "Бензин",
+        desc: "Полный бак на любой заправке города за наш счёт",
+        button: {
+            colorFrom: "#493013",
+            colorTo: "#7B0C3B"
+        },
+        background: png3
+    },
+    {
+        title: "Обслуживание",
+        desc: "Автомобиль проходит еженедельное ТО",
+        button: {
+            colorFrom: "#281349",
+            colorTo: "#720C7B"
+        },
+        background: png4
+    }
+]
+
+const SlideBack = styled.div `
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 96px;
+
+    background-image: url(${props => props.background});
+    background-size: cover;
+    background-repear: no-repeat;
+    background-position: center;
+`
+const SliderButton = styled.button `
+    background: linear-gradient(to right, 
+                                ${props => props.colorFrom}, 
+                                ${props => props.colorTo});
+    height: 48px;
+    padding: 0 36px;
+    margin-top: 32px;
+    border: none;
+    border-radius: 4px;
+    font: 500 18px "Roboto", "Arial", sans-serif;
+    color: #eeeeee;
+`
+
+const Slide = ({title, desc, colorFrom, colorTo, background}) => {
+    return (
+        <SlideBack background={background}>
+            <h2 className="slider__title">{title}</h2>
+            <p className="slider__desc">{desc}</p>
+            <SliderButton colorFrom={colorFrom} colorTo={colorTo}>Подробнее</SliderButton>
+        </SlideBack>
+    )
+}
 
 const SliderContent = styled.div `
     display: flex;
@@ -13,11 +92,6 @@ const SliderContent = styled.div `
     height: 100%;
     width: ${props => props.width}px;
 `
-
-const Slide = ({ classNum }) => (
-    <div className={`slider__slide ${classNum}`}>
-    </div>
-)
 
 const Arrow = ({ direction, handleClick, start, end }) => {
     const classDir = (direction === 'right') ? 'slider__arrow_right' : 'slider__arrow_left';
@@ -100,12 +174,16 @@ const Slider = (props) => {
         <SliderContent 
             translate={translate} 
             transition={transition} 
-            width={width * 4}
+            width={width*4}
         >
-            <Slide classNum="slider__slide_1" />
-            <Slide classNum="slider__slide_2" />
-            <Slide classNum="slider__slide_3" />
-            <Slide classNum="slider__slide_4" />
+            {sliderInfo.map((info, i) => (
+                <Slide 
+                    title={info.title}
+                    desc={info.desc}
+                    colorFrom={info.button.colorFrom}
+                    colorTo={info.button.colorTo}
+                    background={info.background} />
+            ))}
         </SliderContent>
 
         <Arrow direction='left' handleClick={prevSlide} start={start}/>
