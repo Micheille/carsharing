@@ -1,0 +1,25 @@
+@media screen and (max-device-width: 1439px), screen and (max-width: 1439px) {
+    .sidebar {
+        .sidebar__menu {
+            .sidebar__opaque {
+                .sidebar__content {
+                    padding-left: 32px;
+                }
+            }            
+        }
+    }
+}
+
+@media screen and (max-device-width: 1023px), screen and (max-width: 1023px) {
+    .sidebar {
+        min-width: 86px;
+
+        .sidebar__menu {
+            font-size: 28px;
+
+            .sidebar__transparent {
+                display: none;
+            }
+        }
+    }
+}

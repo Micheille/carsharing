@@ -1,4 +1,4 @@
-.slider .slider__arrow:before, .slider .slider__arrow:after {
+.slider .slider__arrow_left:before, .slider .slider__arrow_left:after, .slider .slider__arrow_right:before, .slider .slider__arrow_right:after {
   content: "";
   display: block;
   width: 12px;
@@ -7,9 +7,18 @@
   background-color: #eeeeee;
   position: absolute;
   top: calc(50% - 9px);
+}
+
+.slider .slider__arrow_left:before, .slider .slider__arrow_left:after {
+  left: calc(50% - 4px);
   -webkit-transform-origin: left;
           transform-origin: left;
-  left: 28px;
+}
+
+.slider .slider__arrow_right:before, .slider .slider__arrow_right:after {
+  right: calc(50% - 4px);
+  -webkit-transform-origin: right;
+          transform-origin: right;
 }
 
 .slider {
@@ -48,12 +57,16 @@
   background-color: rgba(14, 194, 97, 0.2);
 }
 
-.slider .slider__arrow:before {
+.slider .slider__arrow_left {
+  left: 0;
+}
+
+.slider .slider__arrow_left:before {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
 
-.slider .slider__arrow:after {
+.slider .slider__arrow_left:after {
   -webkit-transform: translateY(-1px) rotate(45deg);
           transform: translateY(-1px) rotate(45deg);
 }
@@ -63,15 +76,11 @@
 }
 
 .slider .slider__arrow_right:before {
-  -webkit-transform-origin: right;
-          transform-origin: right;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
 
 .slider .slider__arrow_right:after {
-  -webkit-transform-origin: right;
-          transform-origin: right;
   -webkit-transform: translateY(-1px) rotate(-45deg);
           transform: translateY(-1px) rotate(-45deg);
 }
@@ -101,4 +110,22 @@
       -ms-flex-pack: center;
           justify-content: center;
   bottom: 32px;
+}
+
+@media screen and (max-device-width: 1439px), screen and (max-width: 1439px) {
+  .slider .slider__title {
+    font-size: 32px;
+  }
+  .slider .slider__desc {
+    font-size: 22px;
+  }
+  .slider .slider__arrow {
+    width: 32px;
+  }
+}
+
+@media screen and (max-device-width: 1023px), screen and (max-width: 1023px) {
+  .slider {
+    display: none;
+  }
 }

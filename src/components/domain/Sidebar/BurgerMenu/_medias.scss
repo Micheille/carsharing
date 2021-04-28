@@ -1,0 +1,13 @@
+@media screen and (max-device-width: 1023px), screen and (max-width: 1023px) {
+    %line {
+        width: 32px;
+    }
+    .sidebar__burger_active {
+        &::before {
+            width: 24px;
+        }
+        &::after {
+            width: 24px;
+        }
+    }
+}

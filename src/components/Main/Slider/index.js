@@ -58,6 +58,10 @@ const SlideBack = styled.div `
     background-size: cover;
     background-repear: no-repeat;
     background-position: center;
+
+    @media screen and (max-device-width: 1439px), screen and (max-width: 1439px) {
+        padding: 0 64px;
+    }
 `
 const SliderButton = styled.button `
     background: linear-gradient(to right, 

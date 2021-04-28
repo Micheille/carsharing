@@ -5,7 +5,9 @@
   width: 24px;
   border-radius: 3px;
   position: absolute;
-  left: 4px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  left: 50%;
   -webkit-transform-origin: 1px;
           transform-origin: 1px;
   -webkit-transition: all 0.3s ease-out;
@@ -25,8 +27,8 @@
   border: 1.5px solid white;
   background-color: white;
   top: 20%;
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
+  -webkit-transform: translateX(-50%) rotate(0);
+          transform: translateX(-50%) rotate(0);
 }
 
 .sidebar__burger span {
@@ -42,8 +44,8 @@
   border: 1.5px solid white;
   background-color: white;
   top: 70%;
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
+  -webkit-transform: translateX(-50%) rotate(0);
+          transform: translateX(-50%) rotate(0);
 }
 
 .sidebar__burger_black:before {
@@ -64,8 +66,8 @@
 .sidebar__burger_active:before {
   border: 1.5px solid white;
   background-color: white;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  -webkit-transform: translateX(-50%) rotate(45deg);
+          transform: translateX(-50%) rotate(45deg);
 }
 
 .sidebar__burger_active span {
@@ -77,6 +79,18 @@
 .sidebar__burger_active:after {
   border: 1.5px solid white;
   background-color: white;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  -webkit-transform: translateX(-50%) rotate(-45deg);
+          transform: translateX(-50%) rotate(-45deg);
+}
+
+@media screen and (max-device-width: 1023px), screen and (max-width: 1023px) {
+  .sidebar__burger:before, .sidebar__burger span, .sidebar__burger:after {
+    width: 32px;
+  }
+  .sidebar__burger_active::before {
+    width: 24px;
+  }
+  .sidebar__burger_active::after {
+    width: 24px;
+  }
 }

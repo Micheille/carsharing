@@ -14,8 +14,14 @@ $png4: url('img/png-slider-4.png');
     background-color: $gray-light;
     position: absolute;
     top: calc(50% - 9px);
+}
+%arrow-left {
+    left: calc(50% - 4px);
     transform-origin: left;
-    left: 28px;
+}
+%arrow-right {
+    right: calc(50% - 4px);
+    transform-origin: right;
 }
 
 .slider {
@@ -48,12 +54,18 @@ $png4: url('img/png-slider-4.png');
         &:hover {
             background-color: rgba(14, 194, 97, 0.2);
         }
+    }
+    .slider__arrow_left {
+        left: 0;
+
         &:before {
-            @extend %arrow-props;            
+            @extend %arrow-props;
+            @extend %arrow-left;
             transform: rotate(-45deg);
         }
         &:after {
             @extend %arrow-props;
+            @extend %arrow-left;
             transform: translateY(-1px) rotate(45deg);
         }
     }
@@ -61,11 +73,14 @@ $png4: url('img/png-slider-4.png');
         right: 0;
 
         &:before {
-            transform-origin: right;
+            
+            @extend %arrow-props; 
+            @extend %arrow-right;
             transform: rotate(45deg);
         }
         &:after {
-            transform-origin: right;
+            @extend %arrow-props; 
+            @extend %arrow-right;
             transform: translateY(-1px) rotate(-45deg);
         }
     }
@@ -93,3 +108,5 @@ $png4: url('img/png-slider-4.png');
         bottom: 32px;
     }
 }
+
+@import "./medias";
