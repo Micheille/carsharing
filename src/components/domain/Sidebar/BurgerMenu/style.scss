@@ -10,7 +10,7 @@
     left: 50%;
 
     transform-origin: 1px;
-    transition: all 0.3s ease-out;
+    transition: transform 0.3s ease-out;
 }
 @mixin line($color) {
     border: 1.5px solid $color;
