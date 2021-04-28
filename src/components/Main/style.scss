@@ -11,9 +11,8 @@
     align-items: stretch;
     height: 100vh;
 
-
     .info {
-        display: flex;
+        display: flex;        
         @extend %flex-props;        
     }      
     .slider {
@@ -34,3 +33,5 @@
         @include link($accent, $gray-light, white);
     }
 }
+
+@import './medias';

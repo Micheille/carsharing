@@ -1,9 +1,12 @@
-import React from 'react';
+import React from 'react'
+import LangButton from '../LangButton'
 
 export default function Menu({isActive, setActive}) {
     return (
     <nav className={isActive ? "sidebar__menu sidebar__menu_active" : "sidebar__menu"}>
-        <div className="sidebar__sidebar"></div>
+        <div className="sidebar__sidebar">
+            <LangButton />
+        </div>
 
         <div className="sidebar__opaque">
             <div className="sidebar__content">

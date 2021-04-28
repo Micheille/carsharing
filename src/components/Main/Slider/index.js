@@ -13,37 +13,21 @@ const sliderInfo = [
     {
         title: "Бесплатная парковка",
         desc: "Оставляйте машину на платных городских парковках и разрешенных местах, не нарушая ПДД, а также в аэропортах",
-        button: {
-            colorFrom: '#13493F',
-            colorTo: '#0C7B1B'
-        },
         background: png1
     },
     {
         title: "Страховка",
         desc: "Полная страховка автомобиля",
-        button: {
-            colorFrom: "#132949",
-            colorTo: "#0C7B67"
-        },
         background: png2
     },
     {
         title: "Бензин",
         desc: "Полный бак на любой заправке города за наш счёт",
-        button: {
-            colorFrom: "#493013",
-            colorTo: "#7B0C3B"
-        },
         background: png3
     },
     {
         title: "Обслуживание",
         desc: "Автомобиль проходит еженедельное ТО",
-        button: {
-            colorFrom: "#281349",
-            colorTo: "#720C7B"
-        },
         background: png4
     }
 ]
@@ -63,25 +47,17 @@ const SlideBack = styled.div `
         padding: 0 64px;
     }
 `
-const SliderButton = styled.button `
-    background: linear-gradient(to right, 
-                                ${props => props.colorFrom}, 
-                                ${props => props.colorTo});
-    height: 48px;
-    padding: 0 36px;
-    margin-top: 32px;
-    border: none;
-    border-radius: 4px;
-    font: 500 18px "Roboto", "Arial", sans-serif;
-    color: #eeeeee;
-`
 
-const Slide = ({title, desc, colorFrom, colorTo, background}) => {
+const SliderButton = ({index}) => (
+    <button className={`slider__button slider__button_${index}`}>Подробнее</button>
+)
+
+const Slide = ({title, desc, index, background}) => {
     return (
         <SlideBack background={background}>
             <h2 className="slider__title">{title}</h2>
             <p className="slider__desc">{desc}</p>
-            <SliderButton colorFrom={colorFrom} colorTo={colorTo}>Подробнее</SliderButton>
+            <SliderButton index={index}>Подробнее</SliderButton>
         </SlideBack>
     )
 }
@@ -184,8 +160,7 @@ const Slider = (props) => {
                 <Slide 
                     title={info.title}
                     desc={info.desc}
-                    colorFrom={info.button.colorFrom}
-                    colorTo={info.button.colorTo}
+                    index={i + 1}
                     background={info.background} />
             ))}
         </SliderContent>

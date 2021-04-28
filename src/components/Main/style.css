@@ -74,3 +74,12 @@
 .main-page .main-page__link_accent:disabled {
   color: #999999;
 }
+
+@media screen and (max-device-width: 767px), screen and (max-width: 767px) {
+  .main-page {
+    display: block;
+  }
+  .main-page .info {
+    display: block;
+  }
+}

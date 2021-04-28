@@ -40,6 +40,11 @@
         .sidebar__sidebar {
             min-width: 64px;
             background-color: #111518;
+
+            .sidebar__lang-button {
+                display: none;
+                margin-bottom: 0;
+            }
         }    
         .sidebar__opaque {
             @extend %flex-props;           

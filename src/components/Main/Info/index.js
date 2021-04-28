@@ -16,8 +16,8 @@ function MainInfo() {
 function Footer() {
     return (
         <div className="info__footer">
+            <a className="main-page__link main-page__link_black info__phone" href="tel:+7495-234-2244">8 (495) 234-22-44</a>
             <span className="info__copyright">© 2016-2019 «Need for drive»</span>
-            <a className="main-page__link main-page__link_black" href="tel:+7495-234-2244">8 (495) 234-22-44</a>
         </div>
     )
 }

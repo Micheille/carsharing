@@ -1,4 +1,6 @@
 .header {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -28,4 +30,16 @@
   position: absolute;
   left: -24px;
   top: -2px;
+}
+
+@media screen and (max-device-width: 767px), screen and (max-width: 767px) {
+  .header {
+    display: block;
+    text-align: right;
+    padding: 16px;
+  }
+  .header .header__title {
+    display: block;
+    margin-bottom: 8px;
+  }
 }

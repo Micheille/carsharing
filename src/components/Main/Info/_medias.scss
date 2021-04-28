@@ -1,7 +1,54 @@
+@import '../mixins';
+
 @media screen and (max-device-width: 1439px), screen and (max-width: 1439px) {
     .info {
         .wrapper {
             padding: 32px 32px;
         }  
     }  
+}
+
+@media screen and (max-device-width: 767px), screen and (max-width: 767px) {
+    .info {
+        min-width: 320px;
+
+        .wrapper {
+            height:100vh;
+            padding: 0;
+
+            .info__main-info {
+                height: calc(100vh - 50%);
+                min-height: 200px;
+
+                .info__title {
+                    font-size: 32px;
+                    padding: 0 16px;
+                }
+                p {
+                    font-size: 18px;
+                    padding: 0 16px;
+                }
+                button {
+                    margin-top: 32px;
+                }
+            }
+            .info__footer {
+                display: block;
+                background-color: #151B1F;
+                text-align: right;
+                padding: 16px;
+
+                .info__copyright {
+                    color: $gray-light;
+                    display: block;
+                    margin-top: 8px;
+                }
+                .info__phone {
+                    @include link($accent, $gray-light, white);
+                    float: none;
+                    display: block;
+                }
+            }
+        }
+    }
 }

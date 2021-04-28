@@ -5,6 +5,23 @@
   color: white;
   border: transparent;
   border-radius: 8px;
-  background: -webkit-gradient(linear, left top, right top, from(#0ec261), to(rgba(3, 159, 103, 0.9)));
-  background: linear-gradient(to right, #0ec261, rgba(3, 159, 103, 0.9));
+  background: -webkit-gradient(linear, left top, right top, from(#0EC261), to(#039F67));
+  background: linear-gradient(to right, #0EC261, #039F67);
+}
+
+.button:hover {
+  background: -webkit-gradient(linear, left top, right top, from(#0b9249), to(#026d47));
+  background: linear-gradient(to right, #0b9249, #026d47);
+}
+
+.button:active {
+  background: -webkit-gradient(linear, left top, right top, from(#076331), to(#013b26));
+  background: linear-gradient(to right, #076331, #013b26);
+}
+
+@media screen and (max-device-width: 767px), screen and (max-width: 767px) {
+  .button {
+    width: 100%;
+    border-radius: 0;
+  }
 }

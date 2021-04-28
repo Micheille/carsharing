@@ -43,6 +43,76 @@
   margin: 0;
 }
 
+.slider .slider__button {
+  height: 48px;
+  padding: 0 36px;
+  margin-top: 32px;
+  border: none;
+  border-radius: 4px;
+  font: 500 18px "Roboto", "Arial", sans-serif;
+  color: #eeeeee;
+}
+
+.slider .slider__button_1 {
+  background: -webkit-gradient(linear, left top, right top, from(#13493F), to(#0C7B1B));
+  background: linear-gradient(to right, #13493F, #0C7B1B);
+}
+
+.slider .slider__button_1:hover {
+  background: -webkit-gradient(linear, left top, right top, from(#0e352e), to(#0a6416));
+  background: linear-gradient(to right, #0e352e, #0a6416);
+}
+
+.slider .slider__button_1:active {
+  background: -webkit-gradient(linear, left top, right top, from(#08211c), to(#074d11));
+  background: linear-gradient(to right, #08211c, #074d11);
+}
+
+.slider .slider__button_2 {
+  background: -webkit-gradient(linear, left top, right top, from(#132949), to(#0C7B67));
+  background: linear-gradient(to right, #132949, #0C7B67);
+}
+
+.slider .slider__button_2:hover {
+  background: -webkit-gradient(linear, left top, right top, from(#0e1e35), to(#0a6454));
+  background: linear-gradient(to right, #0e1e35, #0a6454);
+}
+
+.slider .slider__button_2:active {
+  background: -webkit-gradient(linear, left top, right top, from(#081221), to(#074d40));
+  background: linear-gradient(to right, #081221, #074d40);
+}
+
+.slider .slider__button_3 {
+  background: -webkit-gradient(linear, left top, right top, from(#493013), to(#7B0C3B));
+  background: linear-gradient(to right, #493013, #7B0C3B);
+}
+
+.slider .slider__button_3:hover {
+  background: -webkit-gradient(linear, left top, right top, from(#35230e), to(#640a30));
+  background: linear-gradient(to right, #35230e, #640a30);
+}
+
+.slider .slider__button_3:active {
+  background: -webkit-gradient(linear, left top, right top, from(#211508), to(#4d0725));
+  background: linear-gradient(to right, #211508, #4d0725);
+}
+
+.slider .slider__button_4 {
+  background: -webkit-gradient(linear, left top, right top, from(#281349), to(#720C7B));
+  background: linear-gradient(to right, #281349, #720C7B);
+}
+
+.slider .slider__button_4:hover {
+  background: -webkit-gradient(linear, left top, right top, from(#1d0e35), to(#5c0a64));
+  background: linear-gradient(to right, #1d0e35, #5c0a64);
+}
+
+.slider .slider__button_4:active {
+  background: -webkit-gradient(linear, left top, right top, from(#120821), to(#47074d));
+  background: linear-gradient(to right, #120821, #47074d);
+}
+
 .slider .slider__arrow {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

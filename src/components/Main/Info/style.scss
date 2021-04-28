@@ -5,6 +5,7 @@
     min-width: 550px;
 
     .wrapper {
+        box-sizing: border-box;
         width: 100%;
         padding: 32px 64px;
         display: flex;
@@ -34,20 +35,18 @@
         }
     
         .info__footer {
+            box-sizing: border-box;
             width: 100%;
-            display: flex;
-            justify-content: space-between;
             font: 13px "Roboto", "Arial", sans-serif;
     
             .info__copyright {
                 color: $gray;
             }
+            .info__phone {
+                float: right;
+            }
         }
     }
 }
 
-
 @import "./medias";
-
-
-

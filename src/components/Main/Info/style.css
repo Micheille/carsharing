@@ -5,6 +5,8 @@
 }
 
 .info .wrapper {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 100%;
   padding: 32px 64px;
   display: -webkit-box;
@@ -44,13 +46,9 @@
 }
 
 .info .wrapper .info__footer {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   font: 13px "Roboto", "Arial", sans-serif;
 }
 
@@ -58,8 +56,62 @@
   color: #999999;
 }
 
+.info .wrapper .info__footer .info__phone {
+  float: right;
+}
+
 @media screen and (max-device-width: 1439px), screen and (max-width: 1439px) {
   .info .wrapper {
     padding: 32px 32px;
+  }
+}
+
+@media screen and (max-device-width: 767px), screen and (max-width: 767px) {
+  .info {
+    min-width: 320px;
+  }
+  .info .wrapper {
+    height: 100vh;
+    padding: 0;
+  }
+  .info .wrapper .info__main-info {
+    height: calc(100vh - 50%);
+    min-height: 200px;
+  }
+  .info .wrapper .info__main-info .info__title {
+    font-size: 32px;
+    padding: 0 16px;
+  }
+  .info .wrapper .info__main-info p {
+    font-size: 18px;
+    padding: 0 16px;
+  }
+  .info .wrapper .info__main-info button {
+    margin-top: 32px;
+  }
+  .info .wrapper .info__footer {
+    display: block;
+    background-color: #151B1F;
+    text-align: right;
+    padding: 16px;
+  }
+  .info .wrapper .info__footer .info__copyright {
+    color: #eeeeee;
+    display: block;
+    margin-top: 8px;
+  }
+  .info .wrapper .info__footer .info__phone {
+    color: #0ec261;
+    float: none;
+    display: block;
+  }
+  .info .wrapper .info__footer .info__phone:hover {
+    color: #eeeeee;
+  }
+  .info .wrapper .info__footer .info__phone:active {
+    color: white;
+  }
+  .info .wrapper .info__footer .info__phone:disabled {
+    color: #999999;
   }
 }

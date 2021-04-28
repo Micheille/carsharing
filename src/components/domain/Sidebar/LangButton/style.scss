@@ -2,9 +2,22 @@
 
 .sidebar__lang-button {
     color: $accent;
+    font: 700 13px "Roboto", "Arial", sans-serif;
     background-color: transparent;
     width: 48px;
     height: 48px;
-    border: 1px solid $accent;
-    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    margin-bottom: -16px;
+
+    &:hover {
+        color: $gray-light;
+        border: 1px solid $gray-light;
+        border-radius: 50%;
+    }
+    &:active {
+        color: $accent;
+    }
 }
+
+@import './medias';

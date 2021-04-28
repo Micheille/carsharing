@@ -1,5 +1,9 @@
 @import '../../../App/сolors';
 
+@mixin line($color) {
+    border: 1.5px solid $color;
+    background-color: $color;
+}
 %line {
     box-sizing: border-box;
     content: '';
@@ -9,12 +13,10 @@
     transform: translateX(-50%);
     left: 50%;
 
+    @include line(white);
+
     transform-origin: 1px;
     transition: transform 0.3s ease-out;
-}
-@mixin line($color) {
-    border: 1.5px solid $color;
-    background-color: $color;
 }
 
 .sidebar__burger {
@@ -26,47 +28,30 @@
     height: 32px;
 
     &:before {
-        @include line(white);
         @extend %line;
         top: 20%;        
         transform: translateX(-50%) rotate(0);
     }
     span {
-        @include line(white);
         @extend %line;
         top: 45%;
         opacity: 1;
         transition: none;
     }
     &:after {
-        @include line(white);
         @extend %line;      
         top: 70%;
         transform: translateX(-50%) rotate(0);
     }
 }
-.sidebar__burger_black {
-    &:before {
-        @include line($black);
-    }
-    span {
-        @include line($black);
-    }
-    &:after {
-        @include line($black);
-    }
-}
 .sidebar__burger_active {
     &:before {
-        @include line(white);
         transform: translateX(-50%) rotate(45deg);
     }
     span {
-        @include line(white);
         opacity: 0;
     }
     &:after {
-        @include line(white);
         transform: translateX(-50%) rotate(-45deg);
     }
 }

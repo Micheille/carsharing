@@ -1,8 +1,26 @@
 .sidebar__lang-button {
   color: #0ec261;
+  font: 700 13px "Roboto", "Arial", sans-serif;
   background-color: transparent;
   width: 48px;
   height: 48px;
-  border: 1px solid #0ec261;
+  cursor: pointer;
+  border: none;
+  margin-bottom: -16px;
+}
+
+.sidebar__lang-button:hover {
+  color: #eeeeee;
+  border: 1px solid #eeeeee;
   border-radius: 50%;
+}
+
+.sidebar__lang-button:active {
+  color: #0ec261;
+}
+
+@media screen and (max-device-width: 767px), screen and (max-width: 767px) {
+  .sidebar__lang-button {
+    display: none;
+  }
 }
