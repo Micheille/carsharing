@@ -47,7 +47,7 @@
             }
         }    
         .sidebar__opaque {
-            @extend %flex-props;           
+            @extend %flex-props;
             min-width: 550px;
             background-color: #111518;
 

@@ -36,7 +36,6 @@
 
         .sidebar__menu {
             .sidebar__sidebar {
-                box-sizing: border-box;
                 display: flex;
                 flex-direction: column-reverse;
                 align-items: center;
@@ -47,7 +46,7 @@
                 }
             }
             .sidebar__opaque {
-                min-width: 320px;
+                min-width: 256px;
 
                 .sidebar__content {
                     padding: 0;
