@@ -4,31 +4,31 @@ import styled from 'styled-components'
 
 import './style.css'
 
-import png1 from "./img/png-slider-1.png"
-import png2 from "./img/png-slider-2.png"
-import png3 from "./img/png-slider-3.png"
-import png4 from "./img/png-slider-4.png"
+import jpg1 from "./img/jpg-slider-1.jpg"
+import jpg2 from "./img/jpg-slider-2.jpg"
+import jpg3 from "./img/jpg-slider-3.jpg"
+import jpg4 from "./img/jpg-slider-4.jpg"
 
 const sliderInfo = [
     {
         title: "Бесплатная парковка",
         desc: "Оставляйте машину на платных городских парковках и разрешенных местах, не нарушая ПДД, а также в аэропортах",
-        background: png1
+        background: jpg1
     },
     {
         title: "Страховка",
         desc: "Полная страховка автомобиля",
-        background: png2
+        background: jpg2
     },
     {
         title: "Бензин",
         desc: "Полный бак на любой заправке города за наш счёт",
-        background: png3
+        background: jpg3
     },
     {
         title: "Обслуживание",
         desc: "Автомобиль проходит еженедельное ТО",
-        background: png4
+        background: jpg4
     }
 ]
 
@@ -154,7 +154,7 @@ const Slider = (props) => {
         <SliderContent 
             translate={translate} 
             transition={transition} 
-            width={width*4}
+            width={width * 4}
         >
             {sliderInfo.map((info, i) => (
                 <Slide 
