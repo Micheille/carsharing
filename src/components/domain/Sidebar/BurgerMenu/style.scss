@@ -1,11 +1,13 @@
 @import '../../../App/сolors';
 
 @mixin line($color) {
-    border: 1.5px solid $color;
+    //border: 1.5px solid $color;
+    //height: 3px;
     background-color: $color;
 }
 %line {
     box-sizing: border-box;
+    height: 3px;
     content: '';
     width: 24px;
     border-radius: 3px;

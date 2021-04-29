@@ -1,6 +1,7 @@
 .sidebar__burger:before, .sidebar__burger span, .sidebar__burger:after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  height: 3px;
   content: '';
   width: 24px;
   border-radius: 3px;
@@ -8,7 +9,6 @@
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   left: 50%;
-  border: 1.5px solid white;
   background-color: white;
   -webkit-transform-origin: 1px;
           transform-origin: 1px;
@@ -80,16 +80,13 @@
 @media screen and (max-device-width: 767px), screen and (max-width: 767px) {
   .sidebar__burger:before, .sidebar__burger span, .sidebar__burger:after {
     width: 20px;
-    border: 1.5px solid #121212;
     background-color: #121212;
   }
   .sidebar__burger_active::before {
-    border: 1.5px solid white;
     background-color: white;
     width: 24px;
   }
   .sidebar__burger_active::after {
-    border: 1.5px solid white;
     background-color: white;
     width: 24px;
   }
