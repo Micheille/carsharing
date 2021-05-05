@@ -1,10 +1,10 @@
 import React from 'react'
+
 import Menu from './Menu'
 import BurgerMenu from "./BurgerMenu"
 import LangButton from "./LangButton"
-import './style.css'
 
-
+import './style.scss'
 
 export default function Sidebar({menuActive, setMenuActive}) {
     return (

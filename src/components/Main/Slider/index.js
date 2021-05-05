@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { withSize } from 'react-sizeme'
 import styled from 'styled-components'
 
-import './style.css'
+import './style.scss'
 
 import jpg1 from "./img/jpg-slider-1.jpg"
 import jpg2 from "./img/jpg-slider-2.jpg"

@@ -1,15 +1,10 @@
 @import '../../App/сolors';
 
-$png1: url('img/png-slider-1.png');
-$png2: url('img/png-slider-2.png');
-$png3: url('img/png-slider-3.png');
-$png4: url('img/png-slider-4.png');
-
 @mixin button-hover($left, $right) {
     background: linear-gradient(to right, darken($left, 5%), darken($right, 5%));
 }
 @mixin button-active($left, $right) {
-    background: linear-gradient(to right, darken($left, 10%), darken($right, 10%));
+    background: linear-gradient(to right, darken($left, 10%), darken($right, 0%));
 }
 
 %arrow-props {

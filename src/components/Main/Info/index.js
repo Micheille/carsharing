@@ -1,7 +1,9 @@
 import React from 'react'
-import Header from '../../domain/Header'
-import Button from '../../domain/Button'
-import './style.css'
+
+import Header from '../../Domain/Header'
+import Button from '../../Domain/Button'
+
+import './style.scss'
 
 function MainInfo() {
     return (

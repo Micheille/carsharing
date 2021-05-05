@@ -1,8 +1,10 @@
 import React from 'react'
-import Sidebar from '../domain/Sidebar'
+
+import Sidebar from '../Domain/Sidebar'
 import Info from './Info'
 import Slider from './Slider'
-import './style.css'
+
+import './style.scss'
 
 export default function Main({menuActive, setMenuActive}) {
     return ( 

@@ -22,16 +22,17 @@
     .main-page__link {
         text-decoration: none;
         color: black;
+
+        .main-page__link_gray-light {
+            @include link($gray-light, $accent, $accent);
+        }
+        .main-page__link_black {
+            @include link($black, $accent, $accent);
+        }
+        .main-page__link_accent {
+            @include link($accent, $gray-light, white);
+        }
     }    
-    .main-page__link_gray-light {
-        @include link($gray-light, $accent, $accent);
-    }
-    .main-page__link_black {
-        @include link($black, $accent, $accent);
-    }
-    .main-page__link_accent {
-        @include link($accent, $gray-light, white);
-    }
 }
 
 @import './medias';
