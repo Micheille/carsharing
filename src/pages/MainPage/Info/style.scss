@@ -1,0 +1,55 @@
+@import "../../../components/App/сolors";
+
+
+.info {
+    box-sizing: border-box;
+    min-width: 550px;
+    margin-left: 64px;
+
+    .wrapper {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 32px 64px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    
+        .info__main-info {
+            .info__title {
+                margin: 0;
+                font: 700 70px "Roboto", "Arial", sans-serif;
+
+                &.info__title_black {
+                    color: $black;
+                }
+                &.info__title_accent {
+                    color: $accent;
+                }
+            }            
+            .info__text {
+                font: 300 26px "Roboto", "Arial", sans-serif;
+                color: $gray;
+                margin: 0;
+                margin-top: 16px;
+            }
+            .info__link-button {
+                margin-top: 60px;
+            }
+        }
+    
+        .info__footer {
+            box-sizing: border-box;
+            width: 100%;
+            font: 13px "Roboto", "Arial", sans-serif;
+    
+            .info__copyright {
+                color: $gray;
+            }
+            .info__phone {
+                float: right;
+            }
+        }
+    }
+}
+
+@import "./medias";

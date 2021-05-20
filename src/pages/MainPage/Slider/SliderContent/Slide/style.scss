@@ -1,0 +1,19 @@
+@import '../../../../../components/App/сolors';
+
+
+.slide {
+    .slide__title {
+        font: 500 40px "Roboto", "Arial", sans-serif;
+        color: white;
+        margin: 0;
+        margin-bottom: 8px;
+        margin-top: 30vh;
+    }
+    .slide__desc {
+        font: 300 24px "Roboto", "Arial", sans-serif;
+        color: $gray-light;
+        margin: 0;
+    }  
+}
+
+@import './medias';

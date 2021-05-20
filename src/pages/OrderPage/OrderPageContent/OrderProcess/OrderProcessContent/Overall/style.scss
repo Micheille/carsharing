@@ -1,0 +1,29 @@
+@import '../../../../../../components/App/сolors';
+
+
+.overall {
+    width: 288px;
+
+    .overall__title {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        font-weight: 500;
+        text-align: right;
+    }
+    .overall__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .overall__price {
+        font-size: 16px;
+        font-weight: normal;
+        
+        .overall__price-title {
+            font-weight: 500;
+        }
+    }
+}
+
+@import './medias';

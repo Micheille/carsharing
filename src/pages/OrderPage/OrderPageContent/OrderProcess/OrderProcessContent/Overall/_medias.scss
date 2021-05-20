@@ -1,0 +1,42 @@
+@media screen and (max-device-width: 1023px), screen and (max-width: 1023px) {
+    .overall {
+        width: 100%;
+        
+        .overall__title {
+            display: inline;
+            font-size: 16px;
+            text-align: left;
+        }
+        .overall__list {
+            display: inline;
+            
+            .overall__item {
+                display: inline;
+                
+                &::after {
+                    content: ", ";
+                }
+                .overall__lowercase {
+                    text-transform: lowercase;
+                }
+                .overall__hidden {
+                    display: none;
+                }
+
+                &:last-of-type {
+                    &::after {
+                        content: "";
+                    }
+                }
+            }
+        }
+        .overall__price {
+            font-weight: 500;
+            color: $accent;
+
+            .overall__price-title {
+                color: $black;
+            }
+        }
+    }
+}
