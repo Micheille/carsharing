@@ -11,6 +11,7 @@ function LocationStepContainer (props) {
                       setPoint={props.setPoint} 
                       city={props.city}
                       point={props.point}
+                      menuActive={props.menuActive}
         />
     )
 }

@@ -10,6 +10,6 @@ export default function OrderPage({ menuActive, setMenuActive }) {
     return ( 
     <div className="order-page">
         <Sidebar menuActive={menuActive} setMenuActive={setMenuActive} />
-        <OrderPageContent />
+        <OrderPageContent menuActive={menuActive} />
     </div>);
 }

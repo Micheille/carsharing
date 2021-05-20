@@ -24,7 +24,7 @@
     width: 32px;
     height: 32px;
 
-    &:before {
+    &::before {
         @extend %line;
         top: 20%;        
         transform: translateX(-50%) rotate(0);
@@ -35,7 +35,7 @@
         opacity: 1;
         transition: none;
     }
-    &:after {
+    &::after {
         @extend %line;      
         top: 70%;
         transform: translateX(-50%) rotate(0);

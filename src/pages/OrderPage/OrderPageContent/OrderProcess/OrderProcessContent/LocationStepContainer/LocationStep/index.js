@@ -4,6 +4,10 @@ import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import './style.scss'
 
 
+const placemarks = [
+    
+]
+
 export default function LocationStep (props) {
 
     const onCityChange = useCallback(
@@ -49,7 +53,7 @@ export default function LocationStep (props) {
 
                 <YMaps>
                     <Map defaultState={{ center: [54.31, 48.39], zoom: 13 }}
-                         className="location-step__map"
+                         className={ props.menuActive? "location-step__map location-step__map_disabled" : "location-step__map location-step__map_active"}
                     >
                         <Placemark geometry={[54.3335,48.384285]} 
                                     options={ {

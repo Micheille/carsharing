@@ -30,11 +30,16 @@
         margin-top: 44px;
 
         .location-step__map {
+            position: relative;
             height: 352px;
             width: 736px;
 
-            > ymaps {
-                z-index: -10;
+            &.location-step__map_active {
+                z-index: 0;
+                transition: all 1s;
+            }
+            &.location-step__map_disabled {
+                z-index: -1;
             }
         }
     }

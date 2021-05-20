@@ -10,8 +10,8 @@ import './style.scss'
 export default function MainPage({menuActive, setMenuActive}) {
     return ( 
     <div className="main-page">
-        <Sidebar menuActive={menuActive} setMenuActive={setMenuActive} />        
         <Info />
         <Slider />
+        <Sidebar menuActive={menuActive} setMenuActive={setMenuActive} />      
     </div>);
 }

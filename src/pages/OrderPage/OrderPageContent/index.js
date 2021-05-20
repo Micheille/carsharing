@@ -6,7 +6,7 @@ import OrderProcess from './OrderProcess'
 import './style.scss'
 
 
-export default function OrderPageContent () {
+export default function OrderPageContent ({menuActive}) {
     return (
         <div className="content">
 
@@ -15,7 +15,7 @@ export default function OrderPageContent () {
             </div>
 
             <div className="content__process-wrapper">
-                <OrderProcess />
+                <OrderProcess menuActive={menuActive} />
             </div>
 
         </div>
