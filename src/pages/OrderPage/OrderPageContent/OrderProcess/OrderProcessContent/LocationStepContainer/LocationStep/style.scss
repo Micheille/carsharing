@@ -32,6 +32,10 @@
         .location-step__map {
             height: 352px;
             width: 736px;
+
+            > ymaps {
+                z-index: -10;
+            }
         }
     }
 }

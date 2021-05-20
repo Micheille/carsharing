@@ -49,7 +49,7 @@ export default function LocationStep (props) {
 
                 <YMaps>
                     <Map defaultState={{ center: [54.31, 48.39], zoom: 13 }}
-                            className="location-step__map"
+                         className="location-step__map"
                     >
                         <Placemark geometry={[54.3335,48.384285]} 
                                     options={ {
