@@ -1,14 +1,37 @@
 import React, { useCallback } from 'react'
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
-import './style.scss'
+import './style.scss';
 
 
 const placemarks = [
     
-]
+];
 
 export default function LocationStep (props) {
+
+    const cities = [
+        { title: 'Ульяновск' },
+        { title: 'Саранск' },
+        { title: 'Казань' },
+        { title: 'Краснодар' },
+        { title: 'Самара' },
+        { title: "Санкт-Петербург" }
+    ];
+
+    const points = [];
+
+    const citiesProps = {
+        options: cities,
+        getOptionLabel: (option) => option.title,
+    };
+
+    const pointsProps = {
+        options: points,
+        getOptionLabel: (option) => option.title,
+    };
 
     const onCityChange = useCallback(
         (e) => {
@@ -30,21 +53,30 @@ export default function LocationStep (props) {
             <form className="location-step__forms">
                 <label>
                     <span className="location-step__label">Город</span>
-                    <input className="location-step__input location-step__input_city"
-                           placeholder="Начните вводить город..."
-                           onChange={onCityChange}
-                           value={props.city}
-                           type="search">
-                    </input>
+
+                    <Autocomplete
+                        {...citiesProps}
+                        forcePopupIcon={false}
+                        id="debug"
+                        renderInput={(params) => <TextField {...params} placeholder="Начните вводить город..." />}
+                    />
                 </label>
+
                 <label>
                     <span className="location-step__label">Пункт выдачи</span>
-                    <input className="location-step__input location-step__input_point"
+
+                    <Autocomplete
+                        {...pointsProps}
+                        forcePopupIcon={false}
+                        id="debug"
+                        renderInput={(params) => <TextField {...params} placeholder="Начните вводить пункт..." />}
+                    />
+                    {/* <input className="location-step__input location-step__input_point"
                            placeholder="Начните вводить пункт..."
                            onChange={onPointChange}
                            value={props.point}
                            type="text">
-                    </input>
+                    </input> */}
                 </label>                
             </form>
 

@@ -10,6 +10,45 @@
             display: block;
             margin-bottom: 12px;
 
+            .location-step__label {
+                margin-right: 8px;
+            }
+
+            // Styles for custom autocomplete field
+
+            .MuiAutocomplete-root {
+                display: inline-block;
+                position: relative;
+                width: 225px;
+    
+                div {
+                    font-size: 14px;
+                    font-weight: 300;
+    
+                    .MuiAutocomplete-inputRoot {
+                        &::before {
+                            border-bottom: 1px solid $gray;
+                        }
+                        &::after {
+                            border-bottom: 1px solid $black;
+                        }
+    
+                        .MuiAutocomplete-input {
+                            padding: 2px 0;
+                            padding-left: 4px;
+    
+                            &::placeholder {
+                                color: $gray;
+                                opacity: 1;
+                            }
+                        }
+                        .MuiSvgIcon-fontSizeSmall {
+                            font-size: 1rem;
+                        }
+                    }
+                }            
+            }
+
             .location-step__input {
                 margin-left: 8px;
                 border: none;
@@ -22,6 +61,11 @@
                 &:focus {
                     outline: none;
                     border-bottom: 1px solid $black;
+                }
+            }
+            .location-step__datalist {
+                option {
+                    font-family: 'Roboto', 'Arial', sans-serif;
                 }
             }
         }
@@ -41,6 +85,22 @@
             &.location-step__map_disabled {
                 z-index: -1;
             }
+        }
+    }
+}
+
+// Styles for custom dropdown options
+
+.MuiAutocomplete-listbox {
+    .MuiAutocomplete-option {
+        height: 30px;
+        background-color: white;
+        color: $gray;
+        font-weight: 300;
+
+        &:hover {
+            background-color: transparent;
+            color: $accent;
         }
     }
 }
