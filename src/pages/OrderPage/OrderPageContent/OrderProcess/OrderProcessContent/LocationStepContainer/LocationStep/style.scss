@@ -49,26 +49,6 @@
                     }
                 }            
             }
-
-            .location-step__input {
-                margin-left: 8px;
-                border: none;
-                border-bottom: 1px solid $gray;
-                border-radius: 0;
-                width: 224px;
-
-                font: 300 14px 'Roboto', 'Arial', sans-serif;
-
-                &:focus {
-                    outline: none;
-                    border-bottom: 1px solid $black;
-                }
-            }
-            .location-step__datalist {
-                option {
-                    font-family: 'Roboto', 'Arial', sans-serif;
-                }
-            }
         }
     }
     .location-step__select-point {
@@ -86,7 +66,6 @@
 
 .MuiAutocomplete-listbox {
     .MuiAutocomplete-option {
-        height: 30px;
         background-color: white;
         color: $gray;
         font-weight: 300;

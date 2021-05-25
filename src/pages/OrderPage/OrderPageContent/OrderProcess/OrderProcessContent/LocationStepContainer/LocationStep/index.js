@@ -1,110 +1,123 @@
-import React, { useCallback } from 'react'
-import { YMaps, Map, Placemark } from 'react-yandex-maps';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import React, { useCallback, useEffect, useState } from "react";
+import { YMaps, Map, Placemark } from "react-yandex-maps";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
-import './style.scss';
+import "./style.scss";
 
+export default function LocationStep(props) {
+	const [points, setPoints] = useState([]);
+	const [error, setError] = useState("");
 
-const placemarks = [
-    
-];
+	let cities = points.map((point) => point.cityId?.name);
+	cities = cities.filter(Boolean);
+	const citiesSet = new Set(cities);
+	let citiesSelectFrom = [...citiesSet];
 
-export default function LocationStep (props) {
+	//console.log(points);
+	const pointsFiltered = points.filter(point => point.cityId.name === props.city);
+	const addressesSelectFrom = pointsFiltered.map(point => point.address);
+	//console.log(addressesSelectFrom);
 
-    const cities = [
-        { title: 'Ульяновск' },
-        { title: 'Саранск' },
-        { title: 'Казань' },
-        { title: 'Краснодар' },
-        { title: 'Самара' },
-        { title: "Санкт-Петербург" }
-    ];
+	// const pointsProps = {
+	// 	options: addressesSelectFrom,
+	// 	getOptionLabel: (option) => option.title,
+	// };
 
-    const points = [];
+	const onCityChange = useCallback((e) => {
+		props.setCity(e.target.textContent);
+	}, []);
 
-    const citiesProps = {
-        options: cities,
-        getOptionLabel: (option) => option.title,
-    };
+	const onPointChange = useCallback((e) => {
+		props.setPoint(e.target.textContent);
+	}, []);
 
-    const pointsProps = {
-        options: points,
-        getOptionLabel: (option) => option.title,
-    };
+	useEffect(() => {
+		const getPoints = async () => {
+			const url = new URL(`https://api-factory.simbirsoft1.com/api/db/point`);
+			const headers = {
+				"X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
+			};
+			const response = await fetch(url, { headers });
+			const data = await response.json();
 
-    const onCityChange = useCallback(
-        (e) => {
-            props.setCity(e.target.value);
-        },
-        [],
-    );
+			if (!response.ok) {
+				setError(data.message);
+				console.log(error);
+			} else {
+				const points = data.data.filter(point => point.cityId);
+				setPoints(points);
+			}
+		};
 
-    const onPointChange = useCallback(
-        (e) => {
-            props.setPoint(e.target.value);
-        },
-        [],
-    );
+		getPoints();
+	}, []);
 
-    return (
-        <div className="order-process-content__step location-step">
+	return (
+		<div className="order-process-content__step location-step">
+			<form className="location-step__forms">
+				<label>
+					<span className="location-step__label">Город</span>
 
-            <form className="location-step__forms">
-                <label>
-                    <span className="location-step__label">Город</span>
+					<Autocomplete
+						options={citiesSelectFrom}
+						forcePopupIcon={false}
+						id="debug"
+						onChange={onCityChange}
+						renderInput={(params) => (
+							<TextField {...params} placeholder="Начните вводить город..." />
+						)}
+					/>
+				</label>
 
-                    <Autocomplete
-                        {...citiesProps}
-                        forcePopupIcon={false}
-                        id="debug"
-                        renderInput={(params) => <TextField {...params} placeholder="Начните вводить город..." />}
-                    />
-                </label>
+				<label>
+					<span className="location-step__label">Пункт выдачи</span>
 
-                <label>
-                    <span className="location-step__label">Пункт выдачи</span>
+					<Autocomplete
+						options={addressesSelectFrom}
+						forcePopupIcon={false}
+						id="debug"
+						onChange={onPointChange}
+						renderInput={(params) => (
+							<TextField {...params} placeholder="Начните вводить пункт..." />
+						)}
+					/>
+				</label>
+			</form>
 
-                    <Autocomplete
-                        {...pointsProps}
-                        forcePopupIcon={false}
-                        id="debug"
-                        renderInput={(params) => <TextField {...params} placeholder="Начните вводить пункт..." />}
-                    />
-                    {/* <input className="location-step__input location-step__input_point"
-                           placeholder="Начните вводить пункт..."
-                           onChange={onPointChange}
-                           value={props.point}
-                           type="text">
-                    </input> */}
-                </label>                
-            </form>
+			<div className="location-step__select-point">
+				<p>Выбрать на карте:</p>
 
-            <div className="location-step__select-point">
-                <p>Выбрать на карте:</p>
-
-                <YMaps>
-                    <Map defaultState={{ center: [54.31, 48.39], zoom: 13 }}
-                         className={ props.menuActive? "location-step__map location-step__map_disabled" : "location-step__map location-step__map_active"}
-                    >
-                        <Placemark geometry={[54.3335,48.384285]} 
-                                    options={ {
-                                        preset: 'islands#darkGreenCircleDotIcon'}
-                                    }
-                        />
-                        <Placemark geometry={[54.300985,48.288264]} 
-                                    options={ {
-                                        preset: 'islands#darkGreenCircleDotIcon'}
-                                    }
-                        />
-                        <Placemark geometry={[54.320883,48.399934]} 
-                                    options={ {
-                                        preset: 'islands#darkGreenCircleDotIcon'}
-                                    }
-                        />
-                    </Map>                    
-                </YMaps>
-            </div>
-        </div>
-    )
+				<YMaps>
+					<Map
+						defaultState={{ center: [54.31, 48.39], zoom: 13 }}
+						className={
+							props.menuActive
+								? "location-step__map location-step__map_disabled"
+								: "location-step__map location-step__map_active"
+						}
+					>
+						<Placemark
+							geometry={[54.3335, 48.384285]}
+							options={{
+								preset: "islands#darkGreenCircleDotIcon",
+							}}
+						/>
+						<Placemark
+							geometry={[54.300985, 48.288264]}
+							options={{
+								preset: "islands#darkGreenCircleDotIcon",
+							}}
+						/>
+						<Placemark
+							geometry={[54.320883, 48.399934]}
+							options={{
+								preset: "islands#darkGreenCircleDotIcon",
+							}}
+						/>
+					</Map>
+				</YMaps>
+			</div>
+		</div>
+	);
 }
