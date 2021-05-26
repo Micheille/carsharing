@@ -14,8 +14,11 @@ export default function Info() {
             <Header />
 
             <div className="info__main-info">
-                <h1 className="info__title info__title_black">Каршеринг</h1>
-                <h1 className="info__title info__title_accent">Need for drive</h1>
+                <h1>
+                    <span className="info__title info__title_black">Каршеринг</span>
+                    <span className="info__title info__title_accent">Need for drive</span>
+                </h1>
+                
                 <p className="info__text">Поминутная аренда авто твоего города</p>
 
                 <div className="info__link-button">

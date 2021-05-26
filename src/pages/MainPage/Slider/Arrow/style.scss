@@ -61,6 +61,8 @@
         }
     }
     &.slider__arrow_disabled {
+        cursor: auto;
+        
         &:hover {
             background-color: transparent;
         }

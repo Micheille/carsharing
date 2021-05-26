@@ -12,6 +12,6 @@ export default function BurgerMenu({menuActive, setMenuActive}) {
     <div className={menuActive ? "sidebar__burger sidebar__burger_active" : "sidebar__burger"} 
          onClick={onClickHandler}
     >
-        <span></span>
+        <button></button>
     </div>)
 }

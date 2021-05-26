@@ -29,8 +29,9 @@
         top: 20%;        
         transform: translateX(-50%) rotate(0);
     }
-    span {
+    button {
         @extend %line;
+        border: none;
         top: 45%;
         opacity: 1;
         transition: none;
@@ -45,7 +46,7 @@
         &:before {
             transform: translateX(-50%) rotate(45deg);
         }
-        span {
+        button {
             opacity: 0;
         }
         &:after {

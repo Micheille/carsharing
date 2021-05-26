@@ -2,35 +2,72 @@ import React, { useCallback } from "react";
 
 import "./style.scss";
 
-
 export default function ExtrasStep(props) {
-	const onColorChange = useCallback((e) => {
-		props.setColor(e.currentTarget.value);
-	}, [props]);
+	const {
+		setColor,
+		setDateFrom,
+		setDateTo,
+		setTariff,
+		setFullTank,
+		setBabySeat,
+		setRightHand,
+		color,
+		dateFrom,
+		dateTo,
+		tariff,
+		fullTank,
+		babySeat,
+		rightHand,
+	} = props;
 
-	const onDateFromChange = useCallback((e) => {
-		props.setDateFrom(e.target.value);
-	}, [props]);
+	const onColorChange = useCallback(
+		(e) => {
+			setColor(e.currentTarget.value);
+		},
+		[props]
+	);
 
-	const onDateToChange = useCallback((e) => {
-		props.setDateTo(e.target.value);
-	}, [props]);
+	const onDateFromChange = useCallback(
+		(e) => {
+			setDateFrom(e.target.value);
+		},
+		[props]
+	);
 
-	const onTariffChange = useCallback((e) => {
-		props.setTariff(e.currentTarget.value);
-	}, [props]);
+	const onDateToChange = useCallback(
+		(e) => {
+			setDateTo(e.target.value);
+		},
+		[props]
+	);
 
-	const onFullTankChange = useCallback((e) => {
-		props.setFullTank(e.target.checked);
-	}, [props]);
+	const onTariffChange = useCallback(
+		(e) => {
+			setTariff(e.currentTarget.value);
+		},
+		[props]
+	);
 
-	const onBabySeatChange = useCallback((e) => {
-		props.setBabySeat(e.target.checked);
-	}, [props]);
+	const onFullTankChange = useCallback(
+		(e) => {
+			setFullTank(e.target.checked);
+		},
+		[props]
+	);
 
-	const onRightHandChange = useCallback((e) => {
-		props.setRightHand(e.target.checked);
-	}, [props]);
+	const onBabySeatChange = useCallback(
+		(e) => {
+			setBabySeat(e.target.checked);
+		},
+		[props]
+	);
+
+	const onRightHandChange = useCallback(
+		(e) => {
+			setRightHand(e.target.checked);
+		},
+		[props]
+	);
 
 	return (
 		<div className="order-process-content__step extras-step">
@@ -40,7 +77,7 @@ export default function ExtrasStep(props) {
 				type="radio"
 				name="color"
 				value="any"
-				checked={props.color === "any"}
+				checked={color === "any"}
 				onChange={onColorChange}
 			/>
 			<span>Любой</span>
@@ -49,7 +86,7 @@ export default function ExtrasStep(props) {
 				type="radio"
 				name="color"
 				value="red"
-				checked={props.color === "red"}
+				checked={color === "red"}
 				onChange={onColorChange}
 			/>
 			<span>Красный</span>
@@ -58,7 +95,7 @@ export default function ExtrasStep(props) {
 				type="radio"
 				name="color"
 				value="blue"
-				checked={props.color === "blue"}
+				checked={color === "blue"}
 				onChange={onColorChange}
 			/>
 			<span>Голубой</span>
@@ -69,7 +106,7 @@ export default function ExtrasStep(props) {
 			<input
 				type="datetime-local"
 				name="datetime-from"
-				value={props.dateFrom}
+				value={dateFrom}
 				onChange={onDateFromChange}
 			/>
 
@@ -77,7 +114,7 @@ export default function ExtrasStep(props) {
 			<input
 				type="datetime-local"
 				name="datetime-to"
-				value={props.dateTo}
+				value={dateTo}
 				onChange={onDateToChange}
 			/>
 
@@ -87,7 +124,7 @@ export default function ExtrasStep(props) {
 				type="radio"
 				name="tariff"
 				value="per-minute"
-				checked={props.tariff === "per-minute"}
+				checked={tariff === "per-minute"}
 				onChange={onTariffChange}
 			/>
 			<span>Поминутно</span>
@@ -96,7 +133,7 @@ export default function ExtrasStep(props) {
 				type="radio"
 				name="tariff"
 				value="for-day"
-				checked={props.tariff === "for-day"}
+				checked={tariff === "for-day"}
 				onChange={onTariffChange}
 			/>
 			<span>На сутки</span>
@@ -106,7 +143,7 @@ export default function ExtrasStep(props) {
 			<input
 				type="checkbox"
 				name="full-tank"
-				checked={props.fullTank}
+				checked={fullTank}
 				onClick={onFullTankChange}
 			/>
 			<span>Полный бак</span>
@@ -114,7 +151,7 @@ export default function ExtrasStep(props) {
 			<input
 				type="checkbox"
 				name="baby-seat"
-				checked={props.babySeat}
+				checked={babySeat}
 				onClick={onBabySeatChange}
 			/>
 			<span>Детское кресло</span>
@@ -122,7 +159,7 @@ export default function ExtrasStep(props) {
 			<input
 				type="checkbox"
 				name="right-hand"
-				checked={props.rightHand}
+				checked={rightHand}
 				onClick={onRightHandChange}
 			/>
 			<span>Правый руль</span>

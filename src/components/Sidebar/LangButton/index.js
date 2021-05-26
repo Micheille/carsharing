@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState } from "react";
 
-import "./style.scss"
+import "./style.scss";
 
 
-export default function LangButton () {
-    return <button className="lang-button">Eng</button>
+export default function LangButton() {
+	const [langEng, setLangEng] = useState(false);
+
+	const onHandleClick = (e) => {
+		setLangEng(!langEng);
+	};
+
+	return (
+		<button className="lang-button" onClick={onHandleClick}>
+			{langEng ? "Рус" : "Eng"}
+		</button>
+	);
 }

@@ -6,9 +6,11 @@ import { setModelType } from '../../../../../../store/model/actions'
 
 
 function ModelStepContainer (props) {
+    const {modelType, setModelType} = props;
+
     return (
-        <ModelStep setModelType={props.setModelType} 
-                   modelType={props.modelType}
+        <ModelStep setModelType={setModelType} 
+                   modelType={modelType}
         />
     )
 }

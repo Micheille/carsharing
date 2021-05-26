@@ -17,6 +17,7 @@
     color: $color;
     border: transparent;
     border-radius: $border-radius;
+    cursor: pointer;
     background: linear-gradient(to right, 
                                 $button-color-from, 
                                 $button-color-to);

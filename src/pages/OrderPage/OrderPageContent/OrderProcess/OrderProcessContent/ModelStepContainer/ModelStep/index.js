@@ -4,10 +4,11 @@ import './style.scss'
 
 
 export default function ModelStep (props) {
+    const {modelType, setModelType} = props;
 
     const onModelTypeChange = useCallback(
         (e) => {
-            props.setModelType(e.currentTarget.value);
+            setModelType(e.currentTarget.value);
         },
         [props],
     );
@@ -17,21 +18,21 @@ export default function ModelStep (props) {
             <input type="radio" 
                    name="modelType" 
                    value="all"
-                   checked={props.modelType === 'all'}
+                   checked={modelType === 'all'}
                    onChange={onModelTypeChange} /> 
             <span>Все модели</span>
 
             <input type="radio" 
                    name="modelType" 
                    value="economy"
-                   checked={props.modelType === 'economy'}
+                   checked={modelType === 'economy'}
                    onChange={onModelTypeChange} />
             <span>Эконом</span>
 
             <input type="radio" 
                    name="modelType" 
                    value="premium"
-                   checked={props.modelType === 'premium'}
+                   checked={modelType === 'premium'}
                    onChange={onModelTypeChange} />
             <span>Премиум</span>
         </div>

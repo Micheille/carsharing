@@ -7,6 +7,8 @@ import "./style.scss";
 
 
 export default function LocationStep(props) {
+	const { city, point, setCity, setPoint, menuActive } = props;
+
 	const [points, setPoints] = useState([]);
 	const [error, setError] = useState("");
 
@@ -40,19 +42,18 @@ export default function LocationStep(props) {
 	let citiesSelectFrom = [...citiesSet];
 
 	const pointsFiltered = points.filter(
-		(point) => point.cityId.name === props.city
+		(point) => (point.cityId.name === city)
 	);
 	const addressesSelectFrom = pointsFiltered.map((point) => point.address);
 
 	const onCityChange = useCallback((e) => {
-		props.setCity(e.target.textContent);
+		setCity(e.target.textContent);
 	}, [props]);
 
 	const onPointChange = useCallback((e) => {
 		const address = e.target.textContent;
-		props.setPoint(address);
+		setPoint(address);
 		const mark = placemarks.find((mark) => mark.address === address);
-		console.log("on point change");
 
 		if (mark && map.current) {
 			map.current.setCenter(mark.geometry, map.current.zoom, { duration: 300 });
@@ -89,7 +90,7 @@ export default function LocationStep(props) {
 					<Autocomplete
 						options={citiesSelectFrom}
 						forcePopupIcon={false}
-						value={props.city}
+						value={city}
 						onChange={onCityChange}
 						renderInput={(params) => (
 							<TextField {...params} placeholder="Начните вводить город..." />
@@ -103,7 +104,7 @@ export default function LocationStep(props) {
 					<Autocomplete
 						options={addressesSelectFrom}
 						forcePopupIcon={false}
-						value={props.point}
+						value={point}
 						onChange={onPointChange}
 						renderInput={(params) => (
 							<TextField {...params} placeholder="Начните вводить пункт..." />
@@ -129,8 +130,8 @@ export default function LocationStep(props) {
 								hintContent: mark.address,
 							}}
 							onClick={(e) => {
-								props.setCity(mark.city);
-								props.setPoint(mark.address);
+								setCity(mark.city);
+								setPoint(mark.address);
 
 								const placemarkCoords = e.get("coords");
 								if (map.current) {
