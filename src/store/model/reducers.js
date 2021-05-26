@@ -11,6 +11,7 @@ export const modelReducer = (state = defaultState, action) => {
             ...state,
             modelType: action.payload
         };
+        default:
     }
     return state;
 };

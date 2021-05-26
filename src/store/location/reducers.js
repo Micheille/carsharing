@@ -18,6 +18,7 @@ export const locationReducer = (state = defaultState, action) => {
             ...state,
             point: action.payload
         };
+        default:
     }
     return state;
 };

@@ -46,6 +46,7 @@ function Overall (props) {
             nextLocationLink = "/order/total";
             orderButtonText = 'Заказать';             //!!!!
             break;
+        default:
     }
 
     return (

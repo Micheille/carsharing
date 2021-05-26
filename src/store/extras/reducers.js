@@ -53,6 +53,7 @@ export const extrasReducer = (state = defaultState, action) => {
             ...state,
             rightHand: action.payload
         };
+        default:
     }
     return state;
 };

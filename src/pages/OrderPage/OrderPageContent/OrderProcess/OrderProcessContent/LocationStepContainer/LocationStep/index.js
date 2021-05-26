@@ -46,17 +46,18 @@ export default function LocationStep(props) {
 
 	const onCityChange = useCallback((e) => {
 		props.setCity(e.target.textContent);
-	}, []);
+	}, [props]);
 
 	const onPointChange = useCallback((e) => {
 		const address = e.target.textContent;
 		props.setPoint(address);
 		const mark = placemarks.find((mark) => mark.address === address);
+		console.log("on point change");
 
 		if (mark && map.current) {
 			map.current.setCenter(mark.geometry, map.current.zoom, { duration: 300 });
 		}
-	}, []);
+	}, [props]);
 
 	useEffect(() => {
 		const getPoints = async () => {

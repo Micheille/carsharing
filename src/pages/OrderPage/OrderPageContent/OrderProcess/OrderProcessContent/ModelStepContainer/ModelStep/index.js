@@ -9,7 +9,7 @@ export default function ModelStep (props) {
         (e) => {
             props.setModelType(e.currentTarget.value);
         },
-        [],
+        [props],
     );
 
     return (
