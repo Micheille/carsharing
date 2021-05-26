@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Map, Placemark } from "react-yandex-maps";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -7,7 +7,7 @@ import "./style.scss";
 
 
 export default function LocationStep(props) {
-	const { city, point, setCity, setPoint, menuActive } = props;
+	const { city, point, setCity, setPoint } = props;
 
 	const [points, setPoints] = useState([]);
 	const [error, setError] = useState("");
@@ -47,11 +47,11 @@ export default function LocationStep(props) {
 	const addressesSelectFrom = pointsFiltered.map((point) => point.address);
 
 
-	const onCityChange = useCallback((e) => {
+	const onCityChange = (e) => {
 		setCity(e.target.textContent);
-	}, [props]);
+	};
 
-	const onPointChange = useCallback((e) => {
+	const onPointChange = (e) => {
 		const address = e.target.textContent;
 		setPoint(address);
 		const mark = placemarks.find((mark) => mark.address === address);
@@ -59,7 +59,7 @@ export default function LocationStep(props) {
 		if (mark && map.current) {
 			map.current.setCenter(mark.geometry, map.current.zoom, { duration: 300 });
 		}
-	}, [props]);
+	};
 	
 
 	useEffect(() => {
@@ -81,7 +81,7 @@ export default function LocationStep(props) {
 		};
 
 		getPoints();
-	}, []);
+	}, [error]);
 
 	return (
 		<div className="order-process-content__step location-step">
@@ -106,6 +106,7 @@ export default function LocationStep(props) {
 					<Autocomplete
 						options={addressesSelectFrom}
 						forcePopupIcon={false}
+						defaultValue=""
 						value={point}
 						onChange={onPointChange}
 						renderInput={(params) => (

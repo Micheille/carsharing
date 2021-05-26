@@ -9,7 +9,7 @@ import './style.scss';
 export default function OrderPage({ menuActive, setMenuActive }) {
     return ( 
     <div className="order-page">        
-        <OrderPageContent menuActive={menuActive} />
+        <OrderPageContent />
         <Sidebar menuActive={menuActive} setMenuActive={setMenuActive} />
     </div>);
 }

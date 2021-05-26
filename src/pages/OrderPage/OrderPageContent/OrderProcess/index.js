@@ -6,7 +6,7 @@ import OrderProcessContent from './OrderProcessContent'
 import './style.scss'
 
 
-export default function OrderProcess({menuActive}) {
+export default function OrderProcess() {
     const [activeStep, setActiveStep] = useState(0);
 
     return (
@@ -15,7 +15,7 @@ export default function OrderProcess({menuActive}) {
             <Navigation activeStep={activeStep} setActiveStep={setActiveStep} />
 
             <div className="order-process__content">
-                <OrderProcessContent activeStep={activeStep} setActiveStep={setActiveStep} menuActive={menuActive} />
+                <OrderProcessContent activeStep={activeStep} setActiveStep={setActiveStep} />
             </div>
 
         </div>

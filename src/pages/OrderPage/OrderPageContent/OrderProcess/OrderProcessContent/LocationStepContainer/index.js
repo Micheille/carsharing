@@ -6,13 +6,12 @@ import { setCity, setPoint } from '../../../../../../store/location/actions'
 
 
 function LocationStepContainer (props) {
-    const { city, point, setCity, setPoint, menuActive } = props;
+    const { city, point, setCity, setPoint} = props;
     return (
         <LocationStep setCity={setCity} 
                       setPoint={setPoint} 
                       city={city}
                       point={point}
-                      menuActive={menuActive}
         />
     )
 }
