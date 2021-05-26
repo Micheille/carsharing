@@ -46,6 +46,7 @@ export default function LocationStep(props) {
 	);
 	const addressesSelectFrom = pointsFiltered.map((point) => point.address);
 
+
 	const onCityChange = useCallback((e) => {
 		setCity(e.target.textContent);
 	}, [props]);
@@ -59,6 +60,7 @@ export default function LocationStep(props) {
 			map.current.setCenter(mark.geometry, map.current.zoom, { duration: 300 });
 		}
 	}, [props]);
+	
 
 	useEffect(() => {
 		const getPoints = async () => {
