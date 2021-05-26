@@ -1,7 +1,6 @@
 import React from "react";
 import { Route } from "react-router";
 
-import Navigation from "../Navigation";
 import LocationStepContainer from "./LocationStepContainer";
 import ModelStepContainer from "./ModelStepContainer";
 import ExtrasStepContainer from "./ExtrasStepContainer";

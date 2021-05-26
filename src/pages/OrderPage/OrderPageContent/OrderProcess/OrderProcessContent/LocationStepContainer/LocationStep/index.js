@@ -1,35 +1,61 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { YMaps, Map, Placemark } from "react-yandex-maps";
+import React, { useCallback, useEffect, useState, useRef } from "react";
+import { Map, Placemark } from "react-yandex-maps";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
 import "./style.scss";
 
+
 export default function LocationStep(props) {
 	const [points, setPoints] = useState([]);
 	const [error, setError] = useState("");
+
+	const placemarks = [
+		{
+			city: "Ульяновск",
+			address: "Гончарова 27",
+			geometry: [54.320883, 48.399934],
+		},
+		{
+			city: "Ульяновск",
+			address: "Нариманова 1, корп.2",
+			geometry: [54.3335, 48.384285],
+		},
+		{
+			city: "Ульяновск",
+			address: "Московское шоссе 34",
+			geometry: [54.300985, 48.288264],
+		},
+	];
+
+	const map = useRef(null);
+	const mapState = {
+		center: [54.31, 48.39],
+		zoom: 13,
+	};
 
 	let cities = points.map((point) => point.cityId?.name);
 	cities = cities.filter(Boolean);
 	const citiesSet = new Set(cities);
 	let citiesSelectFrom = [...citiesSet];
 
-	//console.log(points);
-	const pointsFiltered = points.filter(point => point.cityId.name === props.city);
-	const addressesSelectFrom = pointsFiltered.map(point => point.address);
-	//console.log(addressesSelectFrom);
-
-	// const pointsProps = {
-	// 	options: addressesSelectFrom,
-	// 	getOptionLabel: (option) => option.title,
-	// };
+	const pointsFiltered = points.filter(
+		(point) => point.cityId.name === props.city
+	);
+	const addressesSelectFrom = pointsFiltered.map((point) => point.address);
 
 	const onCityChange = useCallback((e) => {
 		props.setCity(e.target.textContent);
 	}, []);
 
 	const onPointChange = useCallback((e) => {
-		props.setPoint(e.target.textContent);
+		const address = e.target.textContent;
+		props.setPoint(address);
+		const mark = placemarks.find((mark) => mark.address === address);
+
+		if (mark && map.current) {
+			map.current.setCenter(mark.geometry, map.current.zoom, { duration: 300 });
+		}
 	}, []);
 
 	useEffect(() => {
@@ -45,7 +71,7 @@ export default function LocationStep(props) {
 				setError(data.message);
 				console.log(error);
 			} else {
-				const points = data.data.filter(point => point.cityId);
+				const points = data.data.filter((point) => point.cityId);
 				setPoints(points);
 			}
 		};
@@ -62,7 +88,7 @@ export default function LocationStep(props) {
 					<Autocomplete
 						options={citiesSelectFrom}
 						forcePopupIcon={false}
-						id="debug"
+						value={props.city}
 						onChange={onCityChange}
 						renderInput={(params) => (
 							<TextField {...params} placeholder="Начните вводить город..." />
@@ -76,7 +102,7 @@ export default function LocationStep(props) {
 					<Autocomplete
 						options={addressesSelectFrom}
 						forcePopupIcon={false}
-						id="debug"
+						value={props.point}
 						onChange={onPointChange}
 						renderInput={(params) => (
 							<TextField {...params} placeholder="Начните вводить пункт..." />
@@ -88,35 +114,36 @@ export default function LocationStep(props) {
 			<div className="location-step__select-point">
 				<p>Выбрать на карте:</p>
 
-				<YMaps>
-					<Map
-						defaultState={{ center: [54.31, 48.39], zoom: 13 }}
-						className={
-							props.menuActive
-								? "location-step__map location-step__map_disabled"
-								: "location-step__map location-step__map_active"
-						}
-					>
+				<Map
+					defaultState={mapState}
+					instanceRef={map}
+					className={"location-step__map"}
+				>
+					{placemarks.map((mark, index) => (
 						<Placemark
-							geometry={[54.3335, 48.384285]}
+							key={index}
+							geometry={mark.geometry}
+							modules={["geoObject.addon.hint"]}
+							properties={{
+								hintContent: mark.address,
+							}}
+							onClick={(e) => {
+								props.setCity(mark.city);
+								props.setPoint(mark.address);
+
+								const placemarkCoords = e.get("coords");
+								if (map.current) {
+									map.current.setCenter(placemarkCoords, map.current.zoom, {
+										duration: 300,
+									});
+								}
+							}}
 							options={{
 								preset: "islands#darkGreenCircleDotIcon",
 							}}
 						/>
-						<Placemark
-							geometry={[54.300985, 48.288264]}
-							options={{
-								preset: "islands#darkGreenCircleDotIcon",
-							}}
-						/>
-						<Placemark
-							geometry={[54.320883, 48.399934]}
-							options={{
-								preset: "islands#darkGreenCircleDotIcon",
-							}}
-						/>
-					</Map>
-				</YMaps>
+					))}
+				</Map>
 			</div>
 		</div>
 	);
