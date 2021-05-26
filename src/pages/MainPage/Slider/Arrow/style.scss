@@ -32,7 +32,7 @@
         background-color: rgba(14, 194, 97, 0.2);
     }
 
-    &.slider__arrow_left {
+    &_left {
         left: 0;
     
         &:before {
@@ -46,7 +46,7 @@
             transform: translateY(-1px) rotate(45deg);
         }
     }
-    &.slider__arrow_right {
+    &_right {
         right: 0;
     
         &:before {            
@@ -60,7 +60,7 @@
             transform: translateY(-1px) rotate(-45deg);
         }
     }
-    &.slider__arrow_disabled {
+    &_disabled {
         cursor: auto;
         
         &:hover {

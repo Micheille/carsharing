@@ -17,10 +17,13 @@
 }
 
 .sidebar__burger {
+    background: transparent;
     display: block;
     z-index: 5;
     position: relative;
     cursor: pointer;
+    padding: 0;
+    border: 0;
     width: 32px;
     height: 32px;
 
@@ -29,9 +32,8 @@
         top: 20%;        
         transform: translateX(-50%) rotate(0);
     }
-    button {
+    span {
         @extend %line;
-        border: none;
         top: 45%;
         opacity: 1;
         transition: none;
@@ -42,11 +44,11 @@
         transform: translateX(-50%) rotate(0);
     }
 
-    &.sidebar__burger_active {
+    &_active {
         &:before {
             transform: translateX(-50%) rotate(45deg);
         }
-        button {
+        span {
             opacity: 0;
         }
         &:after {

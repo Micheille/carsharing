@@ -7,7 +7,7 @@
     border-radius: 50%;
     background: $gray-light;
 
-    &.slider__dot_active {
+    &_active {
         background: $accent;
     }
 }

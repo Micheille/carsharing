@@ -24,13 +24,13 @@
         text-decoration: none;
         color: black;
 
-        &.main-page__link_gray-light {
+        &_gray-light {
             @include link($gray-light, $accent, $accent);
         }
-        &.main-page__link_black {
+        &_black {
             @include link($black, $accent, $accent);
         }
-        &.main-page__link_accent {
+        &_accent {
             @include link($accent, $gray-light, white);
         }
     }

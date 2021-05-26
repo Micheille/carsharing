@@ -14,7 +14,7 @@
     padding: 0 36px;
     margin-top: 32px;
 
-    &.slider__button_1 {
+    &_1 {
         background: linear-gradient(to right, $slider-1-left, $slider-1-right);
         &:hover {
             @include button-hover($slider-1-left, $slider-1-right);
@@ -23,7 +23,7 @@
             @include button-active($slider-1-left, $slider-1-right);
         }
     }
-    &.slider__button_2 {
+    &_2 {
         background: linear-gradient(to right, $slider-2-left, $slider-2-right);
         &:hover {
             @include button-hover($slider-2-left, $slider-2-right);
@@ -32,7 +32,7 @@
             @include button-active($slider-2-left, $slider-2-right);
         }
     }
-    &.slider__button_3 {
+    &_3 {
         background: linear-gradient(to right, $slider-3-left, $slider-3-right);
         &:hover {
             @include button-hover($slider-3-left, $slider-3-right);
@@ -41,7 +41,7 @@
             @include button-active($slider-3-left, $slider-3-right);
         }
     }
-    &.slider__button_4 {
+    &_4 {
         background: linear-gradient(to right, $slider-4-left, $slider-4-right);
         &:hover {
             @include button-hover($slider-4-left, $slider-4-right);

@@ -3,17 +3,19 @@
         width: 32px;
         transition: all ease-out 0.3s;
     }
-    .sidebar__burger_active {
-        &::before {
-            width: 24px;
+    .sidebar__burger {
+        &_active {
+            &::before {
+                width: 24px;
+            }
+            span {
+                width: 0;
+            }
+            &::after {
+                width: 24px;
+            }
         }
-        button {
-            width: 0;
-        }
-        &::after {
-            width: 24px;
-        }
-    }
+    }    
 }
 
 @media screen and (max-device-width: 767px), screen and (max-width: 767px) {
@@ -21,14 +23,16 @@
         width: 20px;
         background-color: $black;
     }
-    .sidebar__burger_active {
-        &::before {
-            background-color: white;
-            width: 24px;
-        }
-        &::after {
-            background-color: white;
-            width: 24px;
-        }
+    .sidebar__burger {
+        &_active {
+            &::before {
+                background-color: white;
+                width: 24px;
+            }
+            &::after {
+                background-color: white;
+                width: 24px;
+            }
+        }        
     }
 }

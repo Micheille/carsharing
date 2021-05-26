@@ -20,10 +20,10 @@
                 margin: 0;
                 font: 700 70px "Roboto", "Arial", sans-serif;
 
-                &.info__title_black {
+                &_black {
                     color: $black;
                 }
-                &.info__title_accent {
+                &_accent {
                     color: $accent;
                 }
             }            
