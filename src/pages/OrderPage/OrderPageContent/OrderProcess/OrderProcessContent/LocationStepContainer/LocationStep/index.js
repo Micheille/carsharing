@@ -106,7 +106,7 @@ export default function LocationStep(props) {
 					<Autocomplete
 						options={addressesSelectFrom}
 						forcePopupIcon={false}
-						defaultValue=""
+						defaultValue=''
 						value={point}
 						onChange={onPointChange}
 						renderInput={(params) => (

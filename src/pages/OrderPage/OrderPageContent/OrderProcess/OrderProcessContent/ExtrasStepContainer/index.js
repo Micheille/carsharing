@@ -1,75 +1,78 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import ExtrasStep from "./ExtrasStep";
+import ExtrasStep from './ExtrasStep';
 import {
 	setColor,
-	setDateFrom,
-	setDateTo,
+	setDateTimeFrom,
+	setDateTimeTo,
 	setTariff,
-	setFullTank,
-	setBabySeat,
-	setRightHand,
-} from "../../../../../../store/extras/actions";
+	setIsFullTank,
+	setIsBabySeat,
+	setIsRightHand,
+} from '../../../../../../store/static/actions';
+
 
 function ExtrasStepContainer(props) {
 	const {
 		color,
-		dateFrom,
-		dateTo,
+		dateTimeFrom,
+		dateTimeTo,
 		tariff,
-		fullTank,
-		babySeat,
-		rightHand,
+		isFullTank,
+		isBabySeat,
+		isRightHand,
+
 		setColor,
-		setDateFrom,
-		setDateTo,
+		setDateTimeFrom,
+		setDateTimeTo,
 		setTariff,
-		setFullTank,
-		setBabySeat,
-		setRightHand,
+		setIsFullTank,
+		setIsBabySeat,
+		setIsRightHand,
 	} = props;
 
 	return (
 		<ExtrasStep
 			setColor={setColor}
-			setDateFrom={setDateFrom}
-			setDateTo={setDateTo}
+			setDateTimeFrom={setDateTimeFrom}
+			setDateTimeTo={setDateTimeTo}
 			setTariff={setTariff}
-			setFullTank={setFullTank}
-			setBabySeat={setBabySeat}
-			setRightHand={setRightHand}
+			setIsFullTank={setIsFullTank}
+			setIsBabySeat={setIsBabySeat}
+			setIsRightHand={setIsRightHand}
+
 			color={color}
-			dateFrom={dateFrom}
-			dateTo={dateTo}
+			dateTimeFrom={dateTimeFrom}
+			dateTimeTo={dateTimeTo}
 			tariff={tariff}
-			fullTank={fullTank}
-			babySeat={babySeat}
-			rightHand={rightHand}
+			isFullTank={isFullTank}
+			isBabySeat={isBabySeat}
+			isRightHand={isRightHand}
 		/>
 	);
 }
 
 const mapStateToProps = (state) => {
 	return {
-		color: state.extras.color,
-		dateFrom: state.extras.dateFrom,
-		dateTo: state.extras.dateTo,
-		tariff: state.extras.tariff,
-		fullTank: state.extras.fullTank,
-		babySeat: state.extras.babySeat,
-		rightHand: state.extras.rightHand,
+		color: state.order.color,
+		dateFrom: state.order.dateFrom,
+		dateTo: state.order.dateTo,
+		tariff: state.order.tariff,
+		fullTank: state.order.fullTank,
+		babySeat: state.order.babySeat,
+		rightHand: state.order.rightHand,
 	};
 };
 
 const mapDispatchToProps = {
 	setColor,
-	setDateFrom,
-	setDateTo,
+	setDateTimeFrom,
+	setDateTimeTo,
 	setTariff,
-	setFullTank,
-	setBabySeat,
-	setRightHand,
+	setIsFullTank,
+	setIsBabySeat,
+	setIsRightHand,
 };
 
 export default connect(

@@ -1,149 +1,152 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 
-import OrderButton from '../../../../../../components/OrderButton'
+import OrderButton from '../../../../../../components/OrderButton';
 
-import './style.scss'
+import './style.scss';
 
 
-function Overall (props) {
-    const { activeStep, setActiveStep } = props;
-    const { city, 
-            point, 
+function Overall(props) {
+	const { activeStep, setActiveStep } = props;
+	const {
+		city,
+		point,
+		carName,
+		color,
+		dateTimeFrom,
+		dateTimeTo,
+		tariff,
+		isFullTank,
+		isBabySeat,
+		isRightHand,
+	} = props;
 
-            modelType,
+	let nextLocationLink = '';
+	let orderButtonText = '';
+	let disabled = false;
 
-            color,
-            dateFrom,
-            dateTo,
-            tariff,
-            fullTank,
-            babySeat,
-            rightHand
-    } = props;
+	switch (activeStep) {
+		case 0:
+			nextLocationLink = '/order/model';
+			orderButtonText = 'Выбрать модель';
+			disabled = !(city && point);
+			break;
+		case 1:
+			nextLocationLink = '/order/extra';
+			orderButtonText = 'Дополнительно';
+			disabled = !carName;
+			break;
+		case 2:
+			nextLocationLink = '/order/total';
+			orderButtonText = 'Итого';
+			disabled = !(color && dateTimeFrom && dateTimeTo && tariff);
+			break;
+		case 3:
+			nextLocationLink = '/order/total';
+			orderButtonText = 'Заказать'; //!!!!
+			break;
+		default:
+	}
 
-    let nextLocationLink = '';
-    let orderButtonText = '';
-    let disabled = false;
+	return (
+		<div className='overall'>
+			<p className='overall__title'>Ваш заказ:</p>
 
-    switch (activeStep) {
-        case 0:
-            nextLocationLink = "/order/model";
-            orderButtonText = 'Выбрать модель';
-            disabled = !(city && point);
-            break;
-        case 1:
-            nextLocationLink = "/order/extra";
-            orderButtonText = 'Дополнительно';
-            disabled = !(modelType);
-            break;
-        case 2:
-            nextLocationLink = "/order/total";
-            orderButtonText = 'Итого';
-            disabled = !(color && dateFrom && dateTo && tariff);
-            break;
-        case 3:
-            nextLocationLink = "/order/total";
-            orderButtonText = 'Заказать';             //!!!!
-            break;
-        default:
-    }
-
-    return (
-		<div className="overall">
-			<p className="overall__title">Ваш заказ:</p>
-
-			<ul className="overall__list">
-
-                {(city && point) ? 
-                    <li className="overall__item">
-                        <span className="overall__hidden">Пункт выдачи</span>
-                        <span>{` ${city} ${point}`}</span>
-                    </li> :
-                    <></>
-                }
-				{(modelType) ? 
-                    <li className="overall__item">
-                        <span className="overall__hidden">Модель</span>
-                        <span>{` ${modelType}`}</span>
-                    </li> :
-                    <></>
-                }
-                {(color) ? 
-                    <li className="overall__item">
-                        <span className="overall__hidden">Цвет</span>
-                        <span>{` ${color}`}</span>
-                    </li> :
-                    <></>
-                }
-                {(dateFrom && dateTo) ? 
-                    <li className="overall__item">
-                        <span className="overall__hidden">Длительность аренды</span>
-                        <span>{` ${new Date(dateTo) - new Date(dateFrom)}`}</span>
-                    </li> :
-                    <></>
-                }
-                {(tariff) ? 
-                    <li className="overall__item">
-                        <span className="overall__hidden">Тариф</span>
-                        <span>{` ${tariff}`}</span>
-                    </li> :
-                    <></>
-                }
-                {(fullTank) ? 
-                    <li className="overall__item">
-                        <span className="overall__lowercase">Полный бак</span>
-                        <span className="overall__hidden">{` Да`}</span>
-                    </li> :
-                    <></>
-                }
-                {(babySeat) ? 
-                    <li className="overall__item">
-                        <span className="overall__lowercase">Детское кресло</span>
-                        <span className="overall__hidden">{` Да`}</span>
-                    </li> :
-                    <></>
-                }
-                {(rightHand) ? 
-                    <li className="overall__item">
-                        <span className="overall__lowercase">Правый руль</span>
-                        <span className="overall__hidden">{` Да`}</span>
-                    </li> :
-                    <></>
-                }                
+			<ul className='overall__list'>
+				{city && point ? (
+					<li className='overall__item'>
+						<span className='overall__hidden'>Пункт выдачи</span>
+						<span>{` ${city} ${point}`}</span>
+					</li>
+				) : (
+					<></>
+				)}
+				{carName ? (
+					<li className='overall__item'>
+						<span className='overall__hidden'>Модель</span>
+						<span>{` ${carName}`}</span>
+					</li>
+				) : (
+					<></>
+				)}
+				{color ? (
+					<li className='overall__item'>
+						<span className='overall__hidden'>Цвет</span>
+						<span>{` ${color}`}</span>
+					</li>
+				) : (
+					<></>
+				)}
+				{dateTimeFrom && dateTimeTo ? (
+					<li className='overall__item'>
+						<span className='overall__hidden'>Длительность аренды</span>
+						<span>{` ${new Date(dateTimeTo) - new Date(dateTimeFrom)}`}</span>
+					</li>
+				) : (
+					<></>
+				)}
+				{tariff ? (
+					<li className='overall__item'>
+						<span className='overall__hidden'>Тариф</span>
+						<span>{` ${tariff}`}</span>
+					</li>
+				) : (
+					<></>
+				)}
+				{isFullTank ? (
+					<li className='overall__item'>
+						<span className='overall__lowercase'>Полный бак</span>
+						<span className='overall__hidden'>{` Да`}</span>
+					</li>
+				) : (
+					<></>
+				)}
+				{isBabySeat ? (
+					<li className='overall__item'>
+						<span className='overall__lowercase'>Детское кресло</span>
+						<span className='overall__hidden'>{` Да`}</span>
+					</li>
+				) : (
+					<></>
+				)}
+				{isRightHand ? (
+					<li className='overall__item'>
+						<span className='overall__lowercase'>Правый руль</span>
+						<span className='overall__hidden'>{` Да`}</span>
+					</li>
+				) : (
+					<></>
+				)}
 			</ul>
 
-			<p className="overall__price">
-				<span className="overall__price-title">Цена:</span> от 8 000 до
-				12 000
+			<p className='overall__price'>
+				<span className='overall__price-title'>Цена:</span> от 8 000 до 12 000
 			</p>
 
 			<OrderButton
 				text={orderButtonText}
-                activeStep={activeStep}
-                setActiveStep={setActiveStep}
-                linkTo={nextLocationLink}
-                disabled={disabled}
+				activeStep={activeStep}
+				setActiveStep={setActiveStep}
+				linkTo={nextLocationLink}
+				disabled={disabled}
 			/>
 		</div>
 	);
 }
 
 const mapStateToProps = (state) => {
-    return {
-        city: state.location.city,
-        point: state.location.point,
+	return {
+		city: state.order.city,
+		point: state.order.point,
+		carName: state.order.carName,
+		color: state.order.color,
+		dateTimeFrom: state.order.dateTimeFrom,
+		dateTimeTo: state.order.dateTimeTo,
+		tariff: state.order.tariff,
+		isFullTank: state.order.isFullTank,
+		isBabySeat: state.order.isBabySeat,
+		isRightHand: state.order.isRightHand,
+	};
+};
 
-        modelType: state.model.modelType,
-
-        color: state.extras.color,
-        dateFrom: state.extras.dateFrom,
-        dateTo: state.extras.dateTo,
-        tariff: state.extras.tariff,
-        fullTank: state.extras.fullTank,
-        babySeat: state.extras.babySeat,
-        rightHand: state.extras.rightHand
-    }
-}
-
-export default connect(mapStateToProps)(Overall)
+export default connect(mapStateToProps)(Overall);

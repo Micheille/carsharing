@@ -1,15 +1,18 @@
 @import "../../../../../components/App/сolors";
 
 .navigation {
+	display: flex;
+	align-items: center;
+	
+	height: 32px;
 	border-top: 1px solid $gray-light;
 	border-bottom: 1px solid $gray-light;
 
 	ul {
-		list-style: none;
-		padding: 8px 0;
-		margin: 0;
-
 		display: flex;
+
+		list-style: none;
+		margin: 0;
 
 		li {
 			margin-right: 16px;

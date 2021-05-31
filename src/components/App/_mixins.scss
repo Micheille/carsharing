@@ -1,40 +1,49 @@
 @mixin link($color, $hover-color, $active-color) {
-    color: $color;
-    &:hover {
-        color: $hover-color;
-    }
-    &:active {
-        color: $active-color;
-    }
-    &:disabled {
-        color: $gray;
-    }
+	color: $color;
+	&:hover {
+		color: $hover-color;
+	}
+	&:active {
+		color: $active-color;
+	}
+	&:disabled {
+		color: $gray;
+	}
 }
 
-@mixin button($color, $border-radius, $color-from, $color-to, $percent-hover, $percent-active) {
-    font: 500 18px "Roboto", "Arial", sans-serif;
-    height: 48px;
-    color: $color;
-    border: transparent;
-    border-radius: $border-radius;
-    cursor: pointer;
-    background: linear-gradient(to right, 
-                                $button-color-from, 
-                                $button-color-to);
+@mixin button(
+	$color,
+	$border-radius,
+	$color-from,
+	$color-to,
+	$percent-hover,
+	$percent-active
+) {
+	font: 500 18px 'Roboto', 'Arial', sans-serif;
+	height: 48px;
+	color: $color;
+	border: transparent;
+	border-radius: $border-radius;
+	cursor: pointer;
+	background: linear-gradient(to right, $button-color-from, $button-color-to);
 
-    &:hover {
-        background: linear-gradient(to right, 
-                                    darken($button-color-from, $percent-hover),
-                                    darken($button-color-to, $percent-hover) );
-    }
-    &:active {
-        background: linear-gradient(to right, 
-                                    darken($button-color-from, $percent-active),
-                                    darken($button-color-to, $percent-active) );
-    }
+	&:hover {
+		background: linear-gradient(
+			to right,
+			darken($button-color-from, $percent-hover),
+			darken($button-color-to, $percent-hover)
+		);
+	}
+	&:active {
+		background: linear-gradient(
+			to right,
+			darken($button-color-from, $percent-active),
+			darken($button-color-to, $percent-active)
+		);
+	}
 
-    @media screen and (max-device-width: 767px), screen and (max-width: 767px) {
-        width: 100%;
-        border-radius: 0;
-    }
+	@media screen and (max-device-width: 767px), screen and (max-width: 767px) {
+		width: 100%;
+		border-radius: 0;
+	}
 }

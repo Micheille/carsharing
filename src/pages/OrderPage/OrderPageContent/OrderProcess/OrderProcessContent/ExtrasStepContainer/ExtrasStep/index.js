@@ -6,30 +6,31 @@ import './style.scss';
 export default function ExtrasStep(props) {
 	const {
 		setColor,
-		setDateFrom,
-		setDateTo,
+		setDateTimeFrom,
+		setDateTimeTo,
 		setTariff,
-		setFullTank,
-		setBabySeat,
-		setRightHand,
+		setIsFullTank,
+		setIsBabySeat,
+		setIsRightHand,
+
 		color,
-		dateFrom,
-		dateTo,
+		dateTimeFrom,
+		dateTimeTo,
 		tariff,
-		fullTank,
-		babySeat,
-		rightHand,
+		isFullTank,
+		isBabySeat,
+		isRightHand,
 	} = props;
 
 	const onColorChange = (e) => {
 		setColor(e.currentTarget.value);
 	};
 	const onDateFromChange = (e) => {
-		setDateFrom(e.target.value);
+		setDateTimeFrom(e.target.value);
 	};
 
 	const onDateToChange = (e) => {
-		setDateTo(e.target.value);
+		setDateTimeTo(e.target.value);
 	};
 
 	const onTariffChange = (e) => {
@@ -37,15 +38,15 @@ export default function ExtrasStep(props) {
 	};
 
 	const onFullTankChange = (e) => {
-		setFullTank(e.target.checked);
+		setIsFullTank(e.target.checked);
 	};
 
 	const onBabySeatChange = (e) => {
-		setBabySeat(e.target.checked);
+		setIsBabySeat(e.target.checked);
 	};
 
 	const onRightHandChange = (e) => {
-		setRightHand(e.target.checked);
+		setIsRightHand(e.target.checked);
 	};
 
 	return (
@@ -85,7 +86,7 @@ export default function ExtrasStep(props) {
 			<input
 				type='datetime-local'
 				name='datetime-from'
-				value={dateFrom}
+				value={dateTimeFrom}
 				onChange={onDateFromChange}
 			/>
 
@@ -93,7 +94,7 @@ export default function ExtrasStep(props) {
 			<input
 				type='datetime-local'
 				name='datetime-to'
-				value={dateTo}
+				value={dateTimeTo}
 				onChange={onDateToChange}
 			/>
 
@@ -122,7 +123,7 @@ export default function ExtrasStep(props) {
 			<input
 				type='checkbox'
 				name='full-tank'
-				checked={fullTank}
+				checked={isFullTank}
 				onClick={onFullTankChange}
 			/>
 			<span>Полный бак</span>
@@ -130,7 +131,7 @@ export default function ExtrasStep(props) {
 			<input
 				type='checkbox'
 				name='baby-seat'
-				checked={babySeat}
+				checked={isBabySeat}
 				onClick={onBabySeatChange}
 			/>
 			<span>Детское кресло</span>
@@ -138,7 +139,7 @@ export default function ExtrasStep(props) {
 			<input
 				type='checkbox'
 				name='right-hand'
-				checked={rightHand}
+				checked={isRightHand}
 				onClick={onRightHandChange}
 			/>
 			<span>Правый руль</span>
