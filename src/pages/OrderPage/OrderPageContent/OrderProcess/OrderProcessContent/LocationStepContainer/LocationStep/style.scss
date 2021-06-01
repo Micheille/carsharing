@@ -1,80 +1,87 @@
 @import '../../../../../../../components/App/сolors';
 
-
 .location-step {
-    .location-step__forms {
-        width: 325px;
-        text-align: right;
+	.location-step__form-container {
+		width: 325px;
+		text-align: right;
 
-        label {
-            display: block;
-            margin-bottom: 12px;
+		.location-step__form {
+			display: block;
+			margin-bottom: 12px;
 
-            .location-step__label {
-                margin-right: 8px;
-                vertical-align: middle;
-            }
+			.location-step__label {
+				margin-right: 8px;
+				vertical-align: middle;
+			}
 
-            // Styles for custom autocomplete field
+			/* 
+				Styles for custom autocomplete field
+			*/
 
-            .MuiAutocomplete-root {
-                display: inline-block;
-                position: relative;
-                width: 225px;
-    
-                div {
-                    font-size: 14px;
-                    font-weight: 300;
-    
-                    .MuiAutocomplete-inputRoot {
-                        &::before {
-                            border-bottom: 1px solid $gray;
-                        }
-                        &::after {
-                            border-bottom: 1px solid $black;
-                        }
-    
-                        .MuiAutocomplete-input {
-                            padding: 2px 0;
-                            padding-left: 4px;
-    
-                            &::placeholder {
-                                color: $gray;
-                                opacity: 1;
-                            }
-                        }
-                        .MuiSvgIcon-fontSizeSmall {
-                            font-size: 1rem;
-                        }
-                    }
-                }            
-            }
-        }
-    }
-    .location-step__select-point {
-        margin-top: 44px;
+			.MuiAutocomplete-root {
+				display: inline-block;
+				position: relative;
+				width: 225px;
 
-        .location-step__map {
-            position: relative;
-            height: 352px;
-            width: 736px;
-        }
-    }
+				.MuiAutocomplete-inputRoot {
+					font-size: 14px;
+					font-weight: 300;
+
+					&::before {
+						border-bottom: 1px solid $gray;
+					}
+					&::after {
+						border-bottom: 1px solid $black;
+					}
+
+					.MuiAutocomplete-input {
+						padding: 2px 0;
+						padding-left: 4px;
+
+						&::placeholder {
+							color: $gray;
+							opacity: 1;
+						}
+					}
+					.MuiSvgIcon-fontSizeSmall {
+						font-size: 1rem;
+					}
+				}
+			}
+			/* */
+		}
+	}
+	.location-step__map-container {
+		margin-top: 44px;
+
+		.location-step__map-text {
+			margin-bottom: 16px;
+		}
+		.location-step__map {
+			position: relative;
+			height: 352px;
+			width: 736px;
+		}
+	}
 }
 
-// Styles for custom dropdown options
+/* 
+	Styles for custom dropdown options
+*/
 
 .MuiAutocomplete-listbox {
-    .MuiAutocomplete-option {
-        background-color: white;
-        color: $gray;
-        font-weight: 300;
+	.MuiAutocomplete-option {
+		background-color: transparent;
+		color: $gray;
+		font-weight: 300;
 
-        &:hover {
-            background-color: transparent;
-            color: $accent;
-        }
-    }
+		&:hover {
+			background-color: transparent;
+			color: $accent;
+		}
+	}
 }
+
+/* */
 
 @import './medias';

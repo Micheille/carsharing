@@ -1,5 +1,6 @@
 import {
 	CHANGE_CITY,
+	CHANGE_CITY_NAME,
 	CHANGE_POINT,
 	CHANGE_CAR_NAME,
 	CHANGE_COLOR,
@@ -13,7 +14,8 @@ import {
 } from './actions';
 
 const defaultState = {
-	city: '',
+	city: null,
+	cityName: '',
 	point: '',
 	carName: '',
 	color: '',
@@ -32,6 +34,11 @@ export const staticReducer = (state = defaultState, action) => {
 			return {
 				...state,
 				city: action.payload,
+			};
+		case CHANGE_CITY_NAME:
+			return {
+				...state,
+				cityName: action.payload,
 				point: '',
 				carName: '',
 				color: '',
@@ -43,12 +50,11 @@ export const staticReducer = (state = defaultState, action) => {
 				isBabySeat: false,
 				isRightHand: false,
 			};
-
 		case CHANGE_POINT:
 			return {
 				...state,
 				point: action.payload,
-                carName: '',
+				carName: '',
 				color: '',
 				dateTimeFrom: '',
 				dateTimeTo: '',
@@ -62,7 +68,7 @@ export const staticReducer = (state = defaultState, action) => {
 			return {
 				...state,
 				carName: action.payload,
-                color: '',
+				color: '',
 				dateTimeFrom: '',
 				dateTimeTo: '',
 				//duration: '',

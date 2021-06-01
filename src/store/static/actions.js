@@ -1,4 +1,7 @@
+export const CHANGE_CITY_NAME = 'CHANGE_CITY_NAME';
+
 export const CHANGE_CITY = 'CHANGE_CITY';
+
 export const CHANGE_POINT = 'CHANGE_POINT';
 
 export const CHANGE_CAR_NAME = 'CHANGE_CAR_NAME';
@@ -12,9 +15,14 @@ export const CHANGE_IS_FULL_TANK = 'CHANGE_IS_FULL_TANK';
 export const CHANGE_IS_BABY_SEAT = 'CHANGE_IS_BABY_SEAT';
 export const CHANGE_IS_RIGHT_HAND = 'CHANGE_IS_RIGHT_HAND';
 
+
 export const setCity = (city) => ({
 	type: CHANGE_CITY,
 	payload: city,
+});
+export const setCityName = (cityName) => ({
+	type: CHANGE_CITY_NAME,
+	payload: cityName,
 });
 export const setPoint = (point) => ({
 	type: CHANGE_POINT,

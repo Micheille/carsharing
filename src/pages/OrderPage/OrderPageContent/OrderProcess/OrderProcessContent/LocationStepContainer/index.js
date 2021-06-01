@@ -2,32 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import LocationStep from './LocationStep';
-//import { setCity, setPoint } from '../../../../../../store/location/actions'
-import { setCity, setPoint } from '../../../../../../store/static/actions';
-
+import { setCityData, setPointData } from '../../../../../../store/api/actions';
 
 function LocationStepContainer(props) {
-	const { city, point, setCity, setPoint } = props;
+	const { cityData, pointData, setCityData, setPointData } = props;
 	return (
 		<LocationStep
-			setCity={setCity}
-			setPoint={setPoint}
-			city={city}
-			point={point}
+			cityData={cityData}
+			setCityData={setCityData}
+			pointData={pointData}
+			setPointData={setPointData}
 		/>
 	);
 }
 
 const mapStateToProps = (state) => {
 	return {
-		city: state.order.city,
-		point: state.order.point,
+		cityData: state.api.cityData,
+		pointData: state.api.pointData,
 	};
 };
 
 const mapDispatchToProps = {
-	setCity,
-	setPoint,
+	setCityData,
+	setPointData,
 };
 
 export default connect(

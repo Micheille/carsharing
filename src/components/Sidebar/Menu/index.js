@@ -20,22 +20,22 @@ export default function Menu({isActive}) {
         <div className="dropdown__opaque">
             <div className="dropdown__content">
                 <ul className="dropdown__links">
-                    <li><a className="main-page__link dropdown__link dropdown__link_white" href="#">Парковка</a></li>
-                    <li><a className="main-page__link dropdown__link dropdown__link_white" href="#">Страховка</a></li>
-                    <li><a className="main-page__link dropdown__link dropdown__link_white" href="#">Бензин</a></li>
-                    <li><a className="main-page__link dropdown__link dropdown__link_white" href="#">Обслуживание</a></li>
+                    <li><a className="main-page__link dropdown__link dropdown__link_white" href="/#">Парковка</a></li>
+                    <li><a className="main-page__link dropdown__link dropdown__link_white" href="/#">Страховка</a></li>
+                    <li><a className="main-page__link dropdown__link dropdown__link_white" href="/#">Бензин</a></li>
+                    <li><a className="main-page__link dropdown__link dropdown__link_white" href="/#">Обслуживание</a></li>
                 </ul>                
 
                 <ul className="dropdown__social">
-                    <li><a href="#">
+                    <li><a href="/#">
                         <TelegramIcon />
                     </a></li>
 
-                    <li><a href="#">
+                    <li><a href="/#">
                         <FacebookIcon />
                     </a></li>
 
-                    <li><a href="#">
+                    <li><a href="/#">
                         <InstagramIcon />
                     </a></li>                                    
                 </ul>
