@@ -5,7 +5,7 @@ const defaultState = {
 	pointData: null,
 };
 
-export const apiReducer = (state = defaultState, action) => {
+export const orderReducer = (state = defaultState, action) => {
 	switch (action.type) {
 		case CHANGE_CITY_DATA:
 			return {

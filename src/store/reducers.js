@@ -1,14 +1,13 @@
 import { combineReducers } from 'redux';
 
-import { staticReducer } from './static/reducers';
+//import { staticReducer } from './static/reducers';
 //import { dynamicReducer } from './dynamic/reducers';
-import { apiReducer } from './api/reducers';
-
+import { orderReducer } from './order/reducers';
 import { extrasReducer } from './extras/reducers';
 
 const rootReducer = combineReducers({
-	order: staticReducer,
-	api: apiReducer,
+	//order: staticReducer,
+	order: orderReducer,
 	extras: extrasReducer,
 });
 
