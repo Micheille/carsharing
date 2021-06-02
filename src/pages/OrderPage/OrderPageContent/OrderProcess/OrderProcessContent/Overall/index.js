@@ -9,8 +9,8 @@ import './style.scss';
 function Overall(props) {
 	const { activeStep, setActiveStep } = props;
 	const {
-		city,
-		point,
+		cityData,
+		pointData,
 		carName,
 		color,
 		dateTimeFrom,
@@ -29,7 +29,7 @@ function Overall(props) {
 		case 0:
 			nextLocationLink = '/order/model';
 			orderButtonText = 'Выбрать модель';
-			disabled = !(city && point);
+			disabled = !(cityData && pointData);
 			break;
 		case 1:
 			nextLocationLink = '/order/extra';
@@ -53,10 +53,10 @@ function Overall(props) {
 			<p className='overall__title'>Ваш заказ:</p>
 
 			<ul className='overall__list'>
-				{city && point ? (
+				{cityData && pointData ? (
 					<li className='overall__item'>
 						<span className='overall__hidden'>Пункт выдачи</span>
-						<span>{` ${city} ${point}`}</span>
+						<span>{` ${cityData.name} ${pointData.address}`}</span>
 					</li>
 				) : (
 					<></>
@@ -136,8 +136,8 @@ function Overall(props) {
 
 const mapStateToProps = (state) => {
 	return {
-		city: state.order.city,
-		point: state.order.point,
+		cityData: state.order.cityData,
+		pointData: state.order.pointData,
 		carName: state.order.carName,
 		color: state.order.color,
 		dateTimeFrom: state.order.dateTimeFrom,

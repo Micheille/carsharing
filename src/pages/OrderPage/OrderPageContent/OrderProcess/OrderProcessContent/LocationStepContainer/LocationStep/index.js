@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Map, Placemark } from 'react-yandex-maps';
+import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
@@ -7,7 +7,8 @@ import {
 	SERVER,
 	HEADERS,
 	DB_GET_CITIES,
-	DB_GET_POINTS_BY_CITY,
+	DB_GET_POINTS,
+	YMAPS_API_KEY,
 } from '../../../../../../../components/App/api';
 
 import './style.scss';
@@ -16,26 +17,20 @@ export default function LocationStep(props) {
 	const { cityData, setCityData, pointData, setPointData } = props;
 
 	const [cities, setCities] = useState([]);
-	const [pointsByCity, setPointsByCity] = useState([]);
+	const [points, setPoints] = useState([]);
+	const [pointsCoords, setPointsCoords] = useState([]);
+	const [ymaps, setYmaps] = useState(null);
 	const [error, setError] = useState('');
 
-	const placemarks = [
-		{
-			city: 'Ульяновск',
-			address: 'Гончарова, 27',
-			geometry: [54.320883, 48.399934],
-		},
-		// {
-		// 	city: 'Ульяновск',
-		// 	address: 'Нариманова 1, корп.2',
-		// 	geometry: [54.3335, 48.384285],
-		// },
-		{
-			city: 'Ульяновск',
-			address: 'Московское шоссе 34',
-			geometry: [54.300985, 48.288264],
-		},
-	];
+	const getCoords = async (address) => {
+		const geocodeResponce = await ymaps.geocode(address);
+		const firstGeoObject = geocodeResponce.geoObjects.get(0);
+		return firstGeoObject.geometry.getCoordinates();
+	};
+
+	const onMapLoad = (ymaps) => {
+		setYmaps(ymaps);
+	};
 
 	const map = useRef(null);
 	const mapState = {
@@ -43,23 +38,33 @@ export default function LocationStep(props) {
 		zoom: 13,
 	};
 
-	const onCityDataChange = (event, value) => {
+	const onCityDataChange = async (event, value) => {
 		setCityData(value);
+		if (value) {
+			const cityCoords = await getCoords(value.name);
+			map.current.setCenter(cityCoords, 12, { duration: 300 });
+		}
 	};
 
 	const onPointDataChange = (event, value) => {
 		setPointData(value);
-		const mark = placemarks.find((mark) => mark.address === value?.address);
-
-		if (mark && map.current) {
-			map.current.setCenter(mark.geometry, map.current.zoom, { duration: 300 });
+		if (value) {
+			const pointWithCoords = pointsCoords.find(
+				(pointCoordsItem) => pointCoordsItem.point.id === value.id
+			);
+			map.current.setCenter(pointWithCoords.coords, map.current.zoom, {
+				duration: 300,
+			});
 		}
 	};
 
+	useEffect(() => {}, [pointData]);
+
 	useEffect(() => {
+		const headers = HEADERS;
+
 		const getCities = async () => {
 			const url = new URL(`${SERVER}${DB_GET_CITIES}`);
-			const headers = HEADERS;
 			const response = await fetch(url, { headers });
 			const data = await response.json();
 
@@ -70,17 +75,11 @@ export default function LocationStep(props) {
 				const citiesData = data.data.filter((cityData) => cityData.name);
 				setCities(citiesData);
 				console.log('use effect cities');
-				console.log(citiesData);
 			}
 		};
 
-		getCities();
-	}, [error]);
-
-	useEffect(() => {
 		const getPoints = async () => {
-			const url = `${SERVER}${DB_GET_POINTS_BY_CITY}${cityData.id}`;
-			const headers = HEADERS;
+			const url = new URL(`${SERVER}${DB_GET_POINTS}`);
 			const response = await fetch(url, { headers });
 			const data = await response.json();
 
@@ -88,14 +87,31 @@ export default function LocationStep(props) {
 				setError(data.message);
 				console.log(error);
 			} else {
-				const points = data.data;
+				const pointsData = data.data;
+				setPoints(pointsData);
 				console.log('use effect points');
-				console.log(points);
-				setPointsByCity(points);
 			}
 		};
-		cityData && getPoints();
-	}, [cityData]);
+
+		getCities();
+		getPoints();
+	}, []);
+
+	useEffect(() => {
+		const getPointsCoords = async (points) => {
+			let pointsCoords = [];
+			for (const point of points) {
+				const fullAddress = `${point.cityId.name}, ${point.address}`;
+				const coords = await getCoords(fullAddress);
+				pointsCoords.push({ coords: coords, point: point });
+			}
+			console.log(pointsCoords);
+			setPointsCoords(pointsCoords);
+		};
+
+		console.log('use effect get points coords');
+		ymaps && getPointsCoords(points);
+	}, [ymaps, points]);
 
 	return (
 		<div className='order-process-content__step location-step'>
@@ -106,9 +122,9 @@ export default function LocationStep(props) {
 					<Autocomplete
 						options={cities}
 						getOptionLabel={(option) => option.name || ''}
+						getOptionSelected={(option, value) => option.id === value.id}
 						forcePopupIcon={false}
 						value={cityData}
-						getOptionSelected={(option, value) => option.id === value.id}
 						onChange={onCityDataChange}
 						renderInput={(params) => (
 							<TextField {...params} placeholder='Начните вводить город...' />
@@ -120,7 +136,9 @@ export default function LocationStep(props) {
 					<span className='location-step__label'>Пункт выдачи</span>
 
 					<Autocomplete
-						options={pointsByCity}
+						options={points?.filter(
+							(point) => point.cityId.name === cityData?.name
+						)}
 						getOptionLabel={(option) => option.address || ''}
 						forcePopupIcon={false}
 						value={pointData}
@@ -135,38 +153,41 @@ export default function LocationStep(props) {
 			<div className='location-step__map-container'>
 				<p className='location-step__map-text'>Выбрать на карте:</p>
 
-				<Map
-					defaultState={mapState}
-					instanceRef={map}
-					className={'location-step__map'}
+				<YMaps
+					query={{
+						ns: 'use-load-option',
+						apikey: YMAPS_API_KEY,
+						load: 'geocode',
+					}}
 				>
-					{placemarks.map((mark, index) => (
-						<Placemark
-							key={index}
-							geometry={mark.geometry}
-							modules={['geoObject.addon.hint']}
-							properties={{
-								hintContent: mark.address,
-							}}
-							onClick={(e) => {
-								setCityData(cities.find((city) => city.name === mark.city));
-								setPointData(
-									pointsByCity.find((point) => point.address === mark.address)
-								);
-
-								const placemarkCoords = e.get('coords');
-								if (map.current) {
-									map.current.setCenter(placemarkCoords, map.current.zoom, {
+					<Map
+						className={'location-step__map'}
+						defaultState={mapState}
+						instanceRef={map}
+						onLoad={(ymaps) => onMapLoad(ymaps)}
+					>
+						{pointsCoords.map((coordsItem, index) => (
+							<Placemark
+								key={index}
+								geometry={coordsItem.coords}
+								modules={['geoObject.addon.hint']}
+								properties={{
+									hintContent: coordsItem.point.name,
+								}}
+								options={{
+									preset: 'islands#darkGreenCircleDotIcon',
+								}}
+								onClick={() => {
+									setCityData(coordsItem.point.cityId);
+									setPointData(coordsItem.point);
+									map.current.setCenter(coordsItem.coords, map.current.zoom, {
 										duration: 300,
 									});
-								}
-							}}
-							options={{
-								preset: 'islands#darkGreenCircleDotIcon',
-							}}
-						/>
-					))}
-				</Map>
+								}}
+							/>
+						))}
+					</Map>
+				</YMaps>
 			</div>
 		</div>
 	);
