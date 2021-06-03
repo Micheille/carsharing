@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
+import {
+	SERVER,
+	HEADERS,
+	DB_GET_CATEGORIES,
+	DB_GET_CARS,
+	DB_GET_CARS_BY_CATEGORY,
+} from '../../../../../../../components/App/api';
+
 import './style.scss';
 
 export default function ModelStep(props) {
-	const { server, categoryId, carId, setCategoryId, setCarId, setCarName } =
-		props;
+	const { categoryData, setCategoryData, carData, setCarData } = props;
 
 	const [error, setError] = useState('');
 	const [categories, setCategories] = useState([]);
@@ -12,53 +19,52 @@ export default function ModelStep(props) {
 
 	useEffect(() => {
 		const getCategories = async () => {
-			const url = new URL(`${server}/api/db/category`);
-			const headers = {
-				'X-Api-Factory-Application-Id': '5e25c641099b810b946c5d5b',
-			};
+			const url = new URL(`${SERVER}${DB_GET_CATEGORIES}`);
+			const headers = HEADERS;
 			const response = await fetch(url, { headers });
 			const data = await response.json();
 
 			if (!response.ok) {
 				setError(data.message);
 			} else {
-				const dataCategories = data.data;
-				dataCategories.unshift({ name: 'Все модели', id: '' });
-				setCategories(dataCategories);
+				const categoriesData = data.data;
+				const allCategories = {
+					name: 'Все модели',
+					id: '',
+				};
+				categoriesData.unshift(allCategories);
+				setCategoryData(allCategories);
+				setCategories(categoriesData);
 			}
 		};
 
-		console.log('use effect 1');
 		getCategories();
 	}, []);
 
 	useEffect(() => {
 		const getCarsByCategory = async () => {
-			const url = categoryId
-				? `${server}/api/db/car?categoryId=${categoryId}`
-				: `${server}/api/db/car`;
-			const headers = {
-				'X-Api-Factory-Application-Id': '5e25c641099b810b946c5d5b',
-			};
+			const url = categoryData?.id
+				? `${SERVER}${DB_GET_CARS_BY_CATEGORY}${categoryData.id}`
+				: `${SERVER}${DB_GET_CARS}`;
+			const headers = HEADERS;
 			const response = await fetch(url, { headers });
 			const data = await response.json();
 
 			if (!response.ok) {
 				setError(data.message);
 			} else {
-				const dataCarsByCategory = data.data;
-				setCarsByCategory(dataCarsByCategory);
-				console.log(dataCarsByCategory);
+				const carsByCategoryData = data.data;
+				setCarsByCategory(carsByCategoryData);
 			}
 		};
 
-		console.log('use effect 2');
 		getCarsByCategory();
-	}, [categoryId]);
+	}, [categoryData]);
 
 	const onCategoryChange = (e) => {
-		setCategoryId(e.currentTarget.value);
-		setCarName('');
+		const id = e.currentTarget.value;
+		const category = categories.find((categoryItem) => categoryItem.id === id);
+		setCategoryData(category);
 	};
 
 	const normalizeImageLink = (imageLink) => {
@@ -71,19 +77,19 @@ export default function ModelStep(props) {
 	return (
 		<div className='order-process-content__step model-step'>
 			<ul className='model-step__category-list'>
-				{categories.map((category, index) => (
+				{categories.map((categoryItem, index) => (
 					<li key={index} className='model-step__category-item'>
 						<input
 							className='model-step__radio'
 							type='radio'
 							name='category'
-							id={category.name}
-							value={category.id}
-							checked={categoryId === category.id}
+							id={categoryItem.name}
+							value={categoryItem.id}
+							checked={categoryData?.id === categoryItem.id}
 							onChange={onCategoryChange}
 						/>
-						<label className='model-step__label' htmlFor={category.name}>
-							{category.name}
+						<label className='model-step__label' htmlFor={categoryItem.name}>
+							{categoryItem.name}
 						</label>
 					</li>
 				))}
@@ -95,13 +101,12 @@ export default function ModelStep(props) {
 						<div
 							key={index}
 							className={
-								carId === carItem.id
+								carData?.id === carItem.id
 									? 'model-step__car-item model-step__car-item_active'
 									: 'model-step__car-item'
 							}
 							onClick={() => {
-								setCarId(carItem.id);
-								setCarName(carItem.name);
+								setCarData(carItem);
 							}}
 						>
 							<div className='model-step__car-info'>

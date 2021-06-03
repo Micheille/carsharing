@@ -3,39 +3,32 @@ import { connect } from 'react-redux';
 
 import ModelStep from './ModelStep';
 import {
-	setCategoryId,
-	setCarId,
-} from '../../../../../../store/dynamic/actions';
-import { setCarName } from '../../../../../../store/static/actions';
-
+	setCategoryData,
+	setCarData,
+} from '../../../../../../store/order/actions';
 
 function ModelStepContainer(props) {
-	const { server, categoryId, carId, setCategoryId, setCarId, setCarName } =
-		props;
+	const { categoryData, setCategoryData, carData, setCarData } = props;
 	return (
 		<ModelStep
-			server={server}
-			carId={carId}
-			categoryId={categoryId}
-			setCategoryId={setCategoryId}
-			setCarId={setCarId}
-			setCarName={setCarName}
+			categoryData={categoryData}
+			setCategoryData={setCategoryData}
+			carData={carData}
+			setCarData={setCarData}
 		/>
 	);
 }
 
 const mapStateToProps = (state) => {
 	return {
-		server: state.api.server,
-		categoryId: state.api.categoryId,
-		carId: state.api.carId,
+		categoryData: state.order.categoryData,
+		carData: state.order.carData,
 	};
 };
 
 const mapDispatchToProps = {
-	setCategoryId,
-	setCarId,
-	setCarName,
+	setCategoryData,
+	setCarData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModelStepContainer);
