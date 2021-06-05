@@ -18,6 +18,8 @@ export default function ModelStep(props) {
 	const [carsByCategory, setCarsByCategory] = useState([]);
 
 	useEffect(() => {
+		let cleanupFunction = false;
+
 		const getCategories = async () => {
 			const url = new URL(`${SERVER}${DB_GET_CATEGORIES}`);
 			const headers = HEADERS;
@@ -33,15 +35,21 @@ export default function ModelStep(props) {
 					id: '',
 				};
 				categoriesData.unshift(allCategories);
-				setCategoryData(allCategories);
-				setCategories(categoriesData);
+				if (!cleanupFunction) {
+					setCategoryData(allCategories);
+					setCategories(categoriesData);
+				}
 			}
 		};
 
 		getCategories();
-	}, []);
+
+		return () => (cleanupFunction = true);
+	}, [setCategoryData]);
 
 	useEffect(() => {
+		let cleanupFunction = false;
+
 		const getCarsByCategory = async () => {
 			const url = categoryData?.id
 				? `${SERVER}${DB_GET_CARS_BY_CATEGORY}${categoryData.id}`
@@ -54,11 +62,15 @@ export default function ModelStep(props) {
 				setError(data.message);
 			} else {
 				const carsByCategoryData = data.data;
-				setCarsByCategory(carsByCategoryData);
+				if (!cleanupFunction) {
+					setCarsByCategory(carsByCategoryData);
+				}
 			}
 		};
 
 		getCarsByCategory();
+
+		return () => (cleanupFunction = true);
 	}, [categoryData]);
 
 	const onCategoryChange = (e) => {

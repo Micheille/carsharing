@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -19,14 +19,20 @@ export default function LocationStep(props) {
 	const [cities, setCities] = useState([]);
 	const [points, setPoints] = useState([]);
 	const [pointsCoords, setPointsCoords] = useState([]);
+	const [isLoaded, setIsLoaded] = useState(false);
 	const [ymaps, setYmaps] = useState(null);
 	const [error, setError] = useState('');
 
-	const getCoords = async (address) => {
-		const geocodeResponce = await ymaps.geocode(address);
-		const firstGeoObject = geocodeResponce.geoObjects.get(0);
-		return firstGeoObject.geometry.getCoordinates();
-	};
+	const getCoords = useCallback(
+		async (address) => {
+			if (ymaps) {
+				const geocodeResponce = await ymaps.geocode(address);
+				const firstGeoObject = geocodeResponce.geoObjects.get(0);
+				return firstGeoObject.geometry.getCoordinates();
+			}
+		},
+		[ymaps]
+	);
 
 	const onMapLoad = (ymaps) => {
 		setYmaps(ymaps);
@@ -48,19 +54,21 @@ export default function LocationStep(props) {
 
 	const onPointDataChange = (event, value) => {
 		setPointData(value);
-		if (value) {
+	};
+
+	useEffect(() => {
+		if (pointData && isLoaded) {
 			const pointWithCoords = pointsCoords.find(
-				(pointCoordsItem) => pointCoordsItem.point.id === value.id
+				(pointCoordsItem) => pointCoordsItem.point.id === pointData.id
 			);
 			map.current.setCenter(pointWithCoords.coords, map.current.zoom, {
 				duration: 300,
 			});
 		}
-	};
-
-	useEffect(() => {}, [pointData]);
+	}, [pointData, pointsCoords, isLoaded]);
 
 	useEffect(() => {
+		let cleanupFunction = false;
 		const headers = HEADERS;
 
 		const getCities = async () => {
@@ -68,13 +76,14 @@ export default function LocationStep(props) {
 			const response = await fetch(url, { headers });
 			const data = await response.json();
 
-			if (!response.ok) {
-				setError(data.message);
-				console.log(error);
-			} else {
-				const citiesData = data.data.filter((cityData) => cityData.name);
-				setCities(citiesData);
-				console.log('use effect cities');
+			if (!cleanupFunction) {
+				if (!response.ok) {
+					setError(data.message);
+					console.log(error);
+				} else {
+					const citiesData = data.data.filter((cityData) => cityData.name);
+					setCities(citiesData);
+				}
 			}
 		};
 
@@ -83,35 +92,51 @@ export default function LocationStep(props) {
 			const response = await fetch(url, { headers });
 			const data = await response.json();
 
-			if (!response.ok) {
-				setError(data.message);
-				console.log(error);
-			} else {
-				const pointsData = data.data;
-				setPoints(pointsData);
-				console.log('use effect points');
+			if (!cleanupFunction) {
+				if (!response.ok) {
+					setError(data.message);
+					console.log(error);
+				} else {
+					const pointsData = data.data;
+					setPoints(pointsData);
+				}
 			}
 		};
 
+		setIsLoaded(false);
 		getCities();
 		getPoints();
+
+		return () => (cleanupFunction = true);
 	}, []);
 
 	useEffect(() => {
+		let cleanupFunction = false;
+
 		const getPointsCoords = async (points) => {
 			let pointsCoords = [];
 			for (const point of points) {
 				const fullAddress = `${point.cityId.name}, ${point.address}`;
 				const coords = await getCoords(fullAddress);
-				pointsCoords.push({ coords: coords, point: point });
+				if (coords) pointsCoords.push({ coords: coords, point: point });
 			}
-			console.log(pointsCoords);
-			setPointsCoords(pointsCoords);
+			if (!cleanupFunction) {
+				setPointsCoords(pointsCoords);
+			}
+			return pointsCoords.length !== 0;
+		};
+		const loadPointsCoords = async () => {
+			const loaded = await getPointsCoords(points);
+
+			if (!cleanupFunction) {
+				setIsLoaded(loaded);
+			}
 		};
 
-		console.log('use effect get points coords');
-		ymaps && getPointsCoords(points);
-	}, [ymaps, points]);
+		loadPointsCoords();
+
+		return () => (cleanupFunction = true);
+	}, [points, getCoords]);
 
 	return (
 		<div className='order-process-content__step location-step'>
@@ -140,6 +165,7 @@ export default function LocationStep(props) {
 							(point) => point.cityId.name === cityData?.name
 						)}
 						getOptionLabel={(option) => option.address || ''}
+						getOptionSelected={(option, value) => option.id === value.id}
 						forcePopupIcon={false}
 						value={pointData}
 						onChange={onPointDataChange}
@@ -180,9 +206,6 @@ export default function LocationStep(props) {
 								onClick={() => {
 									setCityData(coordsItem.point.cityId);
 									setPointData(coordsItem.point);
-									map.current.setCenter(coordsItem.coords, map.current.zoom, {
-										duration: 300,
-									});
 								}}
 							/>
 						))}
