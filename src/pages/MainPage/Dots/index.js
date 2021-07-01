@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Dot from './Dot'
+import Dot from '../Dot'
 
 import './style.scss'
 

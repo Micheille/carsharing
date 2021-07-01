@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { withSize } from 'react-sizeme'
 
-import SliderContent from './SliderContent'
-import Arrow from './Arrow'
-import Dots from './Dots'
+import SliderContent from '../SliderContent'
+import Arrow from '../Arrow'
+import Dots from '../Dots'
 
 import './style.scss'
 

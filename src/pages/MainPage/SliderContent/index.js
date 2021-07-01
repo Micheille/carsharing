@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Slide from './Slide'
+import Slide from '../Slide'
 
-import jpg1 from "../../../../assets/jpg-slider-1.jpg"
-import jpg2 from "../../../../assets/jpg-slider-2.jpg"
-import jpg3 from "../../../../assets/jpg-slider-3.jpg"
-import jpg4 from "../../../../assets/jpg-slider-4.jpg"
+import jpg1 from "../../../assets/jpg-slider-1.jpg"
+import jpg2 from "../../../assets/jpg-slider-2.jpg"
+import jpg3 from "../../../assets/jpg-slider-3.jpg"
+import jpg4 from "../../../assets/jpg-slider-4.jpg"
 
 
 const sliderInfo = [

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import SliderButton from './SliderButton'
+import SliderButton from '../SliderButton'
 
 import './style.scss'
 
