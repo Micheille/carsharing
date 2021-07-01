@@ -1,56 +1,55 @@
-@import "../../../components/App/сolors";
-
+@import '../../../components/App/сolors';
+@import '../../../components/App/mixins';
 
 .info {
-    box-sizing: border-box;
-    min-width: 550px;
-    margin-left: 64px;
+  box-sizing: border-box;
+  min-width: 550px;
+  margin-left: 64px;
 
-    .wrapper {
-        box-sizing: border-box;
-        width: 100%;
-        padding: 32px 64px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    
-        .info__main-info {
-            .info__title {
-                display: block;
-                margin: 0;
-                font: 700 70px "Roboto", "Arial", sans-serif;
+  &__title {
+    display: block;
+    margin: 0;
+    font: 700 70px 'Roboto', 'Arial', sans-serif;
 
-                &_black {
-                    color: $black;
-                }
-                &_accent {
-                    color: $accent;
-                }
-            }            
-            .info__text {
-                font: 300 26px "Roboto", "Arial", sans-serif;
-                color: $gray;
-                margin: 0;
-                margin-top: 16px;
-            }
-            .info__link-button {
-                margin-top: 60px;
-            }
-        }
-    
-        .info__footer {
-            box-sizing: border-box;
-            width: 100%;
-            font: 13px "Roboto", "Arial", sans-serif;
-    
-            .info__copyright {
-                color: $gray;
-            }
-            .info__phone {
-                float: right;
-            }
-        }
+    &_black {
+      color: $black;
     }
+    &_accent {
+      color: $accent;
+    }
+  }
+  &__text {
+    font: 300 26px 'Roboto', 'Arial', sans-serif;
+    color: $gray;
+    margin: 0;
+    margin-top: 16px;
+  }
+  &__link-button {
+    margin-top: 60px;
+  }
+
+  &__footer {
+    box-sizing: border-box;
+    width: 100%;
+    font: 13px 'Roboto', 'Arial', sans-serif;
+  }
+
+  &__copyright {
+    color: $gray;
+  }
+  &__phone {
+    float: right;
+    @include link($black, $accent, $accent);
+  }
+
+  .wrapper {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 32px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }
 
-@import "./medias";
+@import './medias';
