@@ -1,31 +1,30 @@
-@import "../App/сolors";
-
+@import '../App/сolors';
 
 .header {
-    box-sizing: border-box;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    .header__title {
-        font: 700 30px "Roboto", "Arial", sans-serif;
-        text-decoration: none;
-        color: $accent;
-    }
-    .header__city {
-        font: 14px "Roboto", "Arial", sans-serif;
-        color: $gray;
-        position: relative;
-        z-index: -1;
+  &__title {
+    font-size: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    color: $accent;
+  }
+  &__city {
+    font-size: 14px;
+    color: $gray;
+    position: relative;
 
-        &::before {
-            content: url(../../assets/vector/icon-map.svg);
-            position: absolute;
-            left: -24px;
-            top: -2px;
-        }
+    &::before {
+      content: url(../../assets/vector/icon-map.svg);
+      position: absolute;
+      left: -24px;
+      top: -2px;
     }
+  }
 }
 
 @import './medias';

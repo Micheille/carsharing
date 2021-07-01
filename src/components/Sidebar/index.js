@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Menu from './Menu'
-import BurgerMenu from "./BurgerMenu"
-import LangButton from "./LangButton"
+import Menu from '../Menu'
+import BurgerMenu from "../BurgerMenu"
+import LangButton from "../LangButton"
 
 import './style.scss'
 

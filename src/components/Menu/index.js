@@ -1,9 +1,9 @@
 import React from 'react'
 import LangButton from '../LangButton'
 
-import { ReactComponent as TelegramIcon } from '../../../assets/vector/icon-telegram.svg'
-import { ReactComponent as FacebookIcon } from '../../../assets/vector/icon-facebook.svg'
-import { ReactComponent as InstagramIcon } from '../../../assets/vector/icon-instagram.svg'
+import { ReactComponent as TelegramIcon } from '../../assets/vector/icon-telegram.svg'
+import { ReactComponent as FacebookIcon } from '../../assets/vector/icon-facebook.svg'
+import { ReactComponent as InstagramIcon } from '../../assets/vector/icon-instagram.svg'
 
 import "./style.scss"
 
