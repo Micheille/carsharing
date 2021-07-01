@@ -14,9 +14,9 @@ export default function Navigation({ activeStep, setActiveStep }) {
 
 	return (
 		<div className="navigation order-process__navigation">
-			<ul>
+			<ul className="navigation__list">
 				{navLinks.map((navLink, index) => (
-					<li key={index}>
+					<li key={index} className="navigation__item">
 						<NavLink
 							className={
 								index > activeStep
