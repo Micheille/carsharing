@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import ExtrasStep from './ExtrasStep';
+import ExtrasStep from '../ExtrasStep';
 import {
 	setColor,
 	setDateTimeFrom,
@@ -10,7 +10,7 @@ import {
 	setIsFullTank,
 	setIsBabySeat,
 	setIsRightHand,
-} from '../../../../../../store/static/actions';
+} from '../../../store/static/actions';
 
 
 function ExtrasStepContainer(props) {

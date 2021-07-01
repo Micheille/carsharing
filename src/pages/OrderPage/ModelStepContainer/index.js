@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import ModelStep from './ModelStep';
+import ModelStep from '../ModelStep';
 import {
 	setCategoryData,
 	setCarData,
-} from '../../../../../../store/order/actions';
+} from '../../../store/order/actions';
 
 function ModelStepContainer(props) {
 	const { categoryData, setCategoryData, carData, setCarData } = props;

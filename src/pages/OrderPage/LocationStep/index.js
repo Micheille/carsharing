@@ -9,7 +9,7 @@ import {
 	DB_GET_CITIES,
 	DB_GET_POINTS,
 	YMAPS_API_KEY,
-} from '../../../../../../../components/App/api';
+} from '../../../components/App/api';
 
 import './style.scss';
 

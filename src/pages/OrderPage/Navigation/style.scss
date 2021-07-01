@@ -1,4 +1,4 @@
-@import "../../../../../components/App/сolors";
+@import "../../../components/App/сolors";
 
 .navigation {
 	display: flex;
@@ -18,7 +18,7 @@
 			margin-right: 16px;
 
 			&:not(:last-of-type)::after {
-				content: url("../../../../../assets/vector/arrow.svg");
+				content: url("../../../assets/vector/arrow.svg");
 				margin-left: 16px;
 			}
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import OrderButton from '../../../../../../components/OrderButton';
+import OrderButton from '../../../components/OrderButton';
 
 import './style.scss';
 

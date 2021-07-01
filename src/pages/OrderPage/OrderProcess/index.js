@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import Navigation from './Navigation'
-import OrderProcessContent from './OrderProcessContent'
+import Navigation from '../Navigation'
+import OrderProcessContent from '../OrderProcessContent'
 
 import './style.scss'
 

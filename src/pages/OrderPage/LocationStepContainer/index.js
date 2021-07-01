@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import LocationStep from './LocationStep';
-import { setCityData, setPointData } from '../../../../../../store/order/actions';
+import LocationStep from '../LocationStep';
+import { setCityData, setPointData } from '../../../store/order/actions';
 
 function LocationStepContainer(props) {
 	const { cityData, pointData, setCityData, setPointData } = props;

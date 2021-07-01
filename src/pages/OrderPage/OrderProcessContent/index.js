@@ -1,11 +1,11 @@
 import React from "react";
 import { Route } from "react-router";
 
-import LocationStepContainer from "./LocationStepContainer";
-import ModelStepContainer from "./ModelStepContainer";
-import ExtrasStepContainer from "./ExtrasStepContainer";
-import TotalStep from "./TotalStep";
-import Overall from "./Overall";
+import LocationStepContainer from "../LocationStepContainer";
+import ModelStepContainer from "../ModelStepContainer";
+import ExtrasStepContainer from "../ExtrasStepContainer";
+import TotalStep from "../TotalStep";
+import Overall from "../Overall";
 
 import "./style.scss";
 

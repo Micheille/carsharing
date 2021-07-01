@@ -6,7 +6,7 @@ import {
 	DB_GET_CATEGORIES,
 	DB_GET_CARS,
 	DB_GET_CARS_BY_CATEGORY,
-} from '../../../../../../../components/App/api';
+} from '../../../components/App/api';
 
 import './style.scss';
 
