@@ -23,9 +23,11 @@ export default function LocationStep(props) {
     setCities,
     points,
     setPoints,
+    pointsCoords,
+    setPointsCoords,
   } = props;
 
-  const [pointsCoords, setPointsCoords] = useState([]);
+  // const [pointsCoords, setPointsCoords] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [ymaps, setYmaps] = useState(null);
   const [error, setError] = useState('');

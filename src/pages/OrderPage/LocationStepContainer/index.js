@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 
 import LocationStep from '../LocationStep';
 import { setCityData, setPointData } from '../../../store/order/actions';
-import { setCities, setPoints } from '../../../store/data/actions';
+import {
+  setCities,
+  setPoints,
+  setPointsCoords,
+} from '../../../store/data/actions';
 
 function LocationStepContainer(props) {
   const {
@@ -15,6 +19,8 @@ function LocationStepContainer(props) {
     setCities,
     points,
     setPoints,
+    pointsCoords,
+    setPointsCoords,
   } = props;
   return (
     <LocationStep
@@ -26,6 +32,8 @@ function LocationStepContainer(props) {
       setCities={setCities}
       points={points}
       setPoints={setPoints}
+      pointsCoords={pointsCoords}
+      setPointsCoords={setPointsCoords}
     />
   );
 }
@@ -36,6 +44,7 @@ const mapStateToProps = (state) => {
     pointData: state.order.pointData,
     cities: state.data.citiesData,
     points: state.data.pointsData,
+    pointsCoords: state.data.pointsCoords,
   };
 };
 
@@ -44,6 +53,7 @@ const mapDispatchToProps = {
   setPointData,
   setCities,
   setPoints,
+  setPointsCoords,
 };
 
 export default connect(
