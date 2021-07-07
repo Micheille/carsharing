@@ -23,8 +23,6 @@ export default function ModelStep(props) {
   } = props;
 
   const [error, setError] = useState('');
-  // const [categories, setCategories] = useState([]);
-  // const [carsByCategory, setCarsByCategory] = useState([]);
 
   useEffect(() => {
     let cleanupFunction = false;
@@ -51,10 +49,10 @@ export default function ModelStep(props) {
       }
     };
 
-    getCategories();
+    !categories.length && getCategories();
 
     return () => (cleanupFunction = true);
-  }, [setCategoryData, setCategories]);
+  }, []);
 
   useEffect(() => {
     let cleanupFunction = false;
@@ -80,7 +78,7 @@ export default function ModelStep(props) {
     getCarsByCategory();
 
     return () => (cleanupFunction = true);
-  }, [categoryData, setCarsByCategory]);
+  }, [categoryData]);
 
   const onCategoryChange = (e) => {
     const id = e.currentTarget.value;
@@ -89,7 +87,6 @@ export default function ModelStep(props) {
   };
 
   const normalizeImageLink = (imageLink) => {
-    // console.log(imageLink);
     if (typeof imageLink === 'string' && imageLink.match('base64')) {
       return imageLink;
     }

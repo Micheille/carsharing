@@ -111,8 +111,8 @@ export default function LocationStep(props) {
     };
 
     setIsLoaded(false);
-    getCities();
-    getPoints();
+    !cities.length && getCities();
+    !cities.length && getPoints();
 
     return () => (cleanupFunction = true);
   }, [setCities, setPoints, error]);
