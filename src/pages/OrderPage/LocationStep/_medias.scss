@@ -1,27 +1,19 @@
 @media screen and (max-device-width: 1439px), screen and (max-width: 1439px) {
-    .location-step {
-        .location-step__select-point { 
-            .location-step__map {
-                width: min(736px, 100%);
-            }
-        }
-    } 
+  .location-step {
+    &__map {
+      width: min(736px, 100%);
+    }
+  }
 }
 
 @media screen and (max-device-width: 767px), screen and (max-width: 767px) {
-    .location-step {
-        .location-step__forms {
-            text-align: left;
-
-            label {
-                .location-step__label {
-                    display: block;
-                    margin-bottom: 8px;
-                }
-                .location-step__input {
-                    margin: 0;
-                }
-            }            
-        }
+  .location-step {
+    &__label {
+      display: block;
+      margin-bottom: 8px;
     }
+    &_input {
+      margin: 0;
+    }
+  }
 }
