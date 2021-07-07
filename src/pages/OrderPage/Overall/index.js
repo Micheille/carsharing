@@ -122,13 +122,15 @@ function Overall(props) {
         <span className='overall__price-title'>Цена:</span> от 8 000 до 12 000
       </p>
 
-      <OrderButton
-        text={orderButtonText}
-        activeStep={activeStep}
-        setActiveStep={setActiveStep}
-        linkTo={nextLocationLink}
-        disabled={disabled}
-      />
+      <div className='overall__button'>
+        <OrderButton
+          text={orderButtonText}
+          activeStep={activeStep}
+          setActiveStep={setActiveStep}
+          linkTo={nextLocationLink}
+          disabled={disabled}
+        />
+      </div>
     </div>
   );
 }

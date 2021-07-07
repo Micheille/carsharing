@@ -29,17 +29,15 @@
     &__lowercase {
       text-transform: lowercase;
     }
-
     &__hidden {
       display: none;
     }
-
-    &__price {
-      font-weight: 500;
-      color: $accent;
-    }
     &__price-title {
       color: $black;
+    }
+
+    &__button {
+      margin-top: 16px;
     }
   }
 }
