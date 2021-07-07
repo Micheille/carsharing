@@ -83,6 +83,7 @@ export default function ModelStep(props) {
   const onCategoryChange = (e) => {
     const id = e.currentTarget.value;
     const category = categories.find((categoryItem) => categoryItem.id === id);
+    setCarsByCategory([]);
     setCategoryData(category);
   };
 
