@@ -1,0 +1,30 @@
+@media screen and (max-device-width: 1439px), screen and (max-width: 1439px) {
+  .model-step {
+    &__car-list {
+      width: 100%;
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media screen and (max-device-width: 1023px), screen and (max-width: 1023px) {
+  .model-step {
+    &__car-list {
+      height: 100%;
+    }
+  }
+}
+
+@media screen and (max-device-width: 767px), screen and (max-width: 767px) {
+  .model-step {
+    &__car-list {
+      height: 100%;
+    }
+
+		&__car-image {
+			height: 78px;
+			align-self: flex-end;
+			text-align: right;
+		}
+  }
+}
