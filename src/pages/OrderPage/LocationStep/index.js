@@ -14,10 +14,17 @@ import {
 import './style.scss';
 
 export default function LocationStep(props) {
-  const { cityData, setCityData, pointData, setPointData } = props;
+  const {
+    cityData,
+    setCityData,
+    pointData,
+    setPointData,
+    cities,
+    setCities,
+    points,
+    setPoints,
+  } = props;
 
-  const [cities, setCities] = useState([]);
-  const [points, setPoints] = useState([]);
   const [pointsCoords, setPointsCoords] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [ymaps, setYmaps] = useState(null);
@@ -108,7 +115,7 @@ export default function LocationStep(props) {
     getPoints();
 
     return () => (cleanupFunction = true);
-  }, []);
+  }, [setCities, setPoints, error]);
 
   useEffect(() => {
     let cleanupFunction = false;
@@ -116,9 +123,11 @@ export default function LocationStep(props) {
     const getPointsCoords = async (points) => {
       let pointsCoords = [];
       for (const point of points) {
-        const fullAddress = `${point.cityId.name}, ${point.address}`;
-        const coords = await getCoords(fullAddress);
-        if (coords) pointsCoords.push({ coords: coords, point: point });
+        if (point.cityId) {
+          const fullAddress = `${point.cityId.name}, ${point.address}`;
+          const coords = await getCoords(fullAddress);
+          if (coords) pointsCoords.push({ coords: coords, point: point });
+        }
       }
       if (!cleanupFunction) {
         setPointsCoords(pointsCoords);
@@ -162,7 +171,7 @@ export default function LocationStep(props) {
 
           <Autocomplete
             options={points?.filter(
-              (point) => point.cityId.name === cityData?.name
+              (point) => point.cityId && point.cityId.name === cityData?.name
             )}
             getOptionLabel={(option) => option.address || ''}
             getOptionSelected={(option, value) => option.id === value.id}
