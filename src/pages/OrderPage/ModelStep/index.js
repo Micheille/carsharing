@@ -6,6 +6,7 @@ import Radio from '../../../components/Radio';
 
 import {
   SERVER,
+  ORIGIN,
   HEADERS,
   DB_GET_CATEGORIES,
   DB_GET_CARS,
@@ -103,7 +104,7 @@ export default function ModelStep(props) {
     if (typeof imageLink === 'string' && imageLink.match('base64')) {
       return imageLink;
     }
-    return `https://api-factory.simbirsoft1.com${imageLink}`;
+    return `${ORIGIN}${imageLink}`;
   };
 
   return (

@@ -27,7 +27,6 @@ export default function LocationStep(props) {
     setPointsCoords,
   } = props;
 
-  // const [pointsCoords, setPointsCoords] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [ymaps, setYmaps] = useState(null);
   const [error, setError] = useState('');
