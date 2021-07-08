@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import {
   SERVER,
@@ -80,8 +82,8 @@ export default function ModelStep(props) {
     return () => (cleanupFunction = true);
   }, [categoryData]);
 
-  const onCategoryChange = (e) => {
-    const id = e.currentTarget.value;
+  const onCategoryChange = (event) => {
+    const id = event.target.value;
     const category = categories.find((categoryItem) => categoryItem.id === id);
     setCarsByCategory([]);
     setCategoryData(category);
@@ -114,6 +116,20 @@ export default function ModelStep(props) {
           </li>
         ))}
       </ul>
+
+      <Select
+        value={categoryData?.id || ''}
+        onChange={onCategoryChange}
+        displayEmpty
+        className='model-step__select'
+        inputProps={{ 'aria-label': 'Without label' }}
+      >
+        {categories.map((categoryItem, index) => (
+          <MenuItem key={index} value={categoryItem.id}>
+            {categoryItem.name}
+          </MenuItem>
+        ))}
+      </Select>
 
       <div className='model-step__car-list-container'>
         <div className='model-step__car-list'>

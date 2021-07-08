@@ -11,6 +11,11 @@
     display: inline;
     margin-right: 16px;
   }
+
+  &__select.MuiInputBase-root {
+    display: none;
+  }
+
   &__radio {
     position: absolute;
     z-index: -1;
