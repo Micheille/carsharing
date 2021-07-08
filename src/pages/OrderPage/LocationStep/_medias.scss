@@ -8,6 +8,9 @@
 
 @media screen and (max-device-width: 767px), screen and (max-width: 767px) {
   .location-step {
+    &__form-container {
+      text-align: left;
+    }
     &__label {
       display: block;
       margin-bottom: 8px;
