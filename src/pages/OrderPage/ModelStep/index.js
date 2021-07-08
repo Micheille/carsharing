@@ -26,6 +26,7 @@ export default function ModelStep(props) {
     setCarsByCategory,
   } = props;
 
+  const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -75,11 +76,18 @@ export default function ModelStep(props) {
         const carsByCategoryData = data.data;
         if (!cleanupFunction) {
           setCarsByCategory(carsByCategoryData);
+          return carsByCategoryData.length;
         }
       }
     };
 
-    getCarsByCategory();
+    const loadCarsByCategory = async () => {
+      const carsLoadedLength = await getCarsByCategory();
+      if (carsLoadedLength !== undefined) setIsLoaded(true);
+    };
+
+    setIsLoaded(false);
+    loadCarsByCategory();
 
     return () => (cleanupFunction = true);
   }, [categoryData]);
@@ -128,6 +136,8 @@ export default function ModelStep(props) {
           </MenuItem>
         ))}
       </Select>
+
+      {isLoaded && carsByCategory.length === 0 && <div>No results found.</div>}
 
       <div className='model-step__car-list-container'>
         <div className='model-step__car-list'>
