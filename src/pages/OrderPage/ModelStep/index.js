@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
+import Radio from '../../../components/Radio';
+
 import {
   SERVER,
   HEADERS,
@@ -101,8 +103,7 @@ export default function ModelStep(props) {
       <ul className='model-step__category-list'>
         {categories.map((categoryItem, index) => (
           <li key={index} className='model-step__category-item'>
-            <input
-              className='model-step__radio'
+            <Radio
               type='radio'
               name='category'
               id={categoryItem.name}
@@ -110,9 +111,6 @@ export default function ModelStep(props) {
               checked={categoryData?.id === categoryItem.id}
               onChange={onCategoryChange}
             />
-            <label className='model-step__label' htmlFor={categoryItem.name}>
-              {categoryItem.name}
-            </label>
           </li>
         ))}
       </ul>
