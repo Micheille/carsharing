@@ -6,7 +6,7 @@
   opacity: 0;
 
   &:checked {
-    & + .label {
+    & + .radio-label {
       color: $black;
 
       &::before {
@@ -16,7 +16,7 @@
     }
   }
   &:not(:checked) {
-    & + .label {
+    & + .radio-label {
       &:hover {
         &::before {
           box-shadow: inset 0px 0px 0 1px $black;
@@ -26,19 +26,19 @@
   }
 }
 
-.label {
-	display: inline-flex;
-	cursor: pointer;
-	align-items: center;
-	color: $gray;
+.radio-label {
+  display: inline-flex;
+  cursor: pointer;
+  align-items: center;
+  color: $gray;
 
-	&::before {
-		content: '';
-		display: inline-block;
-		margin-right: 8px;
-		width: 12px;
-		height: 12px;
-		box-shadow: inset 0px 0px 0 1px $gray;
-		border-radius: 50%;
-	}
+  &::before {
+    content: '';
+    display: inline-block;
+    margin-right: 8px;
+    width: 12px;
+    height: 12px;
+    box-shadow: inset 0px 0px 0 1px $gray;
+    border-radius: 50%;
+  }
 }
