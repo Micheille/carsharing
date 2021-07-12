@@ -88,6 +88,7 @@ export default function ExtrasStep(props) {
             <label htmlFor='date-to' className='extras-step__date-time-label'>По</label>
             <DateTimePicker
               id='date-to'
+              disabled={reservationFrom === null}
               dateValue={reservationTo}
               setDateFunction={setReservationTo}
             />
