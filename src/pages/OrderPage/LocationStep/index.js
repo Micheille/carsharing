@@ -122,19 +122,20 @@ export default function LocationStep(props) {
     let cleanupFunction = false;
 
     const getPointsCoords = async (points) => {
-      let pointsCoords = [];
+      let pointsCoordsGot = [];
       for (const point of points) {
         if (point.cityId) {
           const fullAddress = `${point.cityId.name}, ${point.address}`;
           const coords = await getCoords(fullAddress);
-          if (coords) pointsCoords.push({ coords: coords, point: point });
+          if (coords) pointsCoordsGot.push({ coords: coords, point: point });
         }
       }
       if (!cleanupFunction) {
-        setPointsCoords(pointsCoords);
+        !pointsCoords.length && setPointsCoords(pointsCoordsGot);
       }
-      return pointsCoords.length !== 0;
+      return pointsCoordsGot.length !== 0;
     };
+
     const loadPointsCoords = async () => {
       const loaded = await getPointsCoords(points);
 
