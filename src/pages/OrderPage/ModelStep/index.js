@@ -113,10 +113,10 @@ export default function ModelStep(props) {
         {categories.map((categoryItem, index) => (
           <li key={index} className='model-step__category-item'>
             <Radio
-              type='radio'
               name='category'
               id={categoryItem.name}
               value={categoryItem.id}
+              text={categoryItem.name}
               checked={categoryData?.id === categoryItem.id}
               onChange={onCategoryChange}
             />
