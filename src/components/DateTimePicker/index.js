@@ -60,6 +60,8 @@ export default function CustomDateTimePicker({
             value={dateValue || null}
             onChange={(value) => setDateFunction(value)}
             ampm={false}
+            autoOk={true}
+            strictCompareDates={true}
             disablePast
             variant='inline'
             format={'d.MM.yyyy p'}

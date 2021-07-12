@@ -81,14 +81,19 @@ export default function ExtrasStep(props) {
               id='date-from'
               dateValue={reservationFrom}
               setDateFunction={setReservationFrom}
+              minDateMessage='Дата не должна быть ранее текущей'
             />
           </div>
 
           <div className='extras-step__date-time-item'>
-            <label htmlFor='date-to' className='extras-step__date-time-label'>По</label>
+            <label htmlFor='date-to' className='extras-step__date-time-label'>
+              По
+            </label>
             <DateTimePicker
               id='date-to'
               disabled={reservationFrom === null}
+              minDate={reservationFrom}
+              minDateMessage='Дата не должна быть ранее аренды'
               dateValue={reservationTo}
               setDateFunction={setReservationTo}
             />
