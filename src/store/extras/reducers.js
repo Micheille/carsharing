@@ -7,7 +7,7 @@ import { EXTRAS_CHANGE_COLOR,
          EXTRAS_CHANGE_SERVICES_RIGHTHAND } from './actions'
 
 const defaultState = {
-    color: '',
+    color: 'Любой',
     dateFrom: '',
     dateTo: '',
     tariff: '',

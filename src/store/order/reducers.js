@@ -13,7 +13,7 @@ import {
 } from './actions';
 
 const extrasDefaultState = {
-  color: null,
+  color: 'Любой',
   reservationTime: {
     from: null,
     to: null,
