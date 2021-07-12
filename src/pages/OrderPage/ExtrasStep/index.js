@@ -60,7 +60,7 @@ export default function ExtrasStep(props) {
                 name='color'
                 id={colorItem}
                 value={colorItem}
-                text={colorItem}
+                text={colorItem[0].toUpperCase() + colorItem.substring(1)}
                 checked={colorItem === color}
                 onChange={(event) => setColor(event.target.value)}
               />
