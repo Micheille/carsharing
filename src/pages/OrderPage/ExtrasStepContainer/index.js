@@ -3,17 +3,13 @@ import { connect } from 'react-redux';
 
 import ExtrasStep from '../ExtrasStep';
 import {
-  setDateTimeFrom,
-  setDateTimeTo,
-  setTariff,
-  setIsFullTank,
-  setIsBabySeat,
-  setIsRightHand,
-} from '../../../store/static/actions';
-import {
   setColor,
   setReservationFrom,
   setReservationTo,
+  setPlan,
+  setIsFullTank,
+  setHasBabySeat,
+  setIsRightHand,
 } from '../../../store/order/actions';
 
 function ExtrasStepContainer(props) {
@@ -22,21 +18,17 @@ function ExtrasStepContainer(props) {
     color,
     reservationFrom,
     reservationTo,
-    dateTimeFrom,
-    dateTimeTo,
-    tariff,
+    plan,
     isFullTank,
-    isBabySeat,
+    hasBabySeat,
     isRightHand,
 
     setColor,
     setReservationFrom,
     setReservationTo,
-    setDateTimeFrom,
-    setDateTimeTo,
-    setTariff,
+    setPlan,
     setIsFullTank,
-    setIsBabySeat,
+    setHasBabySeat,
     setIsRightHand,
   } = props;
 
@@ -46,20 +38,16 @@ function ExtrasStepContainer(props) {
       setColor={setColor}
       setReservationFrom={setReservationFrom}
       setReservationTo={setReservationTo}
-      setDateTimeFrom={setDateTimeFrom}
-      setDateTimeTo={setDateTimeTo}
-      setTariff={setTariff}
+      setPlan={setPlan}
       setIsFullTank={setIsFullTank}
-      setIsBabySeat={setIsBabySeat}
+      setHasBabySeat={setHasBabySeat}
       setIsRightHand={setIsRightHand}
       color={color}
       reservationFrom={reservationFrom}
       reservationTo={reservationTo}
-      dateTimeFrom={dateTimeFrom}
-      dateTimeTo={dateTimeTo}
-      tariff={tariff}
+      plan={plan}
       isFullTank={isFullTank}
-      isBabySeat={isBabySeat}
+      hasBabySeat={hasBabySeat}
       isRightHand={isRightHand}
     />
   );
@@ -71,12 +59,10 @@ const mapStateToProps = (state) => {
     color: state.order.extras.color,
     reservationFrom: state.order.extras.reservationTime.from,
     reservationTo: state.order.extras.reservationTime.to,
-    dateFrom: state.order.dateFrom,
-    dateTo: state.order.dateTo,
-    tariff: state.order.tariff,
-    fullTank: state.order.fullTank,
-    babySeat: state.order.babySeat,
-    rightHand: state.order.rightHand,
+    plan: state.order.extras.plan,
+    isFullTank: state.order.extras.service.isFullTank,
+    hasBabySeat: state.order.extras.service.hasBabySeat,
+    isRightHand: state.order.extras.service.isRightHand,
   };
 };
 
@@ -84,11 +70,9 @@ const mapDispatchToProps = {
   setColor,
   setReservationFrom,
   setReservationTo,
-  setDateTimeFrom,
-  setDateTimeTo,
-  setTariff,
+  setPlan,
   setIsFullTank,
-  setIsBabySeat,
+  setHasBabySeat,
   setIsRightHand,
 };
 

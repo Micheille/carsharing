@@ -2,61 +2,41 @@ import React from 'react';
 
 import Radio from '../../../components/Radio';
 import DateTimePicker from '../../../components/DateTimePicker';
+import Checkbox from '../../../components/Checkbox';
 
 import './style.scss';
 
 const plans = [
-  { name: 'Поминутно', price: '7₽/мин' },
+  { name: 'Поминутно', price: '7 ₽/мин' },
   { name: 'На сутки', price: '1999 ₽/сутки' },
+];
+
+const services = [
+  { name: 'Полный бак', price: 500 },
+  { name: 'Детское кресло', price: 200 },
+  { name: 'Правый руль', price: 1600 },
 ];
 
 export default function ExtrasStep(props) {
   const {
     carData,
+
     setColor,
     setReservationFrom,
     setReservationTo,
-    setDateTimeFrom,
-    setDateTimeTo,
-    setTariff,
+    setPlan,
     setIsFullTank,
-    setIsBabySeat,
+    setHasBabySeat,
     setIsRightHand,
 
     color,
     reservationFrom,
     reservationTo,
-    dateTimeFrom,
-    dateTimeTo,
-    tariff,
+    plan,
     isFullTank,
-    isBabySeat,
+    hasBabySeat,
     isRightHand,
   } = props;
-
-  const onDateFromChange = (e) => {
-    setDateTimeFrom(e.target.value);
-  };
-
-  const onDateToChange = (e) => {
-    setDateTimeTo(e.target.value);
-  };
-
-  const onTariffChange = (e) => {
-    setTariff(e.currentTarget.value);
-  };
-
-  const onFullTankChange = (e) => {
-    setIsFullTank(e.target.checked);
-  };
-
-  const onBabySeatChange = (e) => {
-    setIsBabySeat(e.target.checked);
-  };
-
-  const onRightHandChange = (e) => {
-    setIsRightHand(e.target.checked);
-  };
 
   return (
     <div className='order-process-content__step extras-step'>
@@ -115,13 +95,17 @@ export default function ExtrasStep(props) {
         <p className='extras-step__group-label'>Тариф</p>
 
         <ul className='extras-step__plan-list'>
-          {plans.map((plan, index) => (
+          {plans.map((planItem, index) => (
             <li key={index}>
               <Radio
                 name='plan'
-                id={plan.name}
-                value={plan.name}
-                text={plan.name}
+                id={planItem.name}
+                value={planItem.name}
+                text={planItem.name}
+                checked={planItem.name === plan}
+                onChange={(event) => {
+                  setPlan(event.target.value);
+                }}
               />
             </li>
           ))}
@@ -131,29 +115,38 @@ export default function ExtrasStep(props) {
       <div className='extras-step__group'>
         <p className='extras-step__group-label'>Доп. услуги</p>
 
-        <input
-          type='checkbox'
-          name='full-tank'
-          checked={isFullTank}
-          onClick={onFullTankChange}
-        />
-        <span>Полный бак</span>
-
-        <input
-          type='checkbox'
-          name='baby-seat'
-          checked={isBabySeat}
-          onClick={onBabySeatChange}
-        />
-        <span>Детское кресло</span>
-
-        <input
-          type='checkbox'
-          name='right-hand'
-          checked={isRightHand}
-          onClick={onRightHandChange}
-        />
-        <span>Правый руль</span>
+        <ul className='extras-step__service-list'>
+          <li>
+            <Checkbox
+              name='isFullTank'
+              id='isFullTank'
+              value={isFullTank}
+              text='Полный бак'
+              checked={isFullTank}
+              onChange={(event) => setIsFullTank(event.target.checked)}
+            />
+          </li>
+          <li>
+            <Checkbox
+              name='hasBabySeat'
+              id='hasBabySeat'
+              value={hasBabySeat}
+              text='Детское кресло'
+              checked={hasBabySeat}
+              onChange={(event) => setHasBabySeat(event.target.checked)}
+            />
+          </li>
+          <li>
+            <Checkbox
+              name='isRightHand'
+              id='isRightHand'
+              value={isRightHand}
+              text='Правый руль'
+              checked={isRightHand}
+              onChange={(event) => setIsRightHand(event.target.checked)}
+            />
+          </li>
+        </ul>
       </div>
     </div>
   );

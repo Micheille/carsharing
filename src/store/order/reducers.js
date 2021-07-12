@@ -6,6 +6,10 @@ import {
   CHANGE_COLOR,
   CHANGE_RESERVATION_FROM,
   CHANGE_RESERVATION_TO,
+  CHANGE_PLAN,
+  CHANGE_IS_FULL,
+  CHANGE_HAS_BABY_SEAT,
+  CHANGE_IS_RIGHT_HAND,
 } from './actions';
 
 const extrasDefaultState = {
@@ -14,8 +18,11 @@ const extrasDefaultState = {
     from: null,
     to: null,
   },
+  plan: null,
   service: {
     isFullTank: false,
+    hasBabySeat: false,
+    isRightHand: false,
   },
 };
 
@@ -80,7 +87,10 @@ export const orderReducer = (state = defaultState, action) => {
     case CHANGE_COLOR:
       return {
         ...state,
-        extras: { ...state.extras, color: action.payload },
+        extras: {
+          ...state.extras,
+          color: action.payload,
+        },
       };
     case CHANGE_RESERVATION_FROM:
       return {
@@ -101,6 +111,47 @@ export const orderReducer = (state = defaultState, action) => {
           reservationTime: {
             ...state.extras.reservationTime,
             to: action.payload,
+          },
+        },
+      };
+    case CHANGE_PLAN:
+      return {
+        ...state,
+        extras: {
+          ...state.extras,
+          plan: action.payload,
+        },
+      };
+    case CHANGE_IS_FULL:
+      return {
+        ...state,
+        extras: {
+          ...state.extras,
+          service: {
+            ...state.extras.service,
+            isFullTank: action.payload,
+          },
+        },
+      };
+    case CHANGE_HAS_BABY_SEAT:
+      return {
+        ...state,
+        extras: {
+          ...state.extras,
+          service: {
+            ...state.extras.service,
+            hasBabySeat: action.payload,
+          },
+        },
+      };
+    case CHANGE_IS_RIGHT_HAND:
+      return {
+        ...state,
+        extras: {
+          ...state.extras,
+          service: {
+            ...state.extras.service,
+            isRightHand: action.payload,
           },
         },
       };
