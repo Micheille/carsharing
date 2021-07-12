@@ -68,7 +68,10 @@ export default function CustomDateTimePicker({
             color='secondary'
             {...restProps}
           />
-          <span className='date-time-picker__icon-close'></span>
+          <span
+            className='date-time-picker__icon-close'
+            onClick={() => setDateFunction(null)}
+          ></span>
         </div>
       </MuiPickersUtilsProvider>
     </ThemeProvider>
