@@ -20,6 +20,10 @@ const theme = createTheme({
         fontSize: '14px',
         fontWeight: '300',
         color: '#121212',
+        '&::placeholder': {
+          color: '#999999',
+          opacity: 1,
+        },
       },
       underline: {
         '&:hover:not(.Mui-disabled):before': {
