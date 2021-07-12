@@ -47,4 +47,13 @@
       }
     }
   }
+  &:not(:checked) {
+    & + .checkbox-label {
+      &:hover {
+        &::before {
+          box-shadow: inset 0px 0px 0 1px $black;
+        }
+      }
+    }
+  }
 }
