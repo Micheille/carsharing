@@ -12,11 +12,11 @@ function Overall(props) {
     pointData,
     carData,
     color,
-    dateTimeFrom,
-    dateTimeTo,
-    tariff,
+    reservationFrom,
+    reservationTo,
+    plan,
     isFullTank,
-    isBabySeat,
+    hasBabySeat,
     isRightHand,
   } = props;
 
@@ -38,7 +38,7 @@ function Overall(props) {
     case 2:
       nextLocationLink = '/order/total';
       orderButtonText = 'Итого';
-      disabled = !(color && dateTimeFrom && dateTimeTo && tariff);
+      disabled = !(reservationFrom && reservationTo && plan);
       break;
     case 3:
       nextLocationLink = '/order/total';
@@ -76,18 +76,20 @@ function Overall(props) {
         ) : (
           <></>
         )}
-        {dateTimeFrom && dateTimeTo ? (
+        {reservationFrom && reservationTo ? (
           <li className='overall__item'>
             <span className='overall__hidden'>Длительность аренды</span>
-            <span>{` ${new Date(dateTimeTo) - new Date(dateTimeFrom)}`}</span>
+            <span>{` ${
+              new Date(reservationTo) - new Date(reservationFrom)
+            }`}</span>
           </li>
         ) : (
           <></>
         )}
-        {tariff ? (
+        {plan ? (
           <li className='overall__item'>
             <span className='overall__hidden'>Тариф</span>
-            <span>{` ${tariff}`}</span>
+            <span>{` ${plan}`}</span>
           </li>
         ) : (
           <></>
@@ -100,7 +102,7 @@ function Overall(props) {
         ) : (
           <></>
         )}
-        {isBabySeat ? (
+        {hasBabySeat ? (
           <li className='overall__item'>
             <span className='overall__lowercase'>Детское кресло</span>
             <span className='overall__hidden'>{` Да`}</span>
@@ -140,13 +142,13 @@ const mapStateToProps = (state) => {
     cityData: state.order.cityData,
     pointData: state.order.pointData,
     carData: state.order.carData,
-    color: state.order.color,
-    dateTimeFrom: state.order.dateTimeFrom,
-    dateTimeTo: state.order.dateTimeTo,
-    tariff: state.order.tariff,
-    isFullTank: state.order.isFullTank,
-    isBabySeat: state.order.isBabySeat,
-    isRightHand: state.order.isRightHand,
+    color: state.order.extras.color,
+    reservationFrom: state.order.extras.reservationTime.from,
+    reservationTo: state.order.extras.reservationTime.to,
+    plan: state.order.extras.plan,
+    isFullTank: state.order.extras.service.isFullTank,
+    hasBabySeat: state.order.extras.service.hasBabySeat,
+    isRightHand: state.order.extras.service.isRightHand,
   };
 };
 
