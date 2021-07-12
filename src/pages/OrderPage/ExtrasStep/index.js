@@ -72,22 +72,26 @@ export default function ExtrasStep(props) {
       <div className='extras-step__group'>
         <p className='extras-step__group-label'>Дата аренды</p>
 
-        <div>
-          <label htmlFor='date-from'>С</label>
-          <DateTimePicker
-            id='date-from'
-            dateValue={reservationFrom}
-            setDateFunction={setReservationFrom}
-          />
-        </div>
+        <div className='extras-step__date-time-list'>
+          <div className='extras-step__date-time-item'>
+            <label htmlFor='date-from' className='extras-step__date-time-label'>
+              С
+            </label>
+            <DateTimePicker
+              id='date-from'
+              dateValue={reservationFrom}
+              setDateFunction={setReservationFrom}
+            />
+          </div>
 
-        <div>
-          <label htmlFor='date-to'>По</label>
-          <DateTimePicker
-            id='date-to'
-            dateValue={reservationTo}
-            setDateFunction={setReservationTo}
-          />
+          <div className='extras-step__date-time-item'>
+            <label htmlFor='date-to' className='extras-step__date-time-label'>По</label>
+            <DateTimePicker
+              id='date-to'
+              dateValue={reservationTo}
+              setDateFunction={setReservationTo}
+            />
+          </div>
         </div>
       </div>
 
@@ -96,7 +100,7 @@ export default function ExtrasStep(props) {
 
         <ul className='extras-step__plan-list'>
           {plans.map((planItem, index) => (
-            <li key={index}>
+            <li key={index} className='extras-step__list-item'>
               <Radio
                 name='plan'
                 id={planItem.name}
@@ -116,7 +120,7 @@ export default function ExtrasStep(props) {
         <p className='extras-step__group-label'>Доп. услуги</p>
 
         <ul className='extras-step__service-list'>
-          <li>
+          <li className='extras-step__list-item'>
             <Checkbox
               name='isFullTank'
               id='isFullTank'
@@ -126,7 +130,7 @@ export default function ExtrasStep(props) {
               onChange={(event) => setIsFullTank(event.target.checked)}
             />
           </li>
-          <li>
+          <li className='extras-step__list-item'>
             <Checkbox
               name='hasBabySeat'
               id='hasBabySeat'
@@ -136,7 +140,7 @@ export default function ExtrasStep(props) {
               onChange={(event) => setHasBabySeat(event.target.checked)}
             />
           </li>
-          <li>
+          <li className='extras-step__list-item'>
             <Checkbox
               name='isRightHand'
               id='isRightHand'
