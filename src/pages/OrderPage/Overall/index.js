@@ -14,7 +14,7 @@ function Overall(props) {
     color,
     reservationFrom,
     reservationTo,
-    plan,
+    rate,
     isFullTank,
     hasBabySeat,
     isRightHand,
@@ -38,7 +38,7 @@ function Overall(props) {
     case 2:
       nextLocationLink = '/order/total';
       orderButtonText = 'Итого';
-      disabled = !(color && reservationFrom && reservationTo && plan);
+      disabled = !(color && reservationFrom && reservationTo && rate);
       break;
     case 3:
       nextLocationLink = '/order/total';
@@ -86,10 +86,10 @@ function Overall(props) {
         ) : (
           <></>
         )}
-        {plan ? (
+        {rate ? (
           <li className='overall__item'>
             <span className='overall__hidden'>Тариф</span>
-            <span>{` ${plan}`}</span>
+            <span>{` ${rate.rateTypeId.name}`}</span>
           </li>
         ) : (
           <></>
@@ -145,7 +145,7 @@ const mapStateToProps = (state) => {
     color: state.order.extras.color,
     reservationFrom: state.order.extras.reservationTime.from,
     reservationTo: state.order.extras.reservationTime.to,
-    plan: state.order.extras.plan,
+    rate: state.order.extras.rate,
     isFullTank: state.order.extras.service.isFullTank,
     hasBabySeat: state.order.extras.service.hasBabySeat,
     isRightHand: state.order.extras.service.isRightHand,

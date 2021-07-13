@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ExtrasStep from '../ExtrasStep';
+import { setRates } from '../../../store/data/actions';
 import {
   setColor,
   setReservationFrom,
   setReservationTo,
-  setPlan,
+  setRate,
   setIsFullTank,
   setHasBabySeat,
   setIsRightHand,
@@ -15,10 +16,13 @@ import {
 function ExtrasStepContainer(props) {
   const {
     carData,
+    ratesData,
+    setRates,
+
     color,
     reservationFrom,
     reservationTo,
-    plan,
+    rate,
     isFullTank,
     hasBabySeat,
     isRightHand,
@@ -26,7 +30,7 @@ function ExtrasStepContainer(props) {
     setColor,
     setReservationFrom,
     setReservationTo,
-    setPlan,
+    setRate,
     setIsFullTank,
     setHasBabySeat,
     setIsRightHand,
@@ -35,17 +39,19 @@ function ExtrasStepContainer(props) {
   return (
     <ExtrasStep
       carData={carData}
+      ratesData={ratesData}
+      setRates={setRates}
       setColor={setColor}
       setReservationFrom={setReservationFrom}
       setReservationTo={setReservationTo}
-      setPlan={setPlan}
+      setRate={setRate}
       setIsFullTank={setIsFullTank}
       setHasBabySeat={setHasBabySeat}
       setIsRightHand={setIsRightHand}
       color={color}
       reservationFrom={reservationFrom}
       reservationTo={reservationTo}
-      plan={plan}
+      rate={rate}
       isFullTank={isFullTank}
       hasBabySeat={hasBabySeat}
       isRightHand={isRightHand}
@@ -56,10 +62,11 @@ function ExtrasStepContainer(props) {
 const mapStateToProps = (state) => {
   return {
     carData: state.order.carData,
+    ratesData: state.data.ratesData,
     color: state.order.extras.color,
     reservationFrom: state.order.extras.reservationTime.from,
     reservationTo: state.order.extras.reservationTime.to,
-    plan: state.order.extras.plan,
+    rate: state.order.extras.rate,
     isFullTank: state.order.extras.service.isFullTank,
     hasBabySeat: state.order.extras.service.hasBabySeat,
     isRightHand: state.order.extras.service.isRightHand,
@@ -67,10 +74,11 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
+  setRates,
   setColor,
   setReservationFrom,
   setReservationTo,
-  setPlan,
+  setRate,
   setIsFullTank,
   setHasBabySeat,
   setIsRightHand,

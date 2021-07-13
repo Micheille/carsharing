@@ -4,6 +4,7 @@ import {
   SET_POINTS_COORDS,
   SET_CATEGORIES,
   SET_CARS_BY_CATEGORY,
+  SET_RATES,
 } from './actions';
 
 const defaultState = {
@@ -12,6 +13,7 @@ const defaultState = {
   pointsCoords: [],
   categoriesData: [],
   carsByCategory: [],
+  ratesData: [],
 };
 
 export const dataReducer = (state = defaultState, action) => {
@@ -26,6 +28,8 @@ export const dataReducer = (state = defaultState, action) => {
       return { ...state, categoriesData: action.payload };
     case SET_CARS_BY_CATEGORY:
       return { ...state, carsByCategory: action.payload };
+    case SET_RATES:
+      return { ...state, ratesData: action.payload };
     default:
   }
 

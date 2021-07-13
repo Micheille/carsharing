@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Radio from '../../../components/Radio';
 import DateTimePicker from '../../../components/DateTimePicker';
 import Checkbox from '../../../components/Checkbox';
+
+import { SERVER, HEADERS, DB_GET_RATES } from '../../../components/App/api';
 
 import './style.scss';
 
@@ -11,20 +13,16 @@ const plans = [
   { name: 'На сутки', price: '1999 ₽/сутки' },
 ];
 
-const services = [
-  { name: 'Полный бак', price: 500 },
-  { name: 'Детское кресло', price: 200 },
-  { name: 'Правый руль', price: 1600 },
-];
-
 export default function ExtrasStep(props) {
   const {
     carData,
+    ratesData,
+    setRates,
 
     setColor,
     setReservationFrom,
     setReservationTo,
-    setPlan,
+    setRate,
     setIsFullTank,
     setHasBabySeat,
     setIsRightHand,
@@ -32,11 +30,44 @@ export default function ExtrasStep(props) {
     color,
     reservationFrom,
     reservationTo,
-    plan,
+    rate,
     isFullTank,
     hasBabySeat,
     isRightHand,
   } = props;
+
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    let cleanupFunction = false;
+
+    const getRates = async () => {
+      const url = new URL(`${SERVER}${DB_GET_RATES}`);
+      const headers = HEADERS;
+      const response = await fetch(url, { headers });
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message);
+      } else {
+        const ratesData = data.data;
+
+        if (!cleanupFunction) {
+          setRates(ratesData);
+        }
+      }
+    };
+
+    !ratesData.length && getRates();
+
+    return () => (cleanupFunction = true);
+  }, []);
+
+  const onRateChange = (event) => {
+    const id = event.target.value;
+    const rate = ratesData.find((rateItem) => rateItem.id === id);
+    setRate(rate);
+  };
 
   if (!carData?.colors || !carData?.colors.length) {
     setColor('Любой');
@@ -108,18 +139,16 @@ export default function ExtrasStep(props) {
       <div className='extras-step__group'>
         <p className='extras-step__group-label'>Тариф</p>
 
-        <ul className='extras-step__plan-list'>
-          {plans.map((planItem, index) => (
+        <ul className='extras-step__rate-list'>
+          {ratesData.map((rateItem, index) => (
             <li key={index} className='extras-step__list-item'>
               <Radio
-                name='plan'
-                id={planItem.name}
-                value={planItem.name}
-                text={planItem.name}
-                checked={planItem.name === plan}
-                onChange={(event) => {
-                  setPlan(event.target.value);
-                }}
+                name='rate'
+                id={rateItem.id}
+                value={rateItem.id}
+                text={`${rateItem.rateTypeId.name}, ${rateItem.price} ₽/${rateItem.rateTypeId.unit}`}
+                checked={rateItem.id === rate?.id}
+                onChange={onRateChange}
               />
             </li>
           ))}

@@ -6,7 +6,7 @@ import {
   CHANGE_COLOR,
   CHANGE_RESERVATION_FROM,
   CHANGE_RESERVATION_TO,
-  CHANGE_PLAN,
+  CHANGE_RATE,
   CHANGE_IS_FULL,
   CHANGE_HAS_BABY_SEAT,
   CHANGE_IS_RIGHT_HAND,
@@ -18,7 +18,7 @@ const extrasDefaultState = {
     from: null,
     to: null,
   },
-  plan: null,
+  rate: null,
   service: {
     isFullTank: false,
     hasBabySeat: false,
@@ -116,12 +116,12 @@ export const orderReducer = (state = defaultState, action) => {
           },
         },
       };
-    case CHANGE_PLAN:
+    case CHANGE_RATE:
       return {
         ...state,
         extras: {
           ...state.extras,
-          plan: action.payload,
+          rate: action.payload,
         },
       };
     case CHANGE_IS_FULL:

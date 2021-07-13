@@ -5,7 +5,7 @@ export const CHANGE_CAR_DATA = 'CHANGE_CAR_DATA';
 export const CHANGE_COLOR = 'CHANGE_COLOR';
 export const CHANGE_RESERVATION_FROM = 'CHANGE_RESERVATION_FROM';
 export const CHANGE_RESERVATION_TO = 'CHANGE_RESERVATION_TO';
-export const CHANGE_PLAN = 'CHANGE_PLAN';
+export const CHANGE_RATE = 'CHANGE_RATE';
 export const CHANGE_IS_FULL = 'CHANGE_IS_FULL';
 export const CHANGE_HAS_BABY_SEAT = 'CHANGE_HAS_BABY_SEAT';
 export const CHANGE_IS_RIGHT_HAND = 'CHANGE_IS_RIGHT_HAND';
@@ -45,9 +45,9 @@ export const setReservationTo = (reservationTo) => ({
   payload: reservationTo,
 });
 
-export const setPlan = (plan) => ({
-  type: CHANGE_PLAN,
-  payload: plan,
+export const setRate = (rate) => ({
+  type: CHANGE_RATE,
+  payload: rate,
 });
 
 export const setIsFullTank = (isFullTank) => ({
