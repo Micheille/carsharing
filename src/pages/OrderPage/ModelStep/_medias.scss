@@ -11,6 +11,13 @@
   .model-step {
     &__car-list {
       height: 100%;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__car-image {
+      height: 90px;
+      align-self: flex-end;
+      text-align: right;
     }
   }
 }
@@ -44,7 +51,7 @@
     }
 
     &__car-list {
-      height: 100%;
+      grid-template-columns: 1fr;
     }
 
     &__car-image {

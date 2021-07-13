@@ -16,31 +16,6 @@
     display: none;
   }
 
-  &__radio {
-    position: absolute;
-    z-index: -1;
-    opacity: 0;
-
-    &:checked {
-      & + .model-step__label {
-        color: $black;
-
-        &::before {
-          border-color: $accent;
-          box-shadow: inset 0px 0px 0 3px $accent;
-        }
-      }
-    }
-    &:not(:checked) {
-      & + .model-step__label {
-        &:hover {
-          &::before {
-            box-shadow: inset 0px 0px 0 1px $black;
-          }
-        }
-      }
-    }
-  }
   &__label {
     display: inline-flex;
     cursor: pointer;
@@ -69,7 +44,8 @@
 
     position: absolute;
     overflow-y: auto;
-    height: calc(100vh - 260px);
+    // height: calc(100vh - 260px);
+    height: 100%;
     width: 756px;
     padding-right: 16px;
 

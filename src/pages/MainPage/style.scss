@@ -10,10 +10,10 @@
   display: flex;
   align-items: stretch;
   height: 100vh;
+  min-height: 500px;
 
   &__link {
     text-decoration: none;
-    // color: black;
 
     &_gray-light {
       @include link($gray-light, $accent, $accent);
