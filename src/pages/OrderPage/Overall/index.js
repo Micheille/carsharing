@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
-  eachHourOfInterval,
-  eachMinuteOfInterval,
   differenceInHours,
+  differenceInMinutes,
+  differenceInDays,
 } from 'date-fns';
 
 import OrderButton from '../../../components/OrderButton';
@@ -11,25 +11,15 @@ import OrderButton from '../../../components/OrderButton';
 import './style.scss';
 
 const durationToString = (dateFrom, dateTo) => {
-  if (dateTo > dateFrom) {
-    const hoursInterval = eachHourOfInterval({
-      start: new Date(dateFrom),
-      end: new Date(dateTo),
-    });
-    const minutesInterval = eachMinuteOfInterval({
-      start: new Date(dateFrom),
-      end: new Date(dateTo),
-    });
-    const days = Math.floor(hoursInterval.length / 24);
-    const hours = differenceInHours(dateTo, dateFrom) % 24;
-    const minutes = Math.floor(minutesInterval.length % 60) - 1;
+  const days = differenceInDays(dateTo, dateFrom);
+  const hours = differenceInHours(dateTo, dateFrom) % 24;
+  const minutes = differenceInMinutes(dateTo, dateFrom) % 60;
 
-    const durationString = `${days ? days + 'д ' : ''}${
-      hours ? hours + 'ч ' : ''
-    }${minutes ? minutes + 'мин' : ''}`;
+  const durationString = `${days ? days + 'д ' : ''}${
+    hours ? hours + 'ч ' : ''
+  }${minutes ? minutes + 'мин' : ''}`;
 
-    return durationString;
-  }
+  return durationString;
 };
 
 function Overall(props) {
@@ -150,7 +140,11 @@ function Overall(props) {
       <p className='overall__price'>
         <span className='overall__price-title'>Цена:</span>{' '}
         <span className='overall__price-number'>
-          {carData ? `от ${carData.priceMin} до ${carData.priceMax}` : '—'}
+          {carData
+            ? reservationFrom && reservationTo && rate
+              ? `calcutale`
+              : `от ${carData.priceMin} до ${carData.priceMax}`
+            : '—'}
         </span>
       </p>
 
