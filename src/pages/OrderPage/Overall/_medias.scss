@@ -4,6 +4,7 @@
 
     &__title {
       display: inline;
+      margin: 0;
       font-size: 16px;
       text-align: left;
     }
@@ -12,8 +13,27 @@
       display: inline;
     }
 
+    &__city-name {
+      display: inline;
+      padding-left: 4px;
+    }
+
     &__item {
       display: inline;
+      margin-bottom: 0;
+      border-bottom: none;
+      position: static;
+
+      span {
+        position: static;
+
+        &:first-of-type {
+          padding-right: 0px;
+        }
+        &:last-of-type {
+          padding-left: 0px;
+        }
+      }
 
       &::after {
         content: ', ';
@@ -26,6 +46,11 @@
       }
     }
 
+    &__right {
+      color: $black;
+      text-align: left;
+    }
+
     &__color {
       &::after {
         content: ' цвет';
@@ -35,8 +60,12 @@
     &__media-lowercase {
       text-transform: lowercase;
     }
-    &__hidden {
+    &__media-hidden {
       display: none;
+    }
+
+    &__price {
+      margin-top: 8px;
     }
     &__price-title {
       color: $black;

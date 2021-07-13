@@ -103,25 +103,28 @@ function Overall(props) {
 
       <ul className='overall__list'>
         {cityData && pointData ? (
-          <li className='overall__item'>
-            <span className='overall__hidden'>Пункт выдачи</span>
-            <span>{` ${cityData.name} ${pointData.address}`}</span>
-          </li>
+          <>
+            <div className='overall__right overall__city-name'>{`${cityData?.name}, `}</div>
+            <li className='overall__item'>
+              <span className='overall__media-hidden'>Пункт выдачи</span>
+              <span className='overall__right'>{`${pointData.address}`}</span>
+            </li>
+          </>
         ) : (
           <></>
         )}
         {carData ? (
           <li className='overall__item'>
-            <span className='overall__hidden'>Модель</span>
-            <span>{` ${carData.name}`}</span>
+            <span className='overall__media-hidden'>Модель</span>
+            <span className='overall__right'>{`${carData.name}`}</span>
           </li>
         ) : (
           <></>
         )}
         {color ? (
           <li className='overall__item'>
-            <span className='overall__hidden'>Цвет</span>
-            <span className='overall__media-lowercase overall__color'>{` ${
+            <span className='overall__media-hidden'>Цвет</span>
+            <span className='overall__media-lowercase overall__color overall__right'>{` ${
               color[0].toUpperCase() + color.substring(1)
             }`}</span>
           </li>
@@ -130,16 +133,18 @@ function Overall(props) {
         )}
         {reservationFrom && reservationTo ? (
           <li className='overall__item'>
-            <span className='overall__hidden'>Длительность аренды</span>
-            <span>{durationToString(reservationFrom, reservationTo)}</span>
+            <span className='overall__media-hidden'>Длительность аренды</span>
+            <span className='overall__right'>
+              {durationToString(reservationFrom, reservationTo)}
+            </span>
           </li>
         ) : (
           <></>
         )}
         {rate ? (
           <li className='overall__item'>
-            <span className='overall__hidden'>Тариф</span>
-            <span className='overall__media-lowercase'>{` ${rate.rateTypeId.name}`}</span>
+            <span className='overall__media-hidden'>Тариф</span>
+            <span className='overall__media-lowercase overall__right'>{`${rate.rateTypeId.name}`}</span>
           </li>
         ) : (
           <></>
@@ -147,7 +152,7 @@ function Overall(props) {
         {isFullTank ? (
           <li className='overall__item'>
             <span className='overall__media-lowercase'>Полный бак</span>
-            <span className='overall__hidden'>{` Да`}</span>
+            <span className='overall__media-hidden overall__right'>{`Да`}</span>
           </li>
         ) : (
           <></>
@@ -155,7 +160,7 @@ function Overall(props) {
         {hasBabySeat ? (
           <li className='overall__item'>
             <span className='overall__media-lowercase'>Детское кресло</span>
-            <span className='overall__hidden'>{` Да`}</span>
+            <span className='overall__media-hidden overall__right'>{`Да`}</span>
           </li>
         ) : (
           <></>
@@ -163,7 +168,7 @@ function Overall(props) {
         {isRightHand ? (
           <li className='overall__item'>
             <span className='overall__media-lowercase'>Правый руль</span>
-            <span className='overall__hidden'>{` Да`}</span>
+            <span className='overall__media-hidden'>{`Да`}</span>
           </li>
         ) : (
           <></>
