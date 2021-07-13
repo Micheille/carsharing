@@ -4,6 +4,7 @@ import {
   differenceInHours,
   differenceInMinutes,
   differenceInDays,
+  differenceInWeeks,
 } from 'date-fns';
 
 import OrderButton from '../../../components/OrderButton';
@@ -15,11 +16,41 @@ const durationToString = (dateFrom, dateTo) => {
   const hours = differenceInHours(dateTo, dateFrom) % 24;
   const minutes = differenceInMinutes(dateTo, dateFrom) % 60;
 
-  const durationString = `${days ? days + 'д ' : ''}${
-    hours ? hours + 'ч ' : ''
-  }${minutes ? minutes + 'мин' : ''}`;
+  const durationString = `${days ? days + 'д' : ''}${
+    hours ? ' ' + hours + 'ч' : ''
+  }${minutes ? ' ' + minutes + 'мин' : ''}`;
 
   return durationString;
+};
+
+const calculatePrice = (
+  dateFrom,
+  dateTo,
+  rate,
+  isFullTank,
+  hasBabySeat,
+  isRightHand
+) => {
+  let price;
+
+  if (rate.rateTypeId.name.includes('Поминутно')) {
+    const minutes = differenceInMinutes(dateTo, dateFrom);
+    price = rate.price * minutes;
+  }
+  if (rate.rateTypeId.name.includes('Недельный')) {
+    const weeks = differenceInWeeks(dateTo, dateFrom);
+    price = rate.price * weeks;
+  }
+  if (rate.rateTypeId.name.includes('Суточный')) {
+    const days = differenceInDays(dateTo, dateFrom);
+    price = rate.price * days;
+  }
+
+  if (isFullTank) price += 500;
+  if (hasBabySeat) price += 200;
+  if (isRightHand) price += 1600;
+
+  return price;
 };
 
 function Overall(props) {
@@ -142,8 +173,15 @@ function Overall(props) {
         <span className='overall__price-number'>
           {carData
             ? reservationFrom && reservationTo && rate
-              ? `calcutale`
-              : `от ${carData.priceMin} до ${carData.priceMax}`
+              ? `${calculatePrice(
+                  reservationFrom,
+                  reservationTo,
+                  rate,
+                  isFullTank,
+                  hasBabySeat,
+                  isRightHand
+                )} ₽`
+              : `от ${carData.priceMin} до ${carData.priceMax} ₽`
             : '—'}
         </span>
       </p>
