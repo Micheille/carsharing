@@ -13,7 +13,7 @@ import {
 } from './actions';
 
 const extrasDefaultState = {
-  color: 'Любой',
+  color: null,
   reservationTime: {
     from: null,
     to: null,
@@ -78,11 +78,13 @@ export const orderReducer = (state = defaultState, action) => {
         ...state,
         categoryData: action.payload,
         carData: null,
+        extras: extrasDefaultState,
       };
     case CHANGE_CAR_DATA:
       return {
         ...state,
         carData: action.payload,
+        extras: extrasDefaultState,
       };
     case CHANGE_COLOR:
       return {

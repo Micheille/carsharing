@@ -38,6 +38,10 @@ export default function ExtrasStep(props) {
     isRightHand,
   } = props;
 
+  if (!carData?.colors || !carData?.colors.length) {
+    setColor('Любой');
+  }
+
   return (
     <div className='order-process-content__step extras-step'>
       <div className='extras-step__group'>
@@ -50,11 +54,11 @@ export default function ExtrasStep(props) {
               id='Любой'
               value='Любой'
               text='Любой'
-              checked={'Любой' === color}
+              checked={color === 'Любой'}
               onChange={(event) => setColor(event.target.value)}
             />
           </li>
-          {carData?.colors.map((colorItem, index) => (
+          {carData?.colors?.map((colorItem, index) => (
             <li key={index} className='extras-step__color-item'>
               <Radio
                 name='color'

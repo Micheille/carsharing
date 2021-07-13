@@ -38,7 +38,7 @@ function Overall(props) {
     case 2:
       nextLocationLink = '/order/total';
       orderButtonText = 'Итого';
-      disabled = !(reservationFrom && reservationTo && plan);
+      disabled = !(color && reservationFrom && reservationTo && plan);
       break;
     case 3:
       nextLocationLink = '/order/total';
