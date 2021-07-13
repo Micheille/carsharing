@@ -1,9 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {
+  eachHourOfInterval,
+  eachMinuteOfInterval,
+  differenceInHours,
+} from 'date-fns';
 
 import OrderButton from '../../../components/OrderButton';
 
 import './style.scss';
+
+const durationToString = (dateFrom, dateTo) => {
+  if (dateTo > dateFrom) {
+    const hoursInterval = eachHourOfInterval({
+      start: new Date(dateFrom),
+      end: new Date(dateTo),
+    });
+    const minutesInterval = eachMinuteOfInterval({
+      start: new Date(dateFrom),
+      end: new Date(dateTo),
+    });
+    const days = Math.floor(hoursInterval.length / 24);
+    const hours = differenceInHours(dateTo, dateFrom) % 24;
+    const minutes = Math.floor(minutesInterval.length % 60) - 1;
+
+    const durationString = `${days ? days + 'д ' : ''}${
+      hours ? hours + 'ч ' : ''
+    }${minutes ? minutes + 'мин' : ''}`;
+
+    return durationString;
+  }
+};
 
 function Overall(props) {
   const { activeStep, setActiveStep } = props;
@@ -81,9 +108,7 @@ function Overall(props) {
         {reservationFrom && reservationTo ? (
           <li className='overall__item'>
             <span className='overall__hidden'>Длительность аренды</span>
-            <span>{` ${
-              new Date(reservationTo) - new Date(reservationFrom)
-            }`}</span>
+            <span>{durationToString(reservationFrom, reservationTo)}</span>
           </li>
         ) : (
           <></>
