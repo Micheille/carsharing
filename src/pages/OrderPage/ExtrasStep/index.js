@@ -164,7 +164,7 @@ export default function ExtrasStep(props) {
               name='isFullTank'
               id='isFullTank'
               value={isFullTank}
-              text='Полный бак'
+              text='Полный бак, 500 ₽'
               checked={isFullTank}
               onChange={(event) => setIsFullTank(event.target.checked)}
             />
@@ -174,7 +174,7 @@ export default function ExtrasStep(props) {
               name='hasBabySeat'
               id='hasBabySeat'
               value={hasBabySeat}
-              text='Детское кресло'
+              text='Детское кресло, 200 ₽'
               checked={hasBabySeat}
               onChange={(event) => setHasBabySeat(event.target.checked)}
             />
@@ -184,7 +184,7 @@ export default function ExtrasStep(props) {
               name='isRightHand'
               id='isRightHand'
               value={isRightHand}
-              text='Правый руль'
+              text='Правый руль, 1600 ₽'
               checked={isRightHand}
               onChange={(event) => setIsRightHand(event.target.checked)}
             />
