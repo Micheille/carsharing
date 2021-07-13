@@ -116,7 +116,7 @@ function Overall(props) {
         {rate ? (
           <li className='overall__item'>
             <span className='overall__hidden'>Тариф</span>
-            <span>{` ${rate.rateTypeId.name}`}</span>
+            <span className='overall__media-lowercase'>{` ${rate.rateTypeId.name}`}</span>
           </li>
         ) : (
           <></>
