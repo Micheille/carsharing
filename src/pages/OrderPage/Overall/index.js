@@ -123,7 +123,10 @@ function Overall(props) {
       </ul>
 
       <p className='overall__price'>
-        <span className='overall__price-title'>Цена:</span> от 8 000 до 12 000
+        <span className='overall__price-title'>Цена:</span>{' '}
+        <span className='overall__price-number'>
+          {carData ? `от ${carData.priceMin} до ${carData.priceMax}` : '—'}
+        </span>
       </p>
 
       <div className='overall__button'>
