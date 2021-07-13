@@ -65,15 +65,15 @@ export const orderReducer = (state = defaultState, action) => {
         ...state,
         cityData: action.payload,
         pointData: null,
-        categoryData: null,
         carData: null,
+        extras: extrasDefaultState,
       };
     case CHANGE_POINT_DATA:
       return {
         ...state,
         pointData: action.payload,
-        categoryData: null,
         carData: null,
+        extras: extrasDefaultState,
       };
     case CHANGE_CATEGORY_DATA:
       return {
