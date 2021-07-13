@@ -71,7 +71,9 @@ function Overall(props) {
         {color ? (
           <li className='overall__item'>
             <span className='overall__hidden'>Цвет</span>
-            <span>{` ${color}`}</span>
+            <span className='overall__media-lowercase overall__color'>{` ${
+              color[0].toUpperCase() + color.substring(1)
+            }`}</span>
           </li>
         ) : (
           <></>
@@ -96,7 +98,7 @@ function Overall(props) {
         )}
         {isFullTank ? (
           <li className='overall__item'>
-            <span className='overall__lowercase'>Полный бак</span>
+            <span className='overall__media-lowercase'>Полный бак</span>
             <span className='overall__hidden'>{` Да`}</span>
           </li>
         ) : (
@@ -104,7 +106,7 @@ function Overall(props) {
         )}
         {hasBabySeat ? (
           <li className='overall__item'>
-            <span className='overall__lowercase'>Детское кресло</span>
+            <span className='overall__media-lowercase'>Детское кресло</span>
             <span className='overall__hidden'>{` Да`}</span>
           </li>
         ) : (
@@ -112,7 +114,7 @@ function Overall(props) {
         )}
         {isRightHand ? (
           <li className='overall__item'>
-            <span className='overall__lowercase'>Правый руль</span>
+            <span className='overall__media-lowercase'>Правый руль</span>
             <span className='overall__hidden'>{` Да`}</span>
           </li>
         ) : (

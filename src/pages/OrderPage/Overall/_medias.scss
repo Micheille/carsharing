@@ -26,7 +26,13 @@
       }
     }
 
-    &__lowercase {
+    &__color {
+      &::after {
+        content: ' цвет';
+      }
+    }
+
+    &__media-lowercase {
       text-transform: lowercase;
     }
     &__hidden {
