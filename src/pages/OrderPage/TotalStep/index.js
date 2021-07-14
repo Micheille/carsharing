@@ -19,7 +19,13 @@ export default function TotalStep(props) {
           </div>
           <div className='total-step__available'>
             <span className='total-step__field'>Доступна с </span>
-            {reservationFrom.toString()}
+            {reservationFrom.toLocaleString('ru', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit',
+            })}
           </div>
         </div>
         <div className='total-step__car-image'>
