@@ -5,7 +5,7 @@ import { normalizeImageLink } from '../../../utils/normalizeImageLink';
 import './style.scss';
 
 export default function TotalStep(props) {
-  const { carData } = props;
+  const { carData, reservationFrom } = props;
 
   return (
     <div className='order-process-content__step total-step'>
@@ -19,7 +19,7 @@ export default function TotalStep(props) {
           </div>
           <div className='total-step__available'>
             <span className='total-step__field'>Доступна с </span>
-            {}
+            {reservationFrom.toString()}
           </div>
         </div>
         <div className='total-step__car-image'>

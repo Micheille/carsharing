@@ -15,7 +15,7 @@ import {
 const extrasDefaultState = {
   color: null,
   reservationTime: {
-    from: null,
+    from: new Date().toString(),
     to: null,
   },
   rate: null,

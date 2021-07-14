@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import TotalStep from '../TotalStep';
 
 function TotalStepContainer(props) {
-  const { carData } = props;
+  const { carData, reservationFrom } = props;
 
-  return <TotalStep carData={carData} />;
+  return <TotalStep carData={carData} reservationFrom={reservationFrom} />;
 }
 
 const mapStateToProps = (state) => {
   return {
     carData: state.order.carData,
+    reservationFrom: state.order.extras.reservationTime.from,
   };
 };
 
