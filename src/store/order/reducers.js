@@ -54,7 +54,29 @@ const defaultState = {
   cityData: null,
   pointData: null,
   categoryData: null,
-  carData: null,
+  carData: {
+    updatedAt: 1624278517256,
+    createdAt: 1601326749562,
+    name: 'Lamborgini, Gallardo',
+    description: 'Тестовый тест',
+    number: 'o000oo',
+    priceMax: 100000,
+    priceMin: 9000,
+    categoryId: {
+      name: 'Спорт',
+      description: 'Турбо моторы и масло на доливку в багажнике',
+      id: '5fd91add935d4e0be16a3c4b',
+    },
+    thumbnail: {
+      size: 250513,
+      originalname: 'Без названия (1).png',
+      mimetype: 'image/png',
+      path: '/files/5fe5ef22935d4e0be16a408f_Без_названия__1_.png',
+    },
+    tank: 23,
+    colors: ['Красная', 'Зеленная', 'Фиолетовый'],
+    id: '5f724e9db710ec1273839d0e',
+  },
   extras: extrasDefaultState,
 };
 
