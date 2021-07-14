@@ -3,10 +3,10 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import Radio from '../../../components/Radio';
+import { normalizeImageLink } from '../../../utils/normalizeImageLink';
 
 import {
   SERVER,
-  ORIGIN,
   HEADERS,
   DB_GET_CATEGORIES,
   DB_GET_CARS,
@@ -98,13 +98,6 @@ export default function ModelStep(props) {
     const category = categories.find((categoryItem) => categoryItem.id === id);
     setCarsByCategory([]);
     setCategoryData(category);
-  };
-
-  const normalizeImageLink = (imageLink) => {
-    if (typeof imageLink === 'string' && imageLink.match('base64')) {
-      return imageLink;
-    }
-    return `${ORIGIN}${imageLink}`;
   };
 
   return (
