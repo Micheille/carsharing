@@ -9,15 +9,21 @@ export default function TotalStep(props) {
 
   return (
     <div className='order-process-content__step total-step'>
-      <div className='total-step__car'>
-        <div className='total-step__car-info'>
-          <div className='total-step__model'>{carData.name}</div>
-          <div className='total-step__number'>{carData.number}</div>
-          <div className='total-step__tank'>
+      <div className='total-step__car-section'>
+        <div className='total-step__car-text'>
+          <div className='total-step__text-item'>
+            <span className='total-step__model'>{carData.name}</span>
+          </div>
+          <div className='total-step__text-item'>
+            <span className='total-step__number'>
+              {carData.number.toUpperCase()}
+            </span>
+          </div>
+          <div className='total-step__tank total-step__text-item'>
             <span className='total-step__field'>Топливо </span>
             {carData.tank}
           </div>
-          <div className='total-step__available'>
+          <div className='total-step__available total-step__text-item'>
             <span className='total-step__field'>Доступна с </span>
             {reservationFrom.toLocaleString('ru', {
               day: '2-digit',
@@ -28,6 +34,7 @@ export default function TotalStep(props) {
             })}
           </div>
         </div>
+
         <div className='total-step__car-image'>
           <img src={`${normalizeImageLink(carData.thumbnail.path)}`} alt='' />
         </div>
