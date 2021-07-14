@@ -36,6 +36,7 @@
   &__car-list-container {
     position: relative;
     flex-grow: 1;
+    min-height: 400px;
   }
   &__car-list {
     display: grid;
