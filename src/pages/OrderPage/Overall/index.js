@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {
   differenceInHours,
@@ -8,6 +8,7 @@ import {
 } from 'date-fns';
 
 import OrderButton from '../../../components/OrderButton';
+import Confirm from '../Confirm';
 
 import './style.scss';
 
@@ -57,6 +58,13 @@ const calculatePrice = (
 
 function Overall(props) {
   const { activeStep, setActiveStep } = props;
+  const [showOrderConfirm, setShowOrderConfirm] = useState(false);
+  const [isConfirmed, setIsConfirmed] = useState(false);
+
+  const handleConfirm = () => {
+    setIsConfirmed(true);
+    setShowOrderConfirm(false);
+  };
 
   const {
     cityData,
@@ -71,6 +79,7 @@ function Overall(props) {
     isRightHand,
   } = props;
 
+  let onClick = undefined;
   let orderButtonText = '';
   let disabled = false;
 
@@ -88,116 +97,129 @@ function Overall(props) {
       disabled = !(color && reservationFrom && reservationTo && rate);
       break;
     case 3:
-      orderButtonText = 'Заказать';
+      orderButtonText = isConfirmed ? 'Отменить' : 'Заказать';
+      onClick = () => {
+        setShowOrderConfirm(true);
+      };
       break;
     default:
   }
 
   return (
-    <div className='overall'>
-      <p className='overall__title'>Ваш заказ:</p>
+    <>
+      <div className='overall'>
+        <p className='overall__title'>Ваш заказ:</p>
 
-      <ul className='overall__list'>
-        {cityData && pointData ? (
-          <>
-            <div className='overall__right overall__city-name'>{`${cityData?.name}, `}</div>
+        <ul className='overall__list'>
+          {cityData && pointData ? (
+            <>
+              <div className='overall__right overall__city-name'>{`${cityData?.name}, `}</div>
+              <li className='overall__item'>
+                <span className='overall__media-hidden'>Пункт выдачи</span>
+                <span className='overall__right'>{`${pointData.address}`}</span>
+              </li>
+            </>
+          ) : (
+            <></>
+          )}
+          {carData ? (
             <li className='overall__item'>
-              <span className='overall__media-hidden'>Пункт выдачи</span>
-              <span className='overall__right'>{`${pointData.address}`}</span>
+              <span className='overall__media-hidden'>Модель</span>
+              <span className='overall__right'>{`${carData.name}`}</span>
             </li>
-          </>
-        ) : (
-          <></>
-        )}
-        {carData ? (
-          <li className='overall__item'>
-            <span className='overall__media-hidden'>Модель</span>
-            <span className='overall__right'>{`${carData.name}`}</span>
-          </li>
-        ) : (
-          <></>
-        )}
-        {color ? (
-          <li className='overall__item'>
-            <span className='overall__media-hidden'>Цвет</span>
-            <span className='overall__media-lowercase overall__color overall__right'>{` ${
-              color[0].toUpperCase() + color.substring(1)
-            }`}</span>
-          </li>
-        ) : (
-          <></>
-        )}
-        {reservationFrom && reservationTo ? (
-          <li className='overall__item'>
-            <span className='overall__media-hidden'>Длительность аренды</span>
-            <span className='overall__right'>
-              {durationToString(reservationFrom, reservationTo)}
-            </span>
-          </li>
-        ) : (
-          <></>
-        )}
-        {rate ? (
-          <li className='overall__item'>
-            <span className='overall__media-hidden'>Тариф</span>
-            <span className='overall__media-lowercase overall__right'>{`${rate.rateTypeId.name}`}</span>
-          </li>
-        ) : (
-          <></>
-        )}
-        {isFullTank ? (
-          <li className='overall__item'>
-            <span className='overall__media-lowercase'>Полный бак</span>
-            <span className='overall__media-hidden overall__right'>{`Да`}</span>
-          </li>
-        ) : (
-          <></>
-        )}
-        {hasBabySeat ? (
-          <li className='overall__item'>
-            <span className='overall__media-lowercase'>Детское кресло</span>
-            <span className='overall__media-hidden overall__right'>{`Да`}</span>
-          </li>
-        ) : (
-          <></>
-        )}
-        {isRightHand ? (
-          <li className='overall__item'>
-            <span className='overall__media-lowercase'>Правый руль</span>
-            <span className='overall__media-hidden'>{`Да`}</span>
-          </li>
-        ) : (
-          <></>
-        )}
-      </ul>
+          ) : (
+            <></>
+          )}
+          {color ? (
+            <li className='overall__item'>
+              <span className='overall__media-hidden'>Цвет</span>
+              <span className='overall__media-lowercase overall__color overall__right'>{` ${
+                color[0].toUpperCase() + color.substring(1)
+              }`}</span>
+            </li>
+          ) : (
+            <></>
+          )}
+          {reservationFrom && reservationTo ? (
+            <li className='overall__item'>
+              <span className='overall__media-hidden'>Длительность аренды</span>
+              <span className='overall__right'>
+                {durationToString(reservationFrom, reservationTo)}
+              </span>
+            </li>
+          ) : (
+            <></>
+          )}
+          {rate ? (
+            <li className='overall__item'>
+              <span className='overall__media-hidden'>Тариф</span>
+              <span className='overall__media-lowercase overall__right'>{`${rate.rateTypeId.name}`}</span>
+            </li>
+          ) : (
+            <></>
+          )}
+          {isFullTank ? (
+            <li className='overall__item'>
+              <span className='overall__media-lowercase'>Полный бак</span>
+              <span className='overall__media-hidden overall__right'>{`Да`}</span>
+            </li>
+          ) : (
+            <></>
+          )}
+          {hasBabySeat ? (
+            <li className='overall__item'>
+              <span className='overall__media-lowercase'>Детское кресло</span>
+              <span className='overall__media-hidden overall__right'>{`Да`}</span>
+            </li>
+          ) : (
+            <></>
+          )}
+          {isRightHand ? (
+            <li className='overall__item'>
+              <span className='overall__media-lowercase'>Правый руль</span>
+              <span className='overall__media-hidden'>{`Да`}</span>
+            </li>
+          ) : (
+            <></>
+          )}
+        </ul>
 
-      <p className='overall__price'>
-        <span className='overall__price-title'>Цена:</span>{' '}
-        <span className='overall__price-number'>
-          {carData
-            ? reservationFrom && reservationTo && rate
-              ? `${calculatePrice(
-                  reservationFrom,
-                  reservationTo,
-                  rate,
-                  isFullTank,
-                  hasBabySeat,
-                  isRightHand
-                )} ₽`
-              : `от ${carData.priceMin} до ${carData.priceMax} ₽`
-            : '—'}
-        </span>
-      </p>
+        <p className='overall__price'>
+          <span className='overall__price-title'>Цена:</span>{' '}
+          <span className='overall__price-number'>
+            {carData
+              ? reservationFrom && reservationTo && rate
+                ? `${calculatePrice(
+                    reservationFrom,
+                    reservationTo,
+                    rate,
+                    isFullTank,
+                    hasBabySeat,
+                    isRightHand
+                  )} ₽`
+                : `от ${carData.priceMin} до ${carData.priceMax} ₽`
+              : '—'}
+          </span>
+        </p>
 
-      <div className='overall__button'>
-        <OrderButton
-          text={orderButtonText}
-          activeStep={activeStep}
-          setActiveStep={setActiveStep}
-          disabled={disabled}
-        />
+        <div className='overall__button'>
+          <OrderButton
+            text={orderButtonText}
+            activeStep={activeStep}
+            setActiveStep={setActiveStep}
+            disabled={disabled}
+            isConfirmed={isConfirmed}
+            onClick={onClick}
+          />
+        </div>
       </div>
-    </div>
+      {showOrderConfirm && (
+        <Confirm
+          onConfirmClick={handleConfirm}
+          onDenyClick={() => setShowOrderConfirm(false)}
+        />
+      )}
+    </>
   );
 }
 
