@@ -26,20 +26,20 @@
   border: transparent;
   border-radius: $border-radius;
   cursor: pointer;
-  background: linear-gradient(to right, $button-color-from, $button-color-to);
+  background: linear-gradient(to right, $color-from, $color-to);
 
   &:hover {
     background: linear-gradient(
       to right,
-      darken($button-color-from, $percent-hover),
-      darken($button-color-to, $percent-hover)
+      darken($color-from, $percent-hover),
+      darken($color-to, $percent-hover)
     );
   }
   &:active {
     background: linear-gradient(
       to right,
-      darken($button-color-from, $percent-active),
-      darken($button-color-to, $percent-active)
+      darken($color-from, $percent-active),
+      darken($color-to, $percent-active)
     );
   }
 
