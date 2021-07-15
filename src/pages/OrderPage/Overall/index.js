@@ -71,29 +71,24 @@ function Overall(props) {
     isRightHand,
   } = props;
 
-  let nextLocationLink = '';
   let orderButtonText = '';
   let disabled = false;
 
   switch (activeStep) {
     case 0:
-      nextLocationLink = '/order/model';
       orderButtonText = 'Выбрать модель';
       disabled = !(cityData && pointData);
       break;
     case 1:
-      nextLocationLink = '/order/extra';
       orderButtonText = 'Дополнительно';
       disabled = !carData;
       break;
     case 2:
-      nextLocationLink = '/order/total';
       orderButtonText = 'Итого';
       disabled = !(color && reservationFrom && reservationTo && rate);
       break;
     case 3:
-      nextLocationLink = '/order/total';
-      orderButtonText = 'Заказать'; //!!!!
+      orderButtonText = 'Заказать';
       break;
     default:
   }
@@ -199,7 +194,6 @@ function Overall(props) {
           text={orderButtonText}
           activeStep={activeStep}
           setActiveStep={setActiveStep}
-          linkTo={nextLocationLink}
           disabled={disabled}
         />
       </div>
