@@ -4,10 +4,10 @@ import './style.scss';
 
 export default function Navigation({ activeStep, setActiveStep }) {
   const navButtons = [
-    { text: 'Местоположение', link: 'location' },
-    { text: 'Модель', link: 'model' },
-    { text: 'Дополнительно', link: 'extra' },
-    { text: 'Итого', link: 'total' },
+    { text: 'Местоположение' },
+    { text: 'Модель' },
+    { text: 'Дополнительно' },
+    { text: 'Итого' },
   ];
 
   return (
