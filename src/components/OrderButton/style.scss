@@ -13,4 +13,14 @@
       background: $gray-light;
     }
   }
+  &_confirmed {
+    @include button(
+      white,
+      8px,
+      $button-deny-left,
+      $button-deny-right,
+      10%,
+      20%
+    );
+  }
 }
