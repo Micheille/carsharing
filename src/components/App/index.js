@@ -49,8 +49,6 @@ function App() {
                 />
               )}
             />
-
-            <Redirect from='/order' to='/order/location' />
           </Switch>
         </Router>
       </div>

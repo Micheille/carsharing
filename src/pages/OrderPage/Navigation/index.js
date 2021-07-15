@@ -1,37 +1,35 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
 
-import "./style.scss";
-
+import './style.scss';
 
 export default function Navigation({ activeStep, setActiveStep }) {
-	const navLinks = [
-		{ text: "Местоположение", link: "location" },
-		{ text: "Модель", link: "model" },
-		{ text: "Дополнительно", link: "extra" },
-		{ text: "Итого", link: "total" },
-	];
+  const navButtons = [
+    { text: 'Местоположение', link: 'location' },
+    { text: 'Модель', link: 'model' },
+    { text: 'Дополнительно', link: 'extra' },
+    { text: 'Итого', link: 'total' },
+  ];
 
-	return (
-		<div className="navigation order-process__navigation">
-			<ul className="navigation__list">
-				{navLinks.map((navLink, index) => (
-					<li key={index} className="navigation__item">
-						<NavLink
-							className={
-								index > activeStep
-									? "navigation__link navigation__link_disabled"
-									: "navigation__link"
-							}
-							activeClassName="navigation__link_active"
-							to={`/order/${navLink.link}`}
-							onClick={() => setActiveStep(index)}
-						>
-							{navLink.text}
-						</NavLink>
-					</li>
-				))}
-			</ul>
-		</div>
-	);
+  return (
+    <div className='navigation order-process__navigation'>
+      <ul className='navigation__list'>
+        {navButtons.map((navButton, index) => (
+          <li key={index} className='navigation__item'>
+            <button
+              className={
+                index > activeStep
+                  ? 'navigation__button navigation__button_disabled'
+                  : index === activeStep
+                  ? 'navigation__button navigation__button_active'
+                  : 'navigation__button'
+              }
+              onClick={() => setActiveStep(index)}
+            >
+              {navButton.text}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }

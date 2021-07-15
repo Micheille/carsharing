@@ -57,6 +57,7 @@ const calculatePrice = (
 
 function Overall(props) {
   const { activeStep, setActiveStep } = props;
+
   const {
     cityData,
     pointData,
