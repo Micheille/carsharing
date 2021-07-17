@@ -6,6 +6,8 @@ import Confirm from '../Confirm';
 import { durationToString } from '../../../utils/durationToString';
 import { calculatePrice } from '../../../utils/calculatePrice';
 
+import { SERVER, HEADERS, DB_POST_ORDER } from '../../../components/App/api';
+
 import './style.scss';
 
 function Overall(props) {
@@ -24,16 +26,71 @@ function Overall(props) {
     isFullTank,
     hasBabySeat,
     isRightHand,
+    orderStatuses,
   } = props;
+
+  const postOrder = async () => {
+    console.log('post order');
+
+    const postOrderObj = createPostOrderObj();
+    console.log(JSON.stringify(postOrderObj));
+
+    const url = new URL(`${SERVER}${DB_POST_ORDER}`);
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        ...HEADERS,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(postOrderObj),
+    });
+    const data = await response.json();
+
+    console.log('data: ', data);
+  };
+
+  const createPostOrderObj = () => {
+    const orderStatusId = orderStatuses.filter(
+      (status) => status.id === '5e26a191099b810b946c5d89'
+    )[0];
+    const priceCalculated = calculatePrice(
+      reservationFrom,
+      reservationTo,
+      rate,
+      isFullTank,
+      hasBabySeat,
+      isRightHand
+    );
+
+    const postOrderObj = {
+      orderStatusId: orderStatusId,
+      cityId: cityData.id,
+      pointId: pointData.id,
+      carId: carData.id,
+      color: color,
+      dateFrom: reservationFrom,
+      dateTo: reservationTo,
+      rateId: rate.id,
+      price: priceCalculated,
+      isFullTank: isFullTank,
+      isNeedChildChair: hasBabySeat,
+      isRightWheel: isRightHand,
+    };
+
+    return postOrderObj;
+  };
+
+  const handleConfirm = () => {
+    console.log('handle confirm');
+    postOrder();
+    setIsConfirmed(true);
+    setShowOrderConfirm(false);
+  };
 
   let onClick = undefined;
   let orderButtonText = '';
   let disabled = false;
-
-  const handleConfirm = () => {
-    setIsConfirmed(true);
-    setShowOrderConfirm(false);
-  };
 
   switch (activeStep) {
     case 0:
@@ -187,6 +244,7 @@ const mapStateToProps = (state) => {
     isFullTank: state.order.extras.service.isFullTank,
     hasBabySeat: state.order.extras.service.hasBabySeat,
     isRightHand: state.order.extras.service.isRightHand,
+    orderStatuses: state.data.orderStatusesData,
   };
 };
 
