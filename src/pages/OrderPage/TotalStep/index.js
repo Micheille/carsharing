@@ -1,11 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { normalizeImageLink } from '../../../utils/normalizeImageLink';
+
+import {
+  SERVER,
+  HEADERS,
+  DB_GET_ORDER_STATUSES,
+} from '../../../components/App/api';
 
 import './style.scss';
 
 export default function TotalStep(props) {
-  const { carData, reservationFrom } = props;
+  const { carData, reservationFrom, orderStatuses, setOrderStatuses } = props;
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    let cleanupFunction = false;
+
+    const getOrderStatuses = async () => {
+      const url = new URL(`${SERVER}${DB_GET_ORDER_STATUSES}`);
+      const headers = HEADERS;
+      const response = await fetch(url, { headers });
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message);
+      } else {
+        const orderStatusesData = data.data;
+
+        if (!cleanupFunction) {
+          setOrderStatuses(orderStatusesData);
+        }
+      }
+    };
+
+    !orderStatuses.length && getOrderStatuses();
+
+    return () => (cleanupFunction = true);
+  }, []);
 
   return (
     <div className='order-process-content__step total-step'>
