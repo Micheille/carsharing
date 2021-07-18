@@ -4,6 +4,7 @@ import LocationStepContainer from '../LocationStepContainer';
 import ModelStepContainer from '../ModelStepContainer';
 import ExtrasStepContainer from '../ExtrasStepContainer';
 import TotalStepContainer from '../TotalStepContainer';
+import OrderConfirmedContainer from '../OrderConfirmedContainer';
 import Overall from '../Overall';
 
 import './style.scss';
@@ -18,6 +19,8 @@ const renderStep = (activeStep) => {
       return <ExtrasStepContainer />;
     case 3:
       return <TotalStepContainer />;
+    case 4:
+      return <OrderConfirmedContainer />;
     default:
   }
 };

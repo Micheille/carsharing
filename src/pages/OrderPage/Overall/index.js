@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import OrderButton from '../../../components/OrderButton';
 import Confirm from '../Confirm';
@@ -13,7 +14,8 @@ import './style.scss';
 function Overall(props) {
   const { activeStep, setActiveStep } = props;
   const [showOrderConfirm, setShowOrderConfirm] = useState(false);
-  const [isConfirmed, setIsConfirmed] = useState(false);
+  const [orderId, setOrderId] = useState(null);
+  let history = useHistory();
 
   const {
     cityData,
@@ -30,24 +32,21 @@ function Overall(props) {
   } = props;
 
   const postOrder = async () => {
-    console.log('post order');
-
     const postOrderObj = createPostOrderObj();
-    console.log(JSON.stringify(postOrderObj));
 
     const url = new URL(`${SERVER}${DB_POST_ORDER}`);
     const response = await fetch(url, {
       method: 'POST',
       headers: {
         ...HEADERS,
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(postOrderObj),
     });
     const data = await response.json();
 
-    console.log('data: ', data);
+    setOrderId(data.data.id);
   };
 
   const createPostOrderObj = () => {
@@ -69,8 +68,8 @@ function Overall(props) {
       pointId: pointData.id,
       carId: carData.id,
       color: color,
-      dateFrom: reservationFrom,
-      dateTo: reservationTo,
+      dateFrom: reservationFrom.getTime(),
+      dateTo: reservationTo.getTime(),
       rateId: rate.id,
       price: priceCalculated,
       isFullTank: isFullTank,
@@ -82,11 +81,15 @@ function Overall(props) {
   };
 
   const handleConfirm = () => {
-    console.log('handle confirm');
     postOrder();
-    setIsConfirmed(true);
     setShowOrderConfirm(false);
   };
+
+  useEffect(() => {
+    if (orderId) {
+      history.push(`/order/${orderId}`);
+    }
+  }, [history, orderId]);
 
   let onClick = undefined;
   let orderButtonText = '';
@@ -106,10 +109,13 @@ function Overall(props) {
       disabled = !(color && reservationFrom && reservationTo && rate);
       break;
     case 3:
-      orderButtonText = isConfirmed ? 'Отменить' : 'Заказать';
+      orderButtonText = 'Заказать';
       onClick = () => {
         setShowOrderConfirm(true);
       };
+      break;
+    case 4:
+      orderButtonText = 'Отменить';
       break;
     default:
   }
@@ -217,7 +223,6 @@ function Overall(props) {
             activeStep={activeStep}
             setActiveStep={setActiveStep}
             disabled={disabled}
-            isConfirmed={isConfirmed}
             onClick={onClick}
           />
         </div>

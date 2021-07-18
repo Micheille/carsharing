@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
-  Redirect,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -41,7 +40,7 @@ function App() {
               )}
             />
             <Route
-              path='/order'
+              path='/order/:urlOrderId?'
               render={(props) => (
                 <OrderPage
                   menuActive={menuActive}

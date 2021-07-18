@@ -10,6 +10,7 @@ import {
   CHANGE_IS_FULL,
   CHANGE_HAS_BABY_SEAT,
   CHANGE_IS_RIGHT_HAND,
+  CHANGE_ORDER_ID,
 } from './actions';
 
 const extrasDefaultState = {
@@ -60,6 +61,7 @@ const defaultState = {
   categoryData: null,
   carData: null,
   extras: extrasDefaultState,
+  id: null,
 };
 
 export const orderReducer = (state = defaultState, action) => {
@@ -162,6 +164,11 @@ export const orderReducer = (state = defaultState, action) => {
             isRightHand: action.payload,
           },
         },
+      };
+    case CHANGE_ORDER_ID:
+      return {
+        ...state,
+        id: action.payload,
       };
     default:
   }

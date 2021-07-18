@@ -8,15 +8,14 @@ export default function OrderButton({
   setActiveStep,
   disabled,
   onClick,
-  isConfirmed,
 }) {
   return (
     <button
       className={
         disabled
           ? 'order-button order-button_disabled'
-          : isConfirmed
-          ? 'order-button order-button_confirmed'
+          : activeStep === 4
+          ? 'order-button order-button_deny'
           : 'order-button'
       }
       onClick={onClick || (() => setActiveStep(activeStep + 1))}

@@ -10,6 +10,7 @@ export const DB_GET_POINTS_BY_CITY = '/db/point?cityId=';
 export const DB_GET_RATES = '/db/rate';
 export const DB_GET_ORDER_STATUSES = '/db/orderStatus';
 export const DB_POST_ORDER = '/db/order';
+export const DB_GET_ORDER = '/db/order/';
 
 export const HEADERS = {
   'X-Api-Factory-Application-Id': '5e25c641099b810b946c5d5b',

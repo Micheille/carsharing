@@ -9,6 +9,7 @@ export const CHANGE_RATE = 'CHANGE_RATE';
 export const CHANGE_IS_FULL = 'CHANGE_IS_FULL';
 export const CHANGE_HAS_BABY_SEAT = 'CHANGE_HAS_BABY_SEAT';
 export const CHANGE_IS_RIGHT_HAND = 'CHANGE_IS_RIGHT_HAND';
+export const CHANGE_ORDER_ID = 'CHANGE_ORDER_ID';
 
 export const setCityData = (cityData) => ({
   type: CHANGE_CITY_DATA,
@@ -63,4 +64,9 @@ export const setHasBabySeat = (hasBabySeat) => ({
 export const setIsRightHand = (isRightHand) => ({
   type: CHANGE_IS_RIGHT_HAND,
   payload: isRightHand,
+});
+
+export const setOrderId = (orderId) => ({
+  type: CHANGE_ORDER_ID,
+  payload: orderId,
 });

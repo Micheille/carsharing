@@ -13,7 +13,7 @@
       background: $gray-light;
     }
   }
-  &_confirmed {
+  &_deny {
     @include button(
       white,
       8px,

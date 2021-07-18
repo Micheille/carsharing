@@ -41,36 +41,40 @@ export default function TotalStep(props) {
 
   return (
     <div className='order-process-content__step total-step'>
-      <div className='total-step__car-section'>
-        <div className='total-step__car-text'>
-          <div className='total-step__text-item'>
-            <span className='total-step__model'>{carData.name}</span>
+      {carData && reservationFrom ? (
+        <div className='total-step__car-section'>
+          <div className='total-step__car-text'>
+            <div className='total-step__text-item'>
+              <span className='total-step__model'>{carData.name}</span>
+            </div>
+            <div className='total-step__text-item'>
+              <span className='total-step__number'>
+                {carData.number.toUpperCase()}
+              </span>
+            </div>
+            <div className='total-step__tank total-step__text-item'>
+              <span className='total-step__field'>Топливо </span>
+              {carData.tank}
+            </div>
+            <div className='total-step__available total-step__text-item'>
+              <span className='total-step__field'>Доступна с </span>
+              {reservationFrom.toLocaleString('ru', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+              })}
+            </div>
           </div>
-          <div className='total-step__text-item'>
-            <span className='total-step__number'>
-              {carData.number.toUpperCase()}
-            </span>
-          </div>
-          <div className='total-step__tank total-step__text-item'>
-            <span className='total-step__field'>Топливо </span>
-            {carData.tank}
-          </div>
-          <div className='total-step__available total-step__text-item'>
-            <span className='total-step__field'>Доступна с </span>
-            {reservationFrom.toLocaleString('ru', {
-              day: '2-digit',
-              month: '2-digit',
-              year: 'numeric',
-              hour: '2-digit',
-              minute: '2-digit',
-            })}
-          </div>
-        </div>
 
-        <div className='total-step__car-image'>
-          <img src={`${normalizeImageLink(carData.thumbnail.path)}`} alt='' />
+          <div className='total-step__car-image'>
+            <img src={`${normalizeImageLink(carData.thumbnail.path)}`} alt='' />
+          </div>
         </div>
-      </div>
+      ) : (
+        'Подождите...'
+      )}
     </div>
   );
 }
