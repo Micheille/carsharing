@@ -8,11 +8,6 @@ import { SERVER, HEADERS, DB_GET_RATES } from '../../../components/App/api';
 
 import './style.scss';
 
-const plans = [
-  { name: 'Поминутно', price: '7 ₽/мин' },
-  { name: 'На сутки', price: '1999 ₽/сутки' },
-];
-
 export default function ExtrasStep(props) {
   const {
     carData,
