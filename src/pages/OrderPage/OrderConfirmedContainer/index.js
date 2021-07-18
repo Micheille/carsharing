@@ -77,6 +77,7 @@ function OrderConfirmedContainer(props) {
 
   return (
     <TotalStep
+      isConfirmed
       carData={orderData?.carId}
       reservationFrom={new Date(orderData?.dateFrom)}
       orderStatuses={orderStatuses}

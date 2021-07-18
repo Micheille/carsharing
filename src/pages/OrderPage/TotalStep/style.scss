@@ -4,6 +4,7 @@
   &__car-section {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     max-width: 736px;
   }
 
@@ -11,6 +12,12 @@
     margin-bottom: 8px;
   }
 
+  &__confirmed {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
   &__model {
     font-size: 18px;
     font-weight: 400;

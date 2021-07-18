@@ -11,7 +11,13 @@ import {
 import './style.scss';
 
 export default function TotalStep(props) {
-  const { carData, reservationFrom, orderStatuses, setOrderStatuses } = props;
+  const {
+    isConfirmed,
+    carData,
+    reservationFrom,
+    orderStatuses,
+    setOrderStatuses,
+  } = props;
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -44,6 +50,11 @@ export default function TotalStep(props) {
       {carData && reservationFrom ? (
         <div className='total-step__car-section'>
           <div className='total-step__car-text'>
+            {isConfirmed && (
+              <span className='total-step__confirmed'>
+                Ваш заказ подтвержден
+              </span>
+            )}
             <div className='total-step__text-item'>
               <span className='total-step__model'>{carData.name}</span>
             </div>
