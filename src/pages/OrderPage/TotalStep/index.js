@@ -54,7 +54,7 @@ export default function TotalStep(props) {
             </div>
             <div className='total-step__tank total-step__text-item'>
               <span className='total-step__field'>Топливо </span>
-              {carData.tank}
+              {`${carData.tank}%`}
             </div>
             <div className='total-step__available total-step__text-item'>
               <span className='total-step__field'>Доступна с </span>
